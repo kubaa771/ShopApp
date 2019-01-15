@@ -21,12 +21,24 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
     
     func fetchCityDataByJSON() {
         let url = URL(string: "https://concise-test.firebaseio.com/cities.json")
+        
+        let alert = UIAlertController(title: "Error", message: "Error occured while fetching data", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Try Again", style: .destructive, handler: { (action) in
+            self.fetchCityDataByJSON()
+        }))
+        
         let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
-            guard error == nil else { print("error"); return }
-            guard let content = data else { print("data error"); return }
+            guard error == nil else {
+                self.present(alert, animated: true)
+                return
+            }
+            guard let content = data else {
+                self.present(alert, animated: true)
+                return
+            }
             
             guard let json = (try? JSONSerialization.jsonObject(with: content, options: .mutableContainers)) as? [[String: Any]] else {
-                print("Not containing JSON")
+                self.present(alert, animated: true)
                 return
             }
             
