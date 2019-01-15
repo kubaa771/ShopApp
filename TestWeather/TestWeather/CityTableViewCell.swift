@@ -16,13 +16,7 @@ class CityTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var cityImage: UIImageView!
-    @IBOutlet weak var cityNameLabel: UILabel! {
-        didSet{
-            cityNameLabel.adjustsFontSizeToFitWidth = true
-            cityNameLabel.minimumScaleFactor = 0.2
-            cityNameLabel.numberOfLines = 1
-        }
-    }
+    @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var cityDetailButton: UIButton!
     @IBOutlet weak var cityDescription: UITextView!
     

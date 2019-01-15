@@ -15,8 +15,8 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //tableView.estimatedRowHeight = 75
         fetchCityDataByJSON()
+        tableView.tableFooterView = UIView()
     }
     
     func fetchCityDataByJSON() {

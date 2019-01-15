@@ -10,13 +10,7 @@ import UIKit
 
 class WeatherViewController: UIViewController {
 
-    @IBOutlet weak var sunLabel: UILabel! {
-        didSet{
-            sunLabel.adjustsFontSizeToFitWidth = true
-            sunLabel.minimumScaleFactor = 0.2
-            sunLabel.numberOfLines = 1
-        }
-    }
+    @IBOutlet weak var sunLabel: UILabel!
     @IBOutlet weak var rainLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var windLabel: UILabel!
