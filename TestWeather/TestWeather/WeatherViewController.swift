@@ -62,18 +62,13 @@ class WeatherViewController: UIViewController {
     
     func updateLabels() {
         let sunNumeric = weatherModel.sun
-        var sunText :String = ""
-        switch sunNumeric {
-        case 0:
-            sunText = "Cloudy"
-        case 1:
-            sunText = "Clouds & Sun"
-        case 2:
-            sunText = "Sun & Clouds"
-        case 3:
-            sunText = "Sunny"
-        default:
-            sunText = "Lack info"
+        var sunText = ""
+        switch sunNumeric{
+        case sunTextEnum.Cloudy.rawValue: sunText = "Cloudy"
+        case sunTextEnum.CloudsSun.rawValue: sunText = "Clouds & Sun"
+        case sunTextEnum.SunClouds.rawValue: sunText = "Sun & Clouds"
+        case sunTextEnum.Sunny.rawValue: sunText = "Sunny"
+        default: sunText = ""
         }
         
         sunLabel.text = sunText
@@ -84,4 +79,12 @@ class WeatherViewController: UIViewController {
         weatherModel.storm ? (stormLabel.text = "YES") : (stormLabel.text = "NO")
     }
     
+}
+
+enum sunTextEnum :Int{
+    case Cloudy = 0
+    case CloudsSun = 1
+    case SunClouds = 2
+    case Sunny = 3
+   
 }
