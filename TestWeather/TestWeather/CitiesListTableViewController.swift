@@ -15,6 +15,7 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //tableView.estimatedRowHeight = 75
         fetchCityDataByJSON()
     }
     
@@ -68,12 +69,13 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cellHeights[indexPath] = cell.frame.size.height
+        self.cellHeights[indexPath] = cell.frame.size.height
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return cellHeights[indexPath] ?? 70.5
+        return cellHeights[indexPath] ?? UITableView.automaticDimension
     }
+    
     
     //MARK: - Segue
     
@@ -98,7 +100,7 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
         cityArray[indexPath!.row].isExpanded = !cityArray[indexPath!.row].isExpanded
         
         tableView.beginUpdates()
-        tableView.reloadRows(at: [indexPath!], with: .fade)
+        tableView.reloadRows(at: [indexPath!], with: .automatic)
         tableView.endUpdates()
     }
     
