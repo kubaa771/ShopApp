@@ -76,17 +76,17 @@ class WeatherViewController: UIViewController {
 }
 
 enum SunTextEnum: Int {
-    case Cloudy = 0
-    case CloudsSun = 1
-    case SunClouds = 2
-    case Sunny = 3
+    case cloudy = 0
+    case cloudsSun = 1
+    case sunClouds = 2
+    case sunny = 3
     
     var stringDescription:String {
         switch self{
-        case .Cloudy: return "Cloudy"
-        case .CloudsSun: return "Clouds & Sun"
-        case .SunClouds: return "Sun & Clouds"
-        case .Sunny: return "Sunny"
+        case .cloudy: return "Cloudy"
+        case .cloudsSun: return "Clouds & Sun"
+        case .sunClouds: return "Sun & Clouds"
+        case .sunny: return "Sunny"
         }
     }
    
