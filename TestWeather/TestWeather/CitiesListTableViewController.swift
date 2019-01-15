@@ -72,7 +72,7 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return cellHeights[indexPath] ?? 70.5
+        return UITableView.automaticDimension
     }
     
     //MARK: - Segue
