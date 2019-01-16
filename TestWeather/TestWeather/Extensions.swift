@@ -21,16 +21,4 @@ extension UIViewController {
         present(alert, animated: true)
     }
     
-    //MARK - Displaying loader
-    
-    func displayLoader (loader: NVActivityIndicatorView, view: UIView) {
-        loader.center = CGPoint(x: view.center.x, y: 150)
-        view.addSubview(loader)
-        loader.startAnimating()
-    }
-    
-    func hideLoader (loader: NVActivityIndicatorView) {
-        loader.stopAnimating()
-        loader.removeFromSuperview()
-    }
 }
