@@ -33,6 +33,14 @@ class OnboardingPageViewController: UIPageViewController {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        for view in self.view.subviews {
+            if view is UIScrollView {
+                view.frame = UIScreen.main.bounds
+            } else if view is UIPageControl {
+                view.backgroundColor = #colorLiteral(red: 0, green: 0.5075943764, blue: 0.9108930522, alpha: 0.4911146567)
+            }
+        }
     }
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
