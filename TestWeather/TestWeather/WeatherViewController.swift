@@ -32,16 +32,30 @@ class WeatherViewController: UIViewController {
     func fetchWeatherInfoByJSON() {
         let url = URL(string: "https://concise-test.firebaseio.com/weather/\(idUrl).json")
         let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
-            guard error == nil else { print("error"); return }
-            guard let content = data else { print("data error"); return }
+            guard error == nil else {
+                self.displayAlert(errorMessage: error!.localizedDescription, tryAgainClosure: {
+                    self.fetchWeatherInfoByJSON()
+                })
+                return
+            }
+            guard let content = data else {
+                self.displayAlert(errorMessage: "Error while updating content", tryAgainClosure: {
+                    self.fetchWeatherInfoByJSON()
+                })
+                return
+            }
             
             guard let json = (try? JSONSerialization.jsonObject(with: content, options: .mutableContainers)) as? [String: Any] else {
-                print("json error")
+                self.displayAlert(errorMessage: "Error while fetching data", tryAgainClosure: {
+                    self.fetchWeatherInfoByJSON()
+                })
                 return
             }
             
             guard let rain = json["rain"] as? Double, let sun = json["sun"] as? Int, let temperature = json["temperature"] as? Int, let wind = json["wind"] as? Int, let storm = json["storm"] as? Bool else {
-                print("error")
+                self.displayAlert(errorMessage: "Error, missing data", tryAgainClosure: {
+                    self.fetchWeatherInfoByJSON()
+                })
                 return
             }
             
