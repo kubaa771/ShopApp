@@ -8,5 +8,6 @@ target 'TestWeather' do
   # Pods for TestWeather
 
   pod 'SDWebImage', '~> 4.0'
+  pod 'NVActivityIndicatorView'
 
 end
