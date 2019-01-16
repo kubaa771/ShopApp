@@ -133,9 +133,9 @@
 			children = (
 				F99E42BB21ECC1A0009C7862 /* Model */,
 				F99E428921ECA9C4009C7862 /* AppDelegate.swift */,
+				F950889121EF21EB000ACB71 /* Extensions.swift */,
 				F99E42B921ECAB61009C7862 /* CityTableViewCell.swift */,
 				F99E42B721ECAB26009C7862 /* CitiesListTableViewController.swift */,
-				F950889121EF21EB000ACB71 /* Extensions.swift */,
 				8A04BCA621ED2EC700EC2001 /* WeatherViewController.swift */,
 				F99E428D21ECA9C4009C7862 /* Main.storyboard */,
 				F99E429021ECA9C6009C7862 /* Assets.xcassets */,
@@ -332,12 +332,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TestWeather/Pods-TestWeather-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
