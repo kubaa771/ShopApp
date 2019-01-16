@@ -31,44 +31,9 @@ class OnboardingPageViewController: UIPageViewController {
         
         // Do any additional setup after loading the view.
     }
-    
-    
-    /*func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = orderedViewControllers.lastIndex(of: viewController) else {
-            return nil
-        }
-        
-        let previousIndex = viewControllerIndex - 1
-        
-        guard previousIndex >= 0 else {
-            return orderedViewControllers.last
-        }
-        
-        guard orderedViewControllers.count > previousIndex else {
-            return nil
-        }
-        
-        return orderedViewControllers[previousIndex]
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
     }
-    
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = orderedViewControllers.lastIndex(of: viewController) else {
-            return nil
-        }
-        
-        let nextIndex = viewControllerIndex + 1
-        let orderedViewControllersCount = orderedViewControllers.count
-        
-        guard orderedViewControllersCount != nextIndex else {
-            return orderedViewControllers.first
-        }
-        
-        guard orderedViewControllersCount > nextIndex else {
-            return nil
-        }
-        
-        return orderedViewControllers[nextIndex]
-    }*/
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return orderedViewControllers.count
@@ -80,14 +45,5 @@ class OnboardingPageViewController: UIPageViewController {
         }
         return firstViewControllerIndex
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
