@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 extension UIViewController {
+    
+    //MARK - Displaying alert
+    
     func displayAlert(errorMessage: String, tryAgainClosure:@escaping ()->()) {
         let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Try Again", style: .destructive, handler: { (action) in
@@ -16,4 +20,5 @@ extension UIViewController {
         }))
         present(alert, animated: true)
     }
+    
 }

@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class WeatherViewController: UIViewController {
 
+    //MARK - Variables initialization
+    
     @IBOutlet weak var sunLabel: UILabel!
     @IBOutlet weak var rainLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
@@ -26,12 +29,16 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Loader.start()
         fetchWeatherInfoByJSON()
     }
+    
+    //MARK - Fetching weather data info
     
     func fetchWeatherInfoByJSON() {
         let url = URL(string: "https://concise-test.firebaseio.com/weather/\(idUrl).json")
         let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
+            Loader.stop()
             guard error == nil else {
                 self.displayAlert(errorMessage: error!.localizedDescription, tryAgainClosure: {
                     self.fetchWeatherInfoByJSON()
@@ -67,6 +74,8 @@ class WeatherViewController: UIViewController {
         }
         task.resume()
     }
+    
+    //MARK - Update labels info (storyboard)
     
     func updateLabels() {
         let sunNumeric = weatherModel.sun
