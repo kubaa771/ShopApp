@@ -13,15 +13,19 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
     
     var cityArray = [City] ()
     var cellHeights: [IndexPath : CGFloat] = [:]
-    //var loader = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), type: .ballClipRotateMultiple, color: #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1), padding: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("Cities", comment: "")
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshTable), for: UIControl.Event.valueChanged)
+        self.refreshControl = refreshControl
         Loader.start()
         fetchCityDataByJSON()
         tableView.tableFooterView = UIView()
     }
+    
+    //MARK - Fetching data
     
     func fetchCityDataByJSON() {
         let url = URL(string: "https://concise-test.firebaseio.com/cities.json")
@@ -47,6 +51,7 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
                 return
             }
             
+            self.cityArray.removeAll()
             for object in json {
                 guard let id = object["id"] as? Int, let name = object["name"] as? String, let image = object["image"] as? String, let description = object["description"] as? String else {
                     self.displayAlert(errorMessage: "Error, missing data", tryAgainClosure: {
@@ -54,8 +59,9 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
                     })
                     return
                 }
-                
+
                 self.cityArray.append(City(name: name, id: id, image: image, description: description, isExpanded: false))
+                
             }
 
             DispatchQueue.main.async {
@@ -63,6 +69,12 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
             }
         }
         task.resume()
+    }
+    
+    @objc func refreshTable() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        fetchCityDataByJSON()
+        refreshControl?.endRefreshing()
     }
 
     // MARK: - Table view data source
@@ -121,49 +133,4 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
         tableView.endUpdates()
     }
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
