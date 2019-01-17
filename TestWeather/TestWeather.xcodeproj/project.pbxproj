@@ -141,9 +141,9 @@
 			children = (
 				F99E42BB21ECC1A0009C7862 /* Model */,
 				F99E428921ECA9C4009C7862 /* AppDelegate.swift */,
-				F92DD34321F0838D001DC678 /* CitiesNavigationController.swift */,
 				F950889121EF21EB000ACB71 /* Extensions.swift */,
 				F950889521EF57DD000ACB71 /* Loader.swift */,
+				F92DD34321F0838D001DC678 /* CitiesNavigationController.swift */,
 				F99E42B721ECAB26009C7862 /* CitiesListTableViewController.swift */,
 				8A04BCA621ED2EC700EC2001 /* WeatherViewController.swift */,
 				F99E42B921ECAB61009C7862 /* CityTableViewCell.swift */,
