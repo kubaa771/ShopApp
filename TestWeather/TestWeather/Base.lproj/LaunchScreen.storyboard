@@ -17,13 +17,49 @@
                     <view key="view" contentMode="scaleToFill" id="W8P-TY-DtM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbI-XP-XlC">
+                                <rect key="frame" x="44" y="158" width="287" height="56"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Weather">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="48" name="AmericanTypewriter"/>
+                                            <font key="NSOriginalFont" size="48" name="AmericanTypewriter"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="App">
+                                        <attributes>
+                                            <color key="NSColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="48" name="AmericanTypewriter"/>
+                                            <font key="NSOriginalFont" size="48" name="AmericanTypewriter"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-72" translatesAutoresizingMaskIntoConstraints="NO" id="wxu-00-6q5">
+                                <rect key="frame" x="151.5" y="297.5" width="72" height="72"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wxu-00-6q5" firstAttribute="centerY" secondItem="W8P-TY-DtM" secondAttribute="centerY" id="4Tm-UR-29r"/>
+                            <constraint firstItem="lbI-XP-XlC" firstAttribute="top" secondItem="nda-u1-4xv" secondAttribute="top" constant="138" id="HCh-iX-z3y"/>
+                            <constraint firstItem="lbI-XP-XlC" firstAttribute="centerX" secondItem="W8P-TY-DtM" secondAttribute="centerX" id="hVP-1I-Agb"/>
+                            <constraint firstItem="wxu-00-6q5" firstAttribute="centerX" secondItem="W8P-TY-DtM" secondAttribute="centerX" id="tuU-Qv-6tI"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="nda-u1-4xv"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6NX-XU-ZYI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-254" y="308"/>
+            <point key="canvasLocation" x="-255.19999999999999" y="307.1964017991005"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Icon-72" width="72" height="72"/>
+    </resources>
 </document>

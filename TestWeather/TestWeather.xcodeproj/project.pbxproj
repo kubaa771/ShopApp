@@ -74,7 +74,6 @@
 		F99E42B921ECAB61009C7862 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		F99E42BC21ECC1CC009C7862 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		F9AB6CF521F0872400B7C132 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		F9AB6CF821F0877300B7C132 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F9AB6CF921F0877300B7C132 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F9AB6CFA21F08A9900B7C132 /* SecondPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPageViewController.swift; sourceTree = "<group>"; };
 		F9AB6CFC21F090FF00B7C132 /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
@@ -443,7 +442,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				F99E429321ECA9C6009C7862 /* Base */,
-				F9AB6CF821F0877300B7C132 /* pl */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
