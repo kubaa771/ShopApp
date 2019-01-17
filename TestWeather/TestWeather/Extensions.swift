@@ -22,3 +22,24 @@ extension UIViewController {
     }
     
 }
+
+extension OnboardingPageViewController: UIPageViewControllerDataSource {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        return nil
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard let viewControllerIndex = orderedViewControllers.lastIndex(of: viewController) else {
+            return nil
+        }
+        let nextIndex = viewControllerIndex + 1
+        
+        if nextIndex >= 2 {
+            return nil
+        }
+        
+        return orderedViewControllers[nextIndex]
+    }
+    
+    
+}

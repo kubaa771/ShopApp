@@ -32,7 +32,7 @@ class Loader {
         loader.startAnimating()
         
         DispatchQueue.main.async {
-            (UIApplication.shared.delegate?.window??.rootViewController?.view)!.addSubview(loaderView!)
+            UIApplication.shared.keyWindow?.addSubview(loaderView!)
         }
         
     }
