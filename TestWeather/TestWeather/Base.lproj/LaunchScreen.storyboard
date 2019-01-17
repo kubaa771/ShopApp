@@ -11,42 +11,6 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="6Fu-fL-vhO">
-            <objects>
-                <viewController id="JJ5-yo-xx7" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="L4n-lT-cKr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGz-Dm-zDQ">
-                                <rect key="frame" x="11" y="120" width="353" height="43"/>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="36"/>
-                                <color key="textColor" red="0.0" green="0.50196078430000002" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3av-Bg-z3Q">
-                                <rect key="frame" x="147.5" y="298" width="80" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Continue"/>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="XGz-Dm-zDQ" firstAttribute="leading" secondItem="0xg-QB-gY3" secondAttribute="leading" constant="11" id="4Bp-Yf-EjE"/>
-                            <constraint firstItem="0xg-QB-gY3" firstAttribute="trailing" secondItem="XGz-Dm-zDQ" secondAttribute="trailing" constant="11" id="HOU-Mx-RWH"/>
-                            <constraint firstItem="3av-Bg-z3Q" firstAttribute="top" secondItem="XGz-Dm-zDQ" secondAttribute="bottom" constant="135" id="Hj8-yZ-h0l"/>
-                            <constraint firstItem="XGz-Dm-zDQ" firstAttribute="top" secondItem="0xg-QB-gY3" secondAttribute="top" constant="100" id="HvO-9d-hEQ"/>
-                            <constraint firstItem="0xg-QB-gY3" firstAttribute="bottom" secondItem="3av-Bg-z3Q" secondAttribute="bottom" constant="333" id="PRs-Mt-Cma"/>
-                            <constraint firstItem="3av-Bg-z3Q" firstAttribute="centerX" secondItem="L4n-lT-cKr" secondAttribute="centerX" id="sGB-5t-EaY"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="0xg-QB-gY3"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Ay-po-6WS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-540" y="312.59370314842579"/>
-        </scene>
-        <!--View Controller-->
         <scene sceneID="e0O-5S-2rv">
             <objects>
                 <viewController id="NtJ-yO-Af8" sceneMemberID="viewController">
@@ -59,7 +23,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6NX-XU-ZYI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="258" y="313"/>
+            <point key="canvasLocation" x="-254" y="308"/>
         </scene>
     </scenes>
 </document>

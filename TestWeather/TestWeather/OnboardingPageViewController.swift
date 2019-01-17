@@ -19,6 +19,9 @@ class OnboardingPageViewController: UIPageViewController {
                 self.newViewController(name: "Second")] as [UIViewController]
     }()
     
+    deinit {
+        print("deinit")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
