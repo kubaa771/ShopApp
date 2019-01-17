@@ -1,0 +1,24 @@
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "4ZU-SR-oE7"; */
+"4ZU-SR-oE7.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "First Page"; ObjectID = "IKI-y1-1vp"; */
+"IKI-y1-1vp.text" = "Strona pierwsza";
+
+/* Class = "UIButton"; normalTitle = "More Info"; ObjectID = "Nxb-n3-bDu"; */
+"Nxb-n3-bDu.normalTitle" = "Rozwiń";
+
+/* Class = "UILabel"; text = "Welcome"; ObjectID = "OYV-jz-Li4"; */
+"OYV-jz-Li4.text" = "Witaj";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "aMf-fe-Kyf"; */
+"aMf-fe-Kyf.normalTitle" = "Kontynuuj";
+
+/* Class = "UINavigationItem"; title = "Cities"; ObjectID = "fmL-Jv-vRc"; */
+"fmL-Jv-vRc.title" = "Miasta";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "vl7-OJ-2vZ"; */
+"vl7-OJ-2vZ.normalTitle" = "Kontynuuj";
+
+/* Class = "UILabel"; text = "City"; ObjectID = "w2g-dW-Pzx"; */
+"w2g-dW-Pzx.text" = "Miasto";
