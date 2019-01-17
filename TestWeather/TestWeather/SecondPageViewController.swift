@@ -19,7 +19,7 @@ class SecondPageViewController: UIViewController {
     
     @IBAction func segueButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
-        NotificationCenter.default.post(name: NSNotification.Name("unboardingFinish"), object: nil)
+        NotificationCenter.default.post(name: NotificationNames.unboardingFinish.notification, object: nil)
     }
     
     // MARK: - Navigation

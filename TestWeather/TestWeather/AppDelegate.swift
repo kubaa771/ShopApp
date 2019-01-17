@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleUnboardingFinish), name: NSNotification.Name("unboardingFinish"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUnboardingFinish), name: NotificationNames.unboardingFinish.notification, object: nil)
         let SplashViewController: SplashViewController = mainStoryboard.instantiateViewController(withIdentifier: "SplashViewController") as! SplashViewController
         let CitiesNavigationController: CitiesNavigationController = mainStoryboard.instantiateViewController(withIdentifier: "CitiesNavigationController") as! CitiesNavigationController
         
