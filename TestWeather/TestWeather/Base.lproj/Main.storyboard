@@ -344,10 +344,10 @@
             </objects>
             <point key="canvasLocation" x="-714" y="427"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Cities Navigation Controller-->
         <scene sceneID="Jgw-kp-HRd">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="d6b-lX-jvq" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CitiesNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="d6b-lX-jvq" customClass="CitiesNavigationController" customModule="TestWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jzb-GZ-v2S">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

@@ -18,11 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let SplashViewController: SplashViewController = mainStoryboard.instantiateViewController(withIdentifier: "SplashViewController") as! SplashViewController
-        let CitiesListTableViewController: CitiesListTableViewController = mainStoryboard.instantiateViewController(withIdentifier: "CitiesListTableViewController") as! CitiesListTableViewController
+        let CitiesNavigationController: CitiesNavigationController = mainStoryboard.instantiateViewController(withIdentifier: "CitiesNavigationController") as! CitiesNavigationController
         
         let defaults = UserDefaults.standard
         if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce"){
-            self.window?.rootViewController = CitiesListTableViewController
+            self.window?.rootViewController = CitiesNavigationController
             self.window?.makeKeyAndVisible()
             print("App was launched earlier")
         } else {
