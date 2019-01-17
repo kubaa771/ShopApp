@@ -98,12 +98,12 @@ enum SunTextEnum: Int {
     case sunClouds = 2
     case sunny = 3
     
-    var stringDescription:String {
+    var stringDescription: String {
         switch self{
-        case .cloudy: return "Cloudy"
-        case .cloudsSun: return "Clouds & Sun"
-        case .sunClouds: return "Sun & Clouds"
-        case .sunny: return "Sunny"
+        case .cloudy: return NSLocalizedString("Cloudy", comment: "")
+        case .cloudsSun: return NSLocalizedString("Clouds & Sun", comment: "")
+        case .sunClouds: return NSLocalizedString("Sun & Clouds", comment: "")
+        case .sunny: return NSLocalizedString("Sunny", comment: "")
         }
     }
    

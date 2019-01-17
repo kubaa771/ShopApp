@@ -49,7 +49,7 @@ class CityTableViewCell: UITableViewCell {
         cityDescription.text = city.description
         cityImage.sd_setImage(with: URL(string: city.image), completed: nil)
         city.isExpanded ? (cityDescription.isHidden = false) : (cityDescription.isHidden = true)
-        city.isExpanded ? (cityDetailButton.setTitle("Less Info", for: UIControl.State.normal)) : (cityDetailButton.setTitle("More Info", for: UIControl.State.normal))
+        city.isExpanded ? (cityDetailButton.setTitle(NSLocalizedString("Less Info", comment: ""), for: UIControl.State.normal)) : (cityDetailButton.setTitle(NSLocalizedString("More Info", comment: ""), for: UIControl.State.normal))
     }
 
 }

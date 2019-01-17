@@ -5,3 +5,14 @@
   Created by user on 17/01/2019.
   Copyright © 2019 user. All rights reserved.
 */
+
+"Cities" = "Miasta";
+"Welcome" = "Witaj";
+"Continue" = "Kontynuuj";
+"First Page" = "Strona pierwsza";
+"More Info" = "Pokaż więcej";
+"Less Info" = "Pokaż mniej";
+"Cloudy" = "Pochmurnie";
+"Clouds & Sun" = "Częściowo pochmurnie";
+"Sun & Clouds" = "Częściowo słonecznie";
+"Sunny" = "Słonecznie";
