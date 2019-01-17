@@ -52,6 +52,9 @@
                                                                     <rect key="frame" x="0.0" y="28.5" width="50" height="18"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                     <state key="normal" title="More Info"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="More Info"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="moreInfoAction:" destination="bWU-ge-RZD" eventType="touchUpInside" id="5GN-lB-H0d"/>
                                                                     </connections>
@@ -258,11 +261,17 @@
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="36"/>
                                 <color key="textColor" red="0.0" green="0.50196078431372548" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Welcome"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vl7-OJ-2vZ">
                                 <rect key="frame" x="147.5" y="298" width="80" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Continue"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Continue"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="LeL-m0-Ymc" kind="show" id="SKK-iF-Dfb"/>
                                 </connections>
@@ -295,6 +304,9 @@
                                 <rect key="frame" x="290" y="588" width="69" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Continue"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Continue"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="segueButton:" destination="ihh-Cl-0z9" eventType="touchUpInside" id="Amc-MK-3T4"/>
                                 </connections>
@@ -344,6 +356,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="First Page"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
