@@ -16,6 +16,7 @@ class Loader {
     
     static func start(){
         counter += 1
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         loaderView = UIView.init(frame: UIScreen.main.bounds)
         loaderView!.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
         let loader = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), type: .ballClipRotateMultiple, color: #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1), padding: nil)
@@ -41,6 +42,7 @@ class Loader {
         counter -= 1
         if counter <= 0 {
             DispatchQueue.main.async {
+                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 loaderView!.removeFromSuperview()
             }
         }
