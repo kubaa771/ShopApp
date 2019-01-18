@@ -8,6 +8,7 @@
 import SDWebImage
 import UIKit
 import NVActivityIndicatorView
+import UserNotifications
 
 class CitiesListTableViewController: UITableViewController, buttonTappedDelegate {
     
@@ -16,6 +17,7 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        AppDelegate.scheduleNotification()
         self.title = NSLocalizedString("Cities", comment: "")
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshTable), for: UIControl.Event.valueChanged)
@@ -24,6 +26,7 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
         fetchCityDataByJSON()
         tableView.tableFooterView = UIView()
     }
+    
     
     //MARK - Fetching data
     
