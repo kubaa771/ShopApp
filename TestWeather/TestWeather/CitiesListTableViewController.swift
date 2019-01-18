@@ -14,6 +14,8 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
     
     var cityArray = [City] ()
     var cellHeights: [IndexPath : CGFloat] = [:]
+    var arrayData = APIManager()
+    var arrayOfCity = [City] ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,14 +25,25 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
         refreshControl.addTarget(self, action: #selector(refreshTable), for: UIControl.Event.valueChanged)
         self.refreshControl = refreshControl
         Loader.start()
-        fetchCityDataByJSON()
+        //fetchCityDataByJSON()
+        fetchCityDataByAlamofire()
         tableView.tableFooterView = UIView()
     }
     
-    
     //MARK - Fetching data
     
-    func fetchCityDataByJSON() {
+    func fetchCityDataByAlamofire() {
+        arrayData.getData { (cityArray) in
+            self.cityArray = cityArray ?? []
+            Loader.stop()
+            DispatchQueue.main.async {
+                self.refreshControl?.endRefreshing()
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    /*func fetchCityDataByJSON() {
         let url = URL(string: "https://concise-test.firebaseio.com/cities.json")
         let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
             Loader.stop()
@@ -69,17 +82,19 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
                 self.cityArray.append(City(name: name, id: id, image: image, description: description, isExpanded: false))
                 
             }
+            print("CityArray: \(self.cityArray)")
 
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
         task.resume()
-    }
+    }*/
     
     @objc func refreshTable() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        fetchCityDataByJSON()
+        //fetchCityDataByJSON()
+        fetchCityDataByAlamofire()
     }
 
     // MARK: - Table view data source
