@@ -217,6 +217,7 @@
 				F99E428321ECA9C3009C7862 /* Frameworks */,
 				F99E428421ECA9C3009C7862 /* Resources */,
 				A616C695AF7525FED5991423 /* [CP] Embed Pods Frameworks */,
+				F9307A3D21F2115800126175 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -397,6 +398,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestWeather/Pods-TestWeather-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		F9307A3D21F2115800126175 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
