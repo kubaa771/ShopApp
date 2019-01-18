@@ -31,6 +31,9 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
         let url = URL(string: "https://concise-test.firebaseio.com/cities.json")
         let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
             Loader.stop()
+            DispatchQueue.main.async {
+                self.refreshControl?.endRefreshing()
+            }
             guard error == nil else {
                 self.displayAlert(errorMessage: error!.localizedDescription, tryAgainClosure: {
                     self.fetchCityDataByJSON()
@@ -74,7 +77,6 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
     @objc func refreshTable() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         fetchCityDataByJSON()
-        refreshControl?.endRefreshing()
     }
 
     // MARK: - Table view data source
