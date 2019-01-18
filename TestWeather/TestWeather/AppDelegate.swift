@@ -8,9 +8,10 @@
 
 import UIKit
 import UserNotifications
+import Firebase
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
     var window: UIWindow?
 
@@ -37,7 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         registerForPushNotifications()
-        
+        FirebaseApp.configure()
+        Messaging.messaging().delegate = self
+    
         return true
     }
     
@@ -70,7 +73,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    //MARK - Firebase messaging delegate
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print(fcmToken)
+    }
+    
     //MARK - Get device token
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print("dasfasd")
+
+    }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }

@@ -11,4 +11,7 @@ target 'TestWeather' do
   pod 'NVActivityIndicatorView'
   pod 'Alamofire', '~> 5.0.0.beta.1'
   pod 'SwiftyJSON'
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
+  
 end

@@ -12,6 +12,7 @@
 		8A04BCA921ED34F800EC2001 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04BCA821ED34F800EC2001 /* Weather.swift */; };
 		F92DD34421F0838D001DC678 /* CitiesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DD34321F0838D001DC678 /* CitiesNavigationController.swift */; };
 		F9307A3821F1D77C00126175 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9307A3721F1D77C00126175 /* APIManager.swift */; };
+		F9307A3C21F2070500126175 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9307A3B21F2070500126175 /* GoogleService-Info.plist */; };
 		F950889221EF21EB000ACB71 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950889121EF21EB000ACB71 /* Extensions.swift */; };
 		F950889621EF57DD000ACB71 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950889521EF57DD000ACB71 /* Loader.swift */; };
 		F950889821EF6F39000ACB71 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950889721EF6F39000ACB71 /* OnboardingPageViewController.swift */; };
@@ -56,6 +57,7 @@
 		F3E79E3CCDC000E2D2A92BF2 /* Pods-TestWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestWeather.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestWeather/Pods-TestWeather.release.xcconfig"; sourceTree = "<group>"; };
 		F92DD34321F0838D001DC678 /* CitiesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesNavigationController.swift; sourceTree = "<group>"; };
 		F9307A3721F1D77C00126175 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		F9307A3B21F2070500126175 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F950889121EF21EB000ACB71 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F950889521EF57DD000ACB71 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		F950889721EF6F39000ACB71 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				F99E428D21ECA9C4009C7862 /* Main.storyboard */,
 				F99E429221ECA9C6009C7862 /* LaunchScreen.storyboard */,
 				F99E429021ECA9C6009C7862 /* Assets.xcassets */,
+				F9307A3B21F2070500126175 /* GoogleService-Info.plist */,
 				F99E429521ECA9C6009C7862 /* Info.plist */,
 			);
 			path = TestWeather;
@@ -316,6 +319,7 @@
 			files = (
 				F99E429421ECA9C6009C7862 /* LaunchScreen.storyboard in Resources */,
 				F9AB6CF621F0872400B7C132 /* Localizable.strings in Resources */,
+				F9307A3C21F2070500126175 /* GoogleService-Info.plist in Resources */,
 				F99E429121ECA9C6009C7862 /* Assets.xcassets in Resources */,
 				F99E428F21ECA9C4009C7862 /* Main.storyboard in Resources */,
 			);
@@ -370,18 +374,24 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TestWeather/Pods-TestWeather-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
