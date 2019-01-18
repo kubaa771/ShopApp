@@ -11,6 +11,7 @@
 		8A04BCA721ED2EC700EC2001 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04BCA621ED2EC700EC2001 /* WeatherViewController.swift */; };
 		8A04BCA921ED34F800EC2001 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04BCA821ED34F800EC2001 /* Weather.swift */; };
 		F92DD34421F0838D001DC678 /* CitiesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DD34321F0838D001DC678 /* CitiesNavigationController.swift */; };
+		F9307A3821F1D77C00126175 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9307A3721F1D77C00126175 /* APIManager.swift */; };
 		F950889221EF21EB000ACB71 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950889121EF21EB000ACB71 /* Extensions.swift */; };
 		F950889621EF57DD000ACB71 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950889521EF57DD000ACB71 /* Loader.swift */; };
 		F950889821EF6F39000ACB71 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950889721EF6F39000ACB71 /* OnboardingPageViewController.swift */; };
@@ -54,6 +55,7 @@
 		DED5EB4761061204457F3B12 /* Pods-TestWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestWeather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestWeather/Pods-TestWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		F3E79E3CCDC000E2D2A92BF2 /* Pods-TestWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestWeather.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestWeather/Pods-TestWeather.release.xcconfig"; sourceTree = "<group>"; };
 		F92DD34321F0838D001DC678 /* CitiesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesNavigationController.swift; sourceTree = "<group>"; };
+		F9307A3721F1D77C00126175 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		F950889121EF21EB000ACB71 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F950889521EF57DD000ACB71 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		F950889721EF6F39000ACB71 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				F9AB6CF421F0872400B7C132 /* Localizable.strings */,
 				F99E42BB21ECC1A0009C7862 /* Model */,
 				F99E428921ECA9C4009C7862 /* AppDelegate.swift */,
+				F9307A3721F1D77C00126175 /* APIManager.swift */,
 				F9AB6CFE21F09A7400B7C132 /* Localizable+UIView+Extenstions.swift */,
 				F9AB6CFC21F090FF00B7C132 /* NotificationNames.swift */,
 				F950889121EF21EB000ACB71 /* Extensions.swift */,
@@ -366,15 +369,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TestWeather/Pods-TestWeather-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -400,6 +407,7 @@
 				F950889621EF57DD000ACB71 /* Loader.swift in Sources */,
 				F950889821EF6F39000ACB71 /* OnboardingPageViewController.swift in Sources */,
 				F9AB6CFB21F08A9900B7C132 /* SecondPageViewController.swift in Sources */,
+				F9307A3821F1D77C00126175 /* APIManager.swift in Sources */,
 				F950889221EF21EB000ACB71 /* Extensions.swift in Sources */,
 				F950889A21EF6FB1000ACB71 /* SplashViewController.swift in Sources */,
 			);

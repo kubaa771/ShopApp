@@ -7,12 +7,19 @@
 //
 
 import Foundation
-
+import SwiftyJSON
 struct City {
     let name: String
     let id: Int
     let image: String
     let description: String
-    var isExpanded: Bool
+    var isExpanded: Bool = false
+    
+    init(json:JSON) {
+        self.name = json["name"].stringValue
+        self.id = json["id"].intValue
+        self.image = json["image"].stringValue
+        self.description = json["description"].stringValue
+    }
     
 }

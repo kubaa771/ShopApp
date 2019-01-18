@@ -9,6 +9,7 @@ import SDWebImage
 import UIKit
 import NVActivityIndicatorView
 import UserNotifications
+import Alamofire
 
 class CitiesListTableViewController: UITableViewController, buttonTappedDelegate {
     
@@ -23,63 +24,35 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
         refreshControl.addTarget(self, action: #selector(refreshTable), for: UIControl.Event.valueChanged)
         self.refreshControl = refreshControl
         Loader.start()
-        fetchCityDataByJSON()
+        fetchCityDataByAlamofire()
         tableView.tableFooterView = UIView()
     }
     
-    
     //MARK - Fetching data
     
-    func fetchCityDataByJSON() {
-        let url = URL(string: "https://concise-test.firebaseio.com/cities.json")
-        let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
-            Loader.stop()
-            DispatchQueue.main.async {
-                self.refreshControl?.endRefreshing()
-            }
-            guard error == nil else {
-                self.displayAlert(errorMessage: error!.localizedDescription, tryAgainClosure: {
-                    self.fetchCityDataByJSON()
-                })
-                return
-            }
-            guard let content = data else {
-                self.displayAlert(errorMessage: "Error while updating content", tryAgainClosure: {
-                    self.fetchCityDataByJSON()
-                })
-                return
-            }
-            
-            guard let json = (try? JSONSerialization.jsonObject(with: content, options: .mutableContainers)) as? [[String: Any]] else {
-                self.displayAlert(errorMessage: "Error while fetching data", tryAgainClosure: {
-                    self.fetchCityDataByJSON()
-                })
-                return
-            }
-            
+    func fetchCityDataByAlamofire() {
+        let _ = APIManager.shared.sendRequest(url: "https://concise-test.firebaseio.com/cities.json", method: HTTPMethod.get, parameters: nil, successBlock: { (json) in
             self.cityArray.removeAll()
-            for object in json {
-                guard let id = object["id"] as? Int, let name = object["name"] as? String, let image = object["image"] as? String, let description = object["description"] as? String else {
-                    self.displayAlert(errorMessage: "Error, missing data", tryAgainClosure: {
-                        self.fetchCityDataByJSON()
-                    })
-                    return
-                }
-
-                self.cityArray.append(City(name: name, id: id, image: image, description: description, isExpanded: false))
-                
+            for itemJson in json.arrayValue {
+                let cityObject = City(json: itemJson)
+                self.cityArray.append(cityObject)
             }
-
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+            self.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
+            Loader.stop()
+            
+        }) { (code, message) in
+            self.displayAlert(errorMessage: message ?? "", tryAgainClosure: {
+                self.fetchCityDataByAlamofire()
+            })
+            Loader.stop()
         }
-        task.resume()
     }
+    
     
     @objc func refreshTable() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        fetchCityDataByJSON()
+        fetchCityDataByAlamofire()
     }
 
     // MARK: - Table view data source
