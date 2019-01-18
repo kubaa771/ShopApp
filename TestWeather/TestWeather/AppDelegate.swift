@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    
+    //MARK - Splash screen, checking if app has opened for first time
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -33,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("App launched first time")
         }
         
+        registerForPushNotifications()
+        
         return true
     }
     
@@ -41,6 +46,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let CitiesNavigationController: CitiesNavigationController = mainStoryboard.instantiateViewController(withIdentifier: "CitiesNavigationController") as! CitiesNavigationController
         self.window?.rootViewController = CitiesNavigationController
         self.window?.makeKeyAndVisible()
+        
+    }
+    
+    //MARK - Register for local/push/remote notifications
+    
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current()
+            .requestAuthorization(options: [.alert, .sound, .badge]) {[weak self] (granted, error) in
+                print("Permission granted: \(granted)")
+                guard granted else { return }
+                self?.getNotificationSettings()
+        }
+    }
+    
+    func getNotificationSettings() {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            print("Notification settings: \(settings)")
+            guard settings.authorizationStatus == .authorized else { return }
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
+    }
+    
+    //MARK - Get device token
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+        let token = tokenParts.joined()
+        print("Device token: \(token)")
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register: \(error)")
+    }
+    
+    //MARK - Schedule Notification
+    
+    static func scheduleNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "New City Discovered"
+        content.body = "You have discovered a new city. Check this feature right now!"
+        content.sound = UNNotificationSound.default
+        content.badge = 0
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 15, repeats: false)
+        let identifier = "UNLocalNotification"
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        print("request")
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let error = error {
+                print("Error: \(error)")
+            }
+        }
         
     }
     
