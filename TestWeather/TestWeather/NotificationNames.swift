@@ -11,6 +11,7 @@ import Foundation
 enum NotificationNames: String{
     
     case unboardingFinish = "unboardingFinish"
+    case deepLinkHandler = "deepLinkHandler"
     
     var notification: Notification.Name {
         return Notification.Name(self.rawValue)

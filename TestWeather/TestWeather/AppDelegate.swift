@@ -81,7 +81,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     //MARK - Get device token
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        print("dasfasd")
 
     }
     
@@ -114,6 +113,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         }
         
     }
+    
+    var deepLinkUrl: String?
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        deepLinkUrl = url.absoluteString
+        NotificationCenter.default.post(name: NotificationNames.deepLinkHandler.notification, object: nil)
+        
+        return true
+    }
+    
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -10,6 +10,7 @@
 		01C8BDF3D5AB3F4BAD1A3000 /* Pods_TestWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE3E1C7F60802A0DA4B805AB /* Pods_TestWeather.framework */; };
 		8A04BCA721ED2EC700EC2001 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04BCA621ED2EC700EC2001 /* WeatherViewController.swift */; };
 		8A04BCA921ED34F800EC2001 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04BCA821ED34F800EC2001 /* Weather.swift */; };
+		F92A1A5821F5FA5C00E06ED3 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92A1A5721F5FA5C00E06ED3 /* Helper.swift */; };
 		F92DD34421F0838D001DC678 /* CitiesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DD34321F0838D001DC678 /* CitiesNavigationController.swift */; };
 		F9307A3821F1D77C00126175 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9307A3721F1D77C00126175 /* APIManager.swift */; };
 		F9307A3C21F2070500126175 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9307A3B21F2070500126175 /* GoogleService-Info.plist */; };
@@ -55,6 +56,7 @@
 		AE3E1C7F60802A0DA4B805AB /* Pods_TestWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DED5EB4761061204457F3B12 /* Pods-TestWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestWeather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestWeather/Pods-TestWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		F3E79E3CCDC000E2D2A92BF2 /* Pods-TestWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestWeather.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestWeather/Pods-TestWeather.release.xcconfig"; sourceTree = "<group>"; };
+		F92A1A5721F5FA5C00E06ED3 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		F92DD34321F0838D001DC678 /* CitiesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesNavigationController.swift; sourceTree = "<group>"; };
 		F9307A3721F1D77C00126175 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		F9307A3B21F2070500126175 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				F9AB6CF421F0872400B7C132 /* Localizable.strings */,
 				F99E42BB21ECC1A0009C7862 /* Model */,
 				F99E428921ECA9C4009C7862 /* AppDelegate.swift */,
+				F92A1A5721F5FA5C00E06ED3 /* Helper.swift */,
 				F9307A3721F1D77C00126175 /* APIManager.swift */,
 				F9AB6CFE21F09A7400B7C132 /* Localizable+UIView+Extenstions.swift */,
 				F9AB6CFC21F090FF00B7C132 /* NotificationNames.swift */,
@@ -278,6 +281,9 @@
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
 							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
 								enabled = 1;
 							};
 						};
@@ -431,6 +437,7 @@
 				F9AB6CFF21F09A7400B7C132 /* Localizable+UIView+Extenstions.swift in Sources */,
 				F99E42B821ECAB26009C7862 /* CitiesListTableViewController.swift in Sources */,
 				F99E42BA21ECAB61009C7862 /* CityTableViewCell.swift in Sources */,
+				F92A1A5821F5FA5C00E06ED3 /* Helper.swift in Sources */,
 				8A04BCA921ED34F800EC2001 /* Weather.swift in Sources */,
 				F99E428A21ECA9C4009C7862 /* AppDelegate.swift in Sources */,
 				F950889621EF57DD000ACB71 /* Loader.swift in Sources */,

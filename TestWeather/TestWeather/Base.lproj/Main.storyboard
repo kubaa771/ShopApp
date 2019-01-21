@@ -106,7 +106,7 @@
         <!--Weather View Controller-->
         <scene sceneID="y6S-2H-GPr">
             <objects>
-                <viewController id="djC-Wt-gLq" customClass="WeatherViewController" customModule="TestWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WeatherViewController" id="djC-Wt-gLq" customClass="WeatherViewController" customModule="TestWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="elb-sa-KdZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

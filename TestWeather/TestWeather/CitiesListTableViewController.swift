@@ -18,17 +18,49 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(checkUrl), name: NotificationNames.deepLinkHandler.notification, object: nil)
+        print("viewdidload")
         AppDelegate.scheduleNotification()
         self.title = NSLocalizedString("Cities", comment: "")
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshTable), for: UIControl.Event.valueChanged)
         self.refreshControl = refreshControl
-        Loader.start()
-        fetchCityDataByAlamofire()
         tableView.tableFooterView = UIView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        checkUrl()
+    }
+    
     //MARK - Fetching data
+    
+    @objc func checkUrl() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        if let url = appDelegate.deepLinkUrl {
+            deepLinkUrlHandler(url: url)
+            appDelegate.deepLinkUrl = nil
+        } else if cityArray.isEmpty {
+            Loader.start()
+            fetchCityDataByAlamofire()
+        }
+    }
+    
+    func configureViewController(id: Int) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let weatherViewController: WeatherViewController = storyboard.instantiateViewController(withIdentifier: "WeatherViewController") as! WeatherViewController
+        weatherViewController.idUrl = id
+        self.navigationController?.popToRootViewController(animated: false)
+        self.show(weatherViewController, sender: nil)
+    }
+
+    
+    func deepLinkUrlHandler(url: String) {
+        if let cityId = Helper.getQueryStringParameter(url: url, param: "id"),
+            let cityIdInt = Int(cityId) {
+            configureViewController(id: cityIdInt)
+        }
+        
+    }
     
     func fetchCityDataByAlamofire() {
         let _ = APIManager.shared.sendRequest(url: "https://concise-test.firebaseio.com/cities.json", method: HTTPMethod.get, parameters: nil, successBlock: { (json) in
@@ -48,7 +80,6 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
             Loader.stop()
         }
     }
-    
     
     @objc func refreshTable() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true

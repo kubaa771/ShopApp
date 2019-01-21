@@ -29,6 +29,7 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewdidload")
         Loader.start()
         fetchWeatherInfoByJSON()
     }
