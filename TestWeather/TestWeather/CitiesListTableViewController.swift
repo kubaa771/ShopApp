@@ -19,7 +19,6 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(checkUrl), name: NotificationNames.deepLinkHandler.notification, object: nil)
-        print("viewdidload")
         AppDelegate.scheduleNotification()
         self.title = NSLocalizedString("Cities", comment: "")
         let refreshControl = UIRefreshControl()
@@ -32,25 +31,38 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
         checkUrl()
     }
     
-    //MARK - Fetching data
+    //MARK - Checking URLS
     
     @objc func checkUrl() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if let url = appDelegate.deepLinkUrl {
-            deepLinkUrlHandler(url: url)
-            appDelegate.deepLinkUrl = nil
-        } else if cityArray.isEmpty {
+            fetchCityDataByAlamofire {  [weak self] (error) in
+                self?.deepLinkUrlHandler(url: url)
+                appDelegate.deepLinkUrl = nil
+            }
+
+        } else
+        if cityArray.isEmpty {
             Loader.start()
-            fetchCityDataByAlamofire()
+            fetchCityDataByAlamofire { (Error) in
+            }
         }
     }
     
     func configureViewController(id: Int) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let weatherViewController: WeatherViewController = storyboard.instantiateViewController(withIdentifier: "WeatherViewController") as! WeatherViewController
-        weatherViewController.idUrl = id
-        self.navigationController?.popToRootViewController(animated: false)
-        self.show(weatherViewController, sender: nil)
+        if cityArray.contains(where: { ($0.id == id) }) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let weatherViewController: WeatherViewController = storyboard.instantiateViewController(withIdentifier: "WeatherViewController") as! WeatherViewController
+            weatherViewController.idUrl = id
+            let result = cityArray.compactMap {
+                $0.id == id ? $0.name : nil
+            }
+            weatherViewController.currentCityTitle = result[0]
+            self.navigationController?.popToRootViewController(animated: false)
+            self.show(weatherViewController, sender: nil)
+            
+        }
+        
     }
 
     
@@ -62,7 +74,9 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
         
     }
     
-    func fetchCityDataByAlamofire() {
+    //MARK - Fetching data by Alamofire
+    
+    func fetchCityDataByAlamofire(completion: @escaping ((_ error: Error?) -> Void)) {
         let _ = APIManager.shared.sendRequest(url: "https://concise-test.firebaseio.com/cities.json", method: HTTPMethod.get, parameters: nil, successBlock: { (json) in
             self.cityArray.removeAll()
             for itemJson in json.arrayValue {
@@ -72,18 +86,25 @@ class CitiesListTableViewController: UITableViewController, buttonTappedDelegate
             self.refreshControl?.endRefreshing()
             self.tableView.reloadData()
             Loader.stop()
+          
+            completion(nil)
+            
             
         }) { (code, message) in
             self.displayAlert(errorMessage: message ?? "", tryAgainClosure: {
-                self.fetchCityDataByAlamofire()
+                self.fetchCityDataByAlamofire(completion: completion)
             })
             Loader.stop()
+            
+            completion(nil)
         }
     }
     
     @objc func refreshTable() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        fetchCityDataByAlamofire()
+        fetchCityDataByAlamofire { (error) in
+        
+        }
     }
 
     // MARK: - Table view data source
