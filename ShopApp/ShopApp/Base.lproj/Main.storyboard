@@ -109,6 +109,9 @@
                         <viewLayoutGuide key="safeArea" id="WwL-hX-LwN"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Product" id="BLU-xC-EUv"/>
+                    <connections>
+                        <outlet property="tableView" destination="Mi8-NM-Dup" id="PXH-uG-tCR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0p8-dt-2m1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -127,7 +130,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="EyN-Aw-IQo">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ListCell" id="EyN-Aw-IQo">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EyN-Aw-IQo" id="5ti-X8-pYD">
@@ -143,6 +146,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="List" id="HuE-zH-4cc"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="9cm-g5-gVg" id="S39-LZ-1O6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m6v-86-Tjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
