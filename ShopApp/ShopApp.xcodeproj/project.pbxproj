@@ -16,6 +16,7 @@
 		F90B172821F7428200965049 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90B172721F7428200965049 /* ListTableViewController.swift */; };
 		F90B172A21F742BC00965049 /* ProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90B172921F742BC00965049 /* ProductTableViewController.swift */; };
 		F90B172C21F7437B00965049 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90B172B21F7437B00965049 /* ProductTableViewCell.swift */; };
+		F93A8DFD21F76B9A00ACC47D /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93A8DFC21F76B9A00ACC47D /* AddProductViewController.swift */; };
 		F961A2F021F74B300084DC72 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F961A2EF21F74B300084DC72 /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		F90B172721F7428200965049 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		F90B172921F742BC00965049 /* ProductTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewController.swift; sourceTree = "<group>"; };
 		F90B172B21F7437B00965049 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
+		F93A8DFC21F76B9A00ACC47D /* AddProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductViewController.swift; sourceTree = "<group>"; };
 		F961A2EF21F74B300084DC72 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +111,7 @@
 				F90B172B21F7437B00965049 /* ProductTableViewCell.swift */,
 				F90B16F921F73DB100965049 /* AppDelegate.swift */,
 				F90B16FD21F73DB100965049 /* Main.storyboard */,
+				F93A8DFC21F76B9A00ACC47D /* AddProductViewController.swift */,
 				F90B170221F73DB300965049 /* LaunchScreen.storyboard */,
 				F90B170021F73DB300965049 /* Assets.xcassets */,
 				F90B170521F73DB300965049 /* Info.plist */,
@@ -267,6 +270,7 @@
 			files = (
 				F961A2F021F74B300084DC72 /* CategoryViewController.swift in Sources */,
 				F90B172821F7428200965049 /* ListTableViewController.swift in Sources */,
+				F93A8DFD21F76B9A00ACC47D /* AddProductViewController.swift in Sources */,
 				F90B172C21F7437B00965049 /* ProductTableViewCell.swift in Sources */,
 				F90B172A21F742BC00965049 /* ProductTableViewController.swift in Sources */,
 				F90B16FA21F73DB100965049 /* AppDelegate.swift in Sources */,

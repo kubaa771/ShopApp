@@ -8,15 +8,31 @@
 
 import UIKit
 
-class CategoryViewController: UIViewController {
-
+class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+   
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.delegate = self
+        tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
     
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
+        
+        return cell
+    }
+    
 
+    
+    
     /*
     // MARK: - Navigation
 
@@ -27,4 +43,8 @@ class CategoryViewController: UIViewController {
     }
     */
 
+}
+
+enum CategorySection: Int {
+    case fruits = 0, vegetables, dairies, meats
 }

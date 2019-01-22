@@ -17,6 +17,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+
     }
 
     // MARK: - Table view data source
