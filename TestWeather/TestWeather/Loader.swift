@@ -40,12 +40,15 @@ class Loader {
     
     static func stop() {
         counter -= 1
-        if counter <= 0 {
+        if counter == 0 {
             DispatchQueue.main.async {
                  UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 loaderView!.removeFromSuperview()
             }
+        } else if counter < 0 {
+            counter = 0
         }
+        
     }
     
 }
