@@ -10,7 +10,7 @@ import UIKit
 
 class ProductTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NewProductProtocolDelegate {
     
-    var productData = [Product(name: "Apple", category: "Fruits", price: 4, image: "https://i5.walmartimages.ca/images/Large/428/5_r/6000195494285_R.jpg"), Product(name: "Milk", category: "Dairies", price: 2, image: "https://cdn.apartmenttherapy.info/image/fetch/f_auto,q_auto,w_398,c_fit,fl_strip_profile/https://s3.amazonaws.com/pixtruder/original_images/589dd2e644dfd7a46b4cbf4871afa2a782532280"), Product(name: "Orange", category: "Fruits", price: 5, image: "https://d3nevzfk7ii3be.cloudfront.net/igi/KRLMkuaBjm5mKDDP")]
+    var productData = [Product(name: "Apple", category: "Fruits", price: 4, urlS: "https://i5.walmartimages.ca/images/Large/428/5_r/6000195494285_R.jpg", image: nil), Product(name: "Milk", category: "Dairies", price: 2, urlS: "https://cdn.apartmenttherapy.info/image/fetch/f_auto,q_auto,w_398,c_fit,fl_strip_profile/https://s3.amazonaws.com/pixtruder/original_images/589dd2e644dfd7a46b4cbf4871afa2a782532280", image: nil), Product(name: "Orange", category: "Fruits", price: 5, urlS: "https://d3nevzfk7ii3be.cloudfront.net/igi/KRLMkuaBjm5mKDDP", image: nil)]
     
     var food = [CategorySection : [Product]] ()
     

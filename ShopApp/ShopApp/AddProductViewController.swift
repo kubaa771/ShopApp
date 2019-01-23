@@ -17,7 +17,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     var imagePicker: UIImagePickerController!
     
-    var newImage: String?
+    var newImage: UIImage?
     var newName: String?
     var newPrice: Int?
     var newCategory: String?
@@ -98,7 +98,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
         if newName != "", newPrice != nil {
-            let newProduct = Product(name: newName ?? "", category: newCategory ?? "Fruits", price: newPrice ?? 0, image: newImage ?? "")
+            let newProduct = Product(name: newName ?? "", category: newCategory ?? "Fruits", price: newPrice ?? 0, urlS: nil, image: newImage ?? nil)
             delegate?.addNewProduct(product: newProduct)
             self.navigationController?.popViewController(animated: true)
         } else {
@@ -119,7 +119,7 @@ extension AddProductViewController: UIImagePickerControllerDelegate{
             return
         }
         addImage.image = selectedImage
-        newImage = selectedImage.toString()
+        newImage = selectedImage
     }
 }
 

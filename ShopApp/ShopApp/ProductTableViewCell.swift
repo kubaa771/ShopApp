@@ -38,7 +38,11 @@ class ProductTableViewCell: UITableViewCell {
         productName.text = product.name
         productCategory.text = product.category
         productPrice.text = String(product.price) + "$"
-        productImage.sd_setImage(with: URL(string: product.image), completed: nil)
+        
+        productImage.image = product.image
+        
+        
+        
     }
 
 }
