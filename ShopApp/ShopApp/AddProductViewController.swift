@@ -15,6 +15,11 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var addPrice: UITextField!
     @IBOutlet weak var pickerView: UIPickerView!
     
+    var newImage: String?
+    var newName: String?
+    var newPrice: Int?
+    var newCategory: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.pickerView.delegate = self
@@ -22,13 +27,35 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
         // Do any additional setup after loading the view.
     }
     
-
+    //MARK - Setting pickerView
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 4
+        return CategorySection.Total.rawValue
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return CategorySection(rawValue: row)?.descripiton
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        newCategory = CategorySection(rawValue: row)?.descripiton
+    }
+    
+    //MARK - Setting textFields
+    
+    
+    @IBAction func addNewNameAction(_ sender: UITextField) {
+        newName = sender.text!
+    }
+    
+    
+    @IBAction func addNewPriceAction(_ sender: UITextField) {
+        newPrice = Int(sender.text!)
+    }
+    
 
 }

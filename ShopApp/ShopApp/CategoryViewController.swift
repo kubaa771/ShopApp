@@ -44,7 +44,3 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     */
 
 }
-
-enum CategorySection: Int {
-    case fruits = 0, vegetables, dairies, meats
-}

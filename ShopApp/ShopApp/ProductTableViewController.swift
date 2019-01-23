@@ -10,13 +10,18 @@ import UIKit
 
 class ProductTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var productData = [Product(name: "Apple", category: "Fruits", price: 4, image: "https://i5.walmartimages.ca/images/Large/428/5_r/6000195494285_R.jpg"), Product(name: "Milk", category: "Dairies", price: 2, image: "https://cdn.apartmenttherapy.info/image/fetch/f_auto,q_auto,w_398,c_fit,fl_strip_profile/https://s3.amazonaws.com/pixtruder/original_images/589dd2e644dfd7a46b4cbf4871afa2a782532280"), Product(name: "Orange", category: "Fruits", price: 5, image: "https://d3nevzfk7ii3be.cloudfront.net/igi/KRLMkuaBjm5mKDDP")]
+    
+    var food = [CategorySection : [Product]] ()
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sortData()
         tableView.delegate = self
         tableView.dataSource = self
+        
 
     }
 
@@ -24,23 +29,61 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
 
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return CategorySection.Total.rawValue
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+        if let tableSection = CategorySection(rawValue: section), let tableProductData = food[tableSection] {
+            return tableProductData.count
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if let tableSection = CategorySection(rawValue: section), let myData = food[tableSection], myData.count > 0 {
+            return 20
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var text = ""
+        if let tableSection = CategorySection(rawValue: section) {
+            switch tableSection {
+            case .Fruits:
+                text = "Fruits"
+            case .Dairies:
+                text = "Dairies"
+            case .Meats:
+                text = "Meats"
+            case .Vegetables:
+                text = "Vegetables"
+            default:
+                text = ""
+            }
+        }
+        
+        return text
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as! ProductTableViewCell
-
-        // Configure the cell...
+        //cell.model = food[.Fruits]![indexPath.row]
+        if let tableSection = CategorySection(rawValue: indexPath.section), let product = food[tableSection]?[indexPath.row] {
+            cell.model = product
+        }
+        
+        //print(food[.Fruits][indexPath.row])
 
         return cell
     }
     
+    func sortData() {
+        food[.Fruits] = productData.filter({ $0.category == "Fruits"})
+        food[.Dairies] = productData.filter({ $0.category == "Dairies"})
 
+    }
+    
 
 }
