@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProductTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ProductTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NewProductProtocolDelegate {
     
     var productData = [Product(name: "Apple", category: "Fruits", price: 4, image: "https://i5.walmartimages.ca/images/Large/428/5_r/6000195494285_R.jpg"), Product(name: "Milk", category: "Dairies", price: 2, image: "https://cdn.apartmenttherapy.info/image/fetch/f_auto,q_auto,w_398,c_fit,fl_strip_profile/https://s3.amazonaws.com/pixtruder/original_images/589dd2e644dfd7a46b4cbf4871afa2a782532280"), Product(name: "Orange", category: "Fruits", price: 5, image: "https://d3nevzfk7ii3be.cloudfront.net/igi/KRLMkuaBjm5mKDDP")]
     
@@ -24,7 +24,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         
 
     }
-
+    
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -82,8 +82,25 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     func sortData() {
         food[.Fruits] = productData.filter({ $0.category == "Fruits"})
         food[.Dairies] = productData.filter({ $0.category == "Dairies"})
+        food[.Meats] = productData.filter({ $0.category == "Meats"})
+        food[.Vegetables] = productData.filter({ $0.category == "Vegetables"})
 
+    }
+    
+    func addNewProduct(product: Product) {
+        productData.append(product)
+        sortData()
+        tableView.reloadData()
+        print("New")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "createNewProduct" {
+            let vc: AddProductViewController = segue.destination as! AddProductViewController
+            vc.delegate = self
+        }
     }
     
 
 }
+
