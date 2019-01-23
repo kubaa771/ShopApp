@@ -77,7 +77,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
             selectImageFrom(.photoLibrary)
             return
         }
-        selectImageFrom(.camera)
+        selectImageFrom(.photoLibrary)
     }
     
     func selectImageFrom(_ source: ImageSource) {

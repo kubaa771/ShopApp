@@ -38,10 +38,7 @@ class ProductTableViewCell: UITableViewCell {
         productName.text = product.name
         productCategory.text = product.category
         productPrice.text = String(product.price) + "$"
-        
         productImage.image = product.image
-        
-        
         
     }
 
