@@ -14,6 +14,16 @@ class CategoryTableViewCell: UITableViewCell {
     @IBOutlet weak var upButton: UIButton!
     @IBOutlet weak var downButton: UIButton!
     
+    var model: String! {
+        didSet {
+            customize(category: model)
+        }
+    }
+    
+    func customize(category: String) {
+        categoryLabel.text = category
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

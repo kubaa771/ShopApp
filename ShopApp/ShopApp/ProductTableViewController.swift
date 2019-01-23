@@ -10,6 +10,8 @@ import UIKit
 
 class ProductTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NewProductProtocolDelegate {
     
+    //MARK - Model
+    
     var productData = [Product(name: "Apple", category: "Fruits", price: 4, urlS: "https://i5.walmartimages.ca/images/Large/428/5_r/6000195494285_R.jpg", image: nil), Product(name: "Milk", category: "Dairies", price: 2, urlS: "https://cdn.apartmenttherapy.info/image/fetch/f_auto,q_auto,w_398,c_fit,fl_strip_profile/https://s3.amazonaws.com/pixtruder/original_images/589dd2e644dfd7a46b4cbf4871afa2a782532280", image: nil), Product(name: "Orange", category: "Fruits", price: 5, urlS: "https://d3nevzfk7ii3be.cloudfront.net/igi/KRLMkuaBjm5mKDDP", image: nil)]
     
     var food = [CategorySection : [Product]] ()
@@ -79,6 +81,17 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let tableSection = CategorySection(rawValue: indexPath.section)
+            //let product = food[tableSection!]?[indexPath.row]
+            food[tableSection!]?.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    //MARK - Sorting Data
+    
     func sortData() {
         food[.Fruits] = productData.filter({ $0.category == "Fruits"})
         food[.Dairies] = productData.filter({ $0.category == "Dairies"})
@@ -87,12 +100,16 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
 
     }
     
+    //MARK - Adding new product
+    
     func addNewProduct(product: Product) {
         productData.append(product)
         sortData()
         tableView.reloadData()
         print("New")
     }
+    
+    //MARK - Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "createNewProduct" {
