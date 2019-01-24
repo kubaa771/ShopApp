@@ -12,10 +12,16 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
    
     @IBOutlet weak var tableView: UITableView!
     
+    var categories = [CategorySection] ()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        for item in CategorySection.allCases {
+            categories.append(item)
+        }
         tableView.delegate = self
         tableView.dataSource = self
+        self.tableView.isEditing = true
         // Do any additional setup after loading the view.
     }
     
@@ -33,8 +39,22 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
-
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
     
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedObject = CategorySection(rawValue: sourceIndexPath.row)
+        categories.remove(at: sourceIndexPath.row)
+        categories.insert(movedObject!, at: destinationIndexPath.row)
+        
+        
+    }
     
     /*
     // MARK: - Navigation

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2D7B1C78F89A45B684340AB6 /* Pods_ShopAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2C29E677B3441E60F98B7D /* Pods_ShopAppTests.framework */; };
 		2FC5CCFC858DE2C0717D3490 /* Pods_ShopApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 310BFAF5FB1A8A601898DFB8 /* Pods_ShopApp.framework */; };
+		8AF9DC0F21F9B0B30040AA86 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AF9DC0E21F9B0B30040AA86 /* GoogleService-Info.plist */; };
 		D5F5DC753BB6B505BC66CF04 /* Pods_ShopAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03931A983CA85F4C5201EC29 /* Pods_ShopAppUITests.framework */; };
 		F90B16FA21F73DB100965049 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90B16F921F73DB100965049 /* AppDelegate.swift */; };
 		F90B16FF21F73DB100965049 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F90B16FD21F73DB100965049 /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 		03931A983CA85F4C5201EC29 /* Pods_ShopAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3109EA27FDBBFB36423430C4 /* Pods-ShopAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShopAppUITests/Pods-ShopAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		310BFAF5FB1A8A601898DFB8 /* Pods_ShopApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AF9DC0E21F9B0B30040AA86 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9EC430EFA601F90D244085C4 /* Pods-ShopAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShopAppUITests/Pods-ShopAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B9555768B6C7A61EC0E535D1 /* Pods-ShopApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShopApp/Pods-ShopApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C1881A6131D80923F97FC5E2 /* Pods-ShopApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShopApp/Pods-ShopApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				F90B170221F73DB300965049 /* LaunchScreen.storyboard */,
 				F90B170021F73DB300965049 /* Assets.xcassets */,
 				F90B170521F73DB300965049 /* Info.plist */,
+				8AF9DC0E21F9B0B30040AA86 /* GoogleService-Info.plist */,
 			);
 			path = ShopApp;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F90B170421F73DB300965049 /* LaunchScreen.storyboard in Resources */,
+				8AF9DC0F21F9B0B30040AA86 /* GoogleService-Info.plist in Resources */,
 				F90B170121F73DB300965049 /* Assets.xcassets in Resources */,
 				F90B16FF21F73DB100965049 /* Main.storyboard in Resources */,
 			);
@@ -387,13 +391,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ShopApp/Pods-ShopApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

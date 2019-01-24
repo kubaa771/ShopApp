@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum CategorySection: Int {
+enum CategorySection: Int, CaseIterable {
     case Fruits = 0, Vegetables, Dairies, Meats, Total
     
     var descripiton: String {
@@ -18,6 +18,16 @@ enum CategorySection: Int {
         case.Vegetables: return "Vegetables"
         case.Meats: return "Meats"
         default: return ""
+        }
+    }
+    
+    init? (id: Int) {
+        switch id {
+        case 1: self = .Fruits
+        case 2: self = .Dairies
+        case 3: self = .Vegetables
+        case 4: self = .Meats
+        default: return nil
         }
     }
 }
