@@ -10,6 +10,7 @@
 		2D7B1C78F89A45B684340AB6 /* Pods_ShopAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2C29E677B3441E60F98B7D /* Pods_ShopAppTests.framework */; };
 		2FC5CCFC858DE2C0717D3490 /* Pods_ShopApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 310BFAF5FB1A8A601898DFB8 /* Pods_ShopApp.framework */; };
 		8AF9DC0F21F9B0B30040AA86 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AF9DC0E21F9B0B30040AA86 /* GoogleService-Info.plist */; };
+		8AF9DC1121FA046E0040AA86 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9DC1021FA046E0040AA86 /* ListTableViewCell.swift */; };
 		D5F5DC753BB6B505BC66CF04 /* Pods_ShopAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03931A983CA85F4C5201EC29 /* Pods_ShopAppUITests.framework */; };
 		F90B16FA21F73DB100965049 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90B16F921F73DB100965049 /* AppDelegate.swift */; };
 		F90B16FF21F73DB100965049 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F90B16FD21F73DB100965049 /* Main.storyboard */; };
@@ -52,6 +53,7 @@
 		3109EA27FDBBFB36423430C4 /* Pods-ShopAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShopAppUITests/Pods-ShopAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		310BFAF5FB1A8A601898DFB8 /* Pods_ShopApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AF9DC0E21F9B0B30040AA86 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8AF9DC1021FA046E0040AA86 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		9EC430EFA601F90D244085C4 /* Pods-ShopAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShopAppUITests/Pods-ShopAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B9555768B6C7A61EC0E535D1 /* Pods-ShopApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShopApp/Pods-ShopApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C1881A6131D80923F97FC5E2 /* Pods-ShopApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShopApp/Pods-ShopApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				F961A2EF21F74B300084DC72 /* CategoryViewController.swift */,
 				F928CABB21F8617E00B66EE0 /* CategoryTableViewCell.swift */,
 				F90B172721F7428200965049 /* ListTableViewController.swift */,
+				8AF9DC1021FA046E0040AA86 /* ListTableViewCell.swift */,
 				F90B172921F742BC00965049 /* ProductTableViewController.swift */,
 				F90B172B21F7437B00965049 /* ProductTableViewCell.swift */,
 				F93A8DFC21F76B9A00ACC47D /* AddProductViewController.swift */,
@@ -452,6 +455,7 @@
 				F928CABC21F8617E00B66EE0 /* CategoryTableViewCell.swift in Sources */,
 				F992D4CF21F89FCB00BA632C /* NotificationNames.swift in Sources */,
 				F90B172A21F742BC00965049 /* ProductTableViewController.swift in Sources */,
+				8AF9DC1121FA046E0040AA86 /* ListTableViewCell.swift in Sources */,
 				F90B16FA21F73DB100965049 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
