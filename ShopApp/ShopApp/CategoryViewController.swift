@@ -12,7 +12,8 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
    
     @IBOutlet weak var tableView: UITableView!
     
-    var categories = [CategorySection] ()
+    var categories = [CategorySection?] ()
+    var newCategory: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         // Do any additional setup after loading the view.
     }
     
+    //MARK - Configuring TableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CategorySection.Total.rawValue
@@ -32,7 +34,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
-        if let categoryCell = CategorySection(rawValue: indexPath.row) {
+        if let categoryCell = categories[indexPath.row] {//CategorySection(rawValue: indexPath.row) {
             cell.model = categoryCell.descripiton
         }
         
@@ -53,7 +55,24 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         categories.remove(at: sourceIndexPath.row)
         categories.insert(movedObject!, at: destinationIndexPath.row)
         
-        
+    }
+    
+    
+    @IBAction func displayAlertAction(_ sender: UIBarButtonItem) {
+        displayAlertWithTextField()
+    }
+    
+    func displayAlertWithTextField() {
+        let alert = UIAlertController(title: "Add", message: "Do you want to add new category?", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Category"
+            self.newCategory = textField.text
+        }
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action) in
+            //Dodanie stringa do enuma?
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true)
     }
     
     /*
