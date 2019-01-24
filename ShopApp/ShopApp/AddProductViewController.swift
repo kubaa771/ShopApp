@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import CropViewController
 
 class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate {
+    
+    //MARK - Model
 
     @IBOutlet weak var addImage: UIImageView!
     @IBOutlet weak var addName: UITextField!
     @IBOutlet weak var addPrice: UITextField!
-    @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var addCategory: UITextField!
+    
+    var pickerView = UIPickerView()
     
     var imagePicker: UIImagePickerController!
     
@@ -28,7 +33,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
         super.viewDidLoad()
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
-        
+        addCategory.inputView = pickerView
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
@@ -49,6 +54,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        addCategory.text = CategorySection(rawValue: row)?.descripiton
         newCategory = CategorySection(rawValue: row)?.descripiton
     }
     
@@ -69,7 +75,6 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
             newPrice = Int(sender.text!)
         }
     }
-    
     
     
     @IBAction func addNewPhotoAction(_ sender: UIButton) {
@@ -110,7 +115,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
 }
 
-extension AddProductViewController: UIImagePickerControllerDelegate{
+extension AddProductViewController: UIImagePickerControllerDelegate, CropViewControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         imagePicker.dismiss(animated: true, completion: nil)
@@ -118,9 +123,21 @@ extension AddProductViewController: UIImagePickerControllerDelegate{
             print("Image not found!")
             return
         }
-        addImage.image = selectedImage
-        newImage = selectedImage
+        cropImage(image: selectedImage)
     }
+    
+    func cropImage (image: UIImage) {
+        let cropViewController = CropViewController(image: image)
+        cropViewController.delegate = self
+        present(cropViewController, animated: true)
+    }
+    
+    func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
+        newImage = image
+        addImage.image = image
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 enum ImageSource {

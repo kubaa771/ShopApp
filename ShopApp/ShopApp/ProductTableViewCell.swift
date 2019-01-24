@@ -14,7 +14,6 @@ class ProductTableViewCell: UITableViewCell {
     
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productImage: UIImageView!
-    @IBOutlet weak var productCategory: UILabel!
     @IBOutlet weak var productPrice: UILabel!
     
     var model: Product! {
@@ -36,7 +35,6 @@ class ProductTableViewCell: UITableViewCell {
     
     func customize(product: Product) {
         productName.text = product.name
-        productCategory.text = product.category
         productPrice.text = String(product.price) + "$"
         productImage.image = product.image
         

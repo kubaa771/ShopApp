@@ -6,6 +6,8 @@ target 'ShopApp' do
   use_frameworks!
 	pod 'SDWebImage', '~> 4.0'
     pod 'Firebase/Core'
+    pod 'TPKeyboardAvoidingSwift'
+    pod 'CropViewController'
 
   # Pods for ShopApp
 
