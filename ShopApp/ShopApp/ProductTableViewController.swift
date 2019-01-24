@@ -53,13 +53,13 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         if let tableSection = CategorySection(rawValue: section) {
             switch tableSection {
             case .Fruits:
-                text = "Fruits"
+                text = CategorySection.Fruits.descripiton
             case .Dairies:
-                text = "Dairies"
+                text = CategorySection.Dairies.descripiton
             case .Meats:
-                text = "Meats"
+                text = CategorySection.Meats.descripiton
             case .Vegetables:
-                text = "Vegetables"
+                text = CategorySection.Vegetables.descripiton
             default:
                 text = ""
             }

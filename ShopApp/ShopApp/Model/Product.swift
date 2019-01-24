@@ -25,7 +25,7 @@ class Product {
         self.price = price
     
         if let urlS = urlS, let url = URL(string: urlS) {
-            SDWebImageManager.shared().imageDownloader?.downloadImage(with: url, options: .continueInBackground, progress: { (_, _, url) in
+            SDWebImageManager.shared().imageDownloader?.downloadImage(with: url, options: .highPriority, progress: { (_, _, url) in
             }) { (downloadedImage, _, _, _) in
                 if let downloaded = downloadedImage {
                     self.image = downloaded
