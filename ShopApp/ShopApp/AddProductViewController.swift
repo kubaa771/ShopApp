@@ -42,7 +42,8 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     //MARK - Setting pickerView
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return CategorySection.Total.rawValue
+        //return CategorySection.Total.rawValue
+        return 1
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -50,12 +51,13 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return CategorySection(rawValue: row)?.descripiton
+        //return CategorySection(rawValue: row)?.descripiton
+        return ""
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        addCategory.text = CategorySection(rawValue: row)?.descripiton
-        newCategory = CategorySection(rawValue: row)?.descripiton
+//        addCategory.text = CategorySection(rawValue: row)?.descripiton
+//        newCategory = CategorySection(rawValue: row)?.descripiton
     }
     
     //MARK - Setting textFields
@@ -102,15 +104,15 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
-        if newName != "", newPrice != nil {
-            let newProduct = Product(name: newName ?? "", category: newCategory ?? "Fruits", price: newPrice ?? 0, urlS: nil, image: newImage ?? nil)
-            delegate?.addNewProduct(product: newProduct)
-            self.navigationController?.popViewController(animated: true)
-        } else {
-            let alert = UIAlertController.init(title: "Alert", message: "Please fulfill all the fields!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            present(alert, animated: true)
-        }
+//        if newName != "", newPrice != nil {
+//            let newProduct = Product(name: newName ?? "", category: newCategory ?? "Fruits", price: newPrice ?? 0, urlS: nil, image: newImage ?? nil)
+//            delegate?.addNewProduct(product: newProduct)
+//            self.navigationController?.popViewController(animated: true)
+//        } else {
+//            let alert = UIAlertController.init(title: "Alert", message: "Please fulfill all the fields!", preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+//            present(alert, animated: true)
+//        }
     }
     
 }

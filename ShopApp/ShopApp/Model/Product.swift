@@ -13,31 +13,38 @@ import RealmSwift
 
 class Product: Object {
     @objc dynamic var name: String = ""
-    @objc dynamic var category :String = ""
+    @objc dynamic var category: CategorySection?
     @objc dynamic var price: Int = 0
     @objc dynamic var id: String = ""
     
     //var image: String
     
-    @objc dynamic var image: UIImage!
+    //@objc dynamic var image: UIImage!
+    @objc dynamic var imageData: NSData!
     
-    convenience init(name: String, category: String, price: Int, urlS: String?, image: UIImage?) {
+    convenience init(name: String, category: CategorySection, price: Int, urlS: String?, image: UIImage?) {
         self.init()
         self.name = name
         self.category = category
         self.price = price
     
+        
         if let urlS = urlS, let url = URL(string: urlS) {
             SDWebImageManager.shared().imageDownloader?.downloadImage(with: url, options: .highPriority, progress: { (_, _, url) in
             }) { (downloadedImage, _, _, _) in
                 if let downloaded = downloadedImage {
-                    self.image = downloaded
+                    let data = NSData(data: downloaded.jpegData(compressionQuality: 0.9)!)
+                    self.imageData = data
+                    print(data)
+                    //self.image = downloaded
                 }
             }
         }
         
         if let image = image {
-            self.image = image
+            let data = NSData(data: image.jpegData(compressionQuality: 0.9)!)
+            self.imageData = data
+            //self.image = image
         }
     }
     

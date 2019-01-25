@@ -12,14 +12,11 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
    
     @IBOutlet weak var tableView: UITableView!
     
-    var categories = [CategorySection?] ()
-    var newCategory: String?
+    var categories = RealmDataBase.shared.getCategories()
+    var newCategory: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for item in CategorySection.allCases {
-            categories.append(item)
-        }
         tableView.delegate = self
         tableView.dataSource = self
         self.tableView.isEditing = true
@@ -29,14 +26,13 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     //MARK - Configuring TableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CategorySection.Total.rawValue
+        return categories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
-        if let categoryCell = categories[indexPath.row] {//CategorySection(rawValue: indexPath.row) {
-            cell.model = categoryCell.descripiton
-        }
+        let categoryCell = categories[indexPath.row] //CategorySection(rawValue: indexPath.row) {
+        cell.model = categoryCell.name
         
         return cell
     }
@@ -51,9 +47,9 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
 
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let movedObject = CategorySection(rawValue: sourceIndexPath.row)
-        categories.remove(at: sourceIndexPath.row)
-        categories.insert(movedObject!, at: destinationIndexPath.row)
+//        let movedObject = CategorySection(rawValue: sourceIndexPath.row)
+//        categories.remove(at: sourceIndexPath.row)
+//        categories.insert(movedObject!, at: destinationIndexPath.row)
         
     }
     
@@ -65,14 +61,22 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     func displayAlertWithTextField() {
         let alert = UIAlertController(title: "Add", message: "Do you want to add new category?", preferredStyle: .alert)
         alert.addTextField { (textField) in
+            textField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControl.Event.editingChanged)
             textField.placeholder = "Category"
-            self.newCategory = textField.text
         }
         alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action) in
-            //Dodanie stringa do enuma?
+            if self.newCategory != "Category", self.newCategory != "" {
+                RealmDataBase.shared.addNewCategory(name: self.newCategory)
+            }
+            self.categories = RealmDataBase.shared.getCategories()
+            self.tableView.reloadData()
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true)
+    }
+    
+    @objc func textFieldDidChange(textF: UITextField) {
+        newCategory = textF.text!
     }
     
     /*

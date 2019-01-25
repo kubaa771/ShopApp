@@ -36,7 +36,8 @@ class ProductTableViewCell: UITableViewCell {
     func customize(product: Product) {
         productName.text = product.name
         productPrice.text = String(product.price) + "$"
-        productImage.image = product.image
+        //productImage.image = product.image
+        productImage.image = UIImage(data: product.imageData! as Data)
         
     }
 

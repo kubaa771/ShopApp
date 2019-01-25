@@ -29,6 +29,7 @@
 		F992D4CF21F89FCB00BA632C /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = F992D4CE21F89FCB00BA632C /* NotificationNames.swift */; };
 		F992D4D121F8A3DB00BA632C /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F992D4D021F8A3DB00BA632C /* Protocols.swift */; };
 		F992D4D321F8AD1400BA632C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F992D4D221F8AD1400BA632C /* Extensions.swift */; };
+		F9C5353521FB19B8001B23AB /* RealmDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C5353421FB19B8001B23AB /* RealmDataBase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		F992D4CE21F89FCB00BA632C /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 		F992D4D021F8A3DB00BA632C /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		F992D4D221F8AD1400BA632C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F9C5353421FB19B8001B23AB /* RealmDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataBase.swift; sourceTree = "<group>"; };
 		FC2C29E677B3441E60F98B7D /* Pods_ShopAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -200,6 +202,7 @@
 		F928CABD21F8626500B66EE0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F9C5353421FB19B8001B23AB /* RealmDataBase.swift */,
 				F992D4D221F8AD1400BA632C /* Extensions.swift */,
 				F992D4D021F8A3DB00BA632C /* Protocols.swift */,
 				F992D4CE21F89FCB00BA632C /* NotificationNames.swift */,
@@ -450,6 +453,7 @@
 			files = (
 				F992D4CD21F876F800BA632C /* CategorySection.swift in Sources */,
 				F961A2F021F74B300084DC72 /* CategoryViewController.swift in Sources */,
+				F9C5353521FB19B8001B23AB /* RealmDataBase.swift in Sources */,
 				F928CABF21F8627E00B66EE0 /* Product.swift in Sources */,
 				F992D4D121F8A3DB00BA632C /* Protocols.swift in Sources */,
 				F90B172821F7428200965049 /* ListTableViewController.swift in Sources */,
