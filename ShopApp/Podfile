@@ -8,6 +8,7 @@ target 'ShopApp' do
     pod 'Firebase/Core'
     pod 'TPKeyboardAvoidingSwift'
     pod 'CropViewController'
+    pod 'RealmSwift'
 
   # Pods for ShopApp
 

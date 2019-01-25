@@ -9,17 +9,20 @@
 import Foundation
 import UIKit
 import SDWebImage
+import RealmSwift
 
-class Product {
-    var name: String
-    var category :String
-    var price: Int
+class Product: Object {
+    @objc dynamic var name: String = ""
+    @objc dynamic var category :String = ""
+    @objc dynamic var price: Int = 0
+    @objc dynamic var id: String = ""
     
     //var image: String
     
-    var image: UIImage!
+    @objc dynamic var image: UIImage!
     
-    init(name: String, category: String, price: Int, urlS: String?, image: UIImage?) {
+    convenience init(name: String, category: String, price: Int, urlS: String?, image: UIImage?) {
+        self.init()
         self.name = name
         self.category = category
         self.price = price
@@ -36,5 +39,9 @@ class Product {
         if let image = image {
             self.image = image
         }
+    }
+    
+    override static func primaryKey() -> String? {
+        return "id"
     }
 }

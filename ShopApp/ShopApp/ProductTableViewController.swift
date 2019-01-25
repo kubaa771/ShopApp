@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ProductTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NewProductProtocolDelegate {
     
@@ -16,14 +17,16 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     
     var food = [CategorySection : [Product]] ()
     
+    let realm = try! Realm()
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sortData()
+        updateDataRealm()
         tableView.delegate = self
         tableView.dataSource = self
-        
 
     }
     
@@ -116,6 +119,11 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
             let vc: AddProductViewController = segue.destination as! AddProductViewController
             vc.delegate = self
         }
+    }
+    
+    func updateDataRealm() {
+        //realm.add(productData)
+        //print(realm.objects(Product.self))
     }
     
 
