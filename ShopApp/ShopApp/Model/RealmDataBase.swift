@@ -50,6 +50,13 @@ class RealmDataBase {
         return categories
     }
     
+    func setSortingIDs(first: CategorySection, second: CategorySection) {
+        let sourceSortinId = first.sortingID
+        try! realm.write {
+            first.sortingID = second.sortingID
+            second.sortingID = sourceSortinId
+        }
+    }
     
 }
  

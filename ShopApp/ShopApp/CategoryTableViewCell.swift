@@ -8,11 +8,15 @@
 
 import UIKit
 
+protocol buttonTappedDelegate: AnyObject {
+    func btnUPTapped(cell: CategoryTableViewCell)
+    func btnDOWNTapped(cell: CategoryTableViewCell)
+}
+
 class CategoryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var categoryLabel: UILabel!
-    @IBOutlet weak var upButton: UIButton!
-    @IBOutlet weak var downButton: UIButton!
+    weak var delegate: buttonTappedDelegate?
     
     var model: String! {
         didSet {
@@ -24,6 +28,8 @@ class CategoryTableViewCell: UITableViewCell {
         categoryLabel.text = category
     }
     
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -34,5 +40,12 @@ class CategoryTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    @IBAction func upButtonAction(_ sender: UIButton) {
+        delegate?.btnUPTapped(cell: self)
+    }
+    
+    @IBAction func downButtonAction(_ sender: UIButton) {
+        delegate?.btnDOWNTapped(cell: self)
+    }
 }

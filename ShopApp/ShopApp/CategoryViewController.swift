@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, buttonTappedDelegate {
    
     @IBOutlet weak var tableView: UITableView!
     
@@ -19,7 +19,6 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        self.tableView.isEditing = true
         // Do any additional setup after loading the view.
     }
     
@@ -33,24 +32,34 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
         let categoryCell = categories[indexPath.row] //CategorySection(rawValue: indexPath.row) {
         cell.model = categoryCell.name
+        cell.delegate = self
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .none
-    }
-    
-    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-    
 
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//        let movedObject = CategorySection(rawValue: sourceIndexPath.row)
-//        categories.remove(at: sourceIndexPath.row)
-//        categories.insert(movedObject!, at: destinationIndexPath.row)
-        
+    func btnUPTapped(cell: CategoryTableViewCell) {
+        let indexPath = self.tableView.indexPath(for: cell)
+        let chosenCell = categories[indexPath!.row]
+        let neighbourUpCell: CategorySection?
+        if categories[indexPath!.row].sortingID != 0 {
+            neighbourUpCell = categories[indexPath!.row - 1]
+            RealmDataBase.shared.setSortingIDs(first: chosenCell, second: neighbourUpCell!)
+            categories = RealmDataBase.shared.getCategories()
+            tableView.reloadData()
+        }
+    }
+    
+    func btnDOWNTapped(cell: CategoryTableViewCell) {
+        let indexPath = self.tableView.indexPath(for: cell)
+        let chosenCell = categories[indexPath!.row]
+        let neighbourDownCell: CategorySection?
+        if categories[indexPath!.row].sortingID != categories.last?.sortingID {
+            neighbourDownCell = categories[indexPath!.row + 1]
+            RealmDataBase.shared.setSortingIDs(first: chosenCell, second: neighbourDownCell!)
+            categories = RealmDataBase.shared.getCategories()
+            tableView.reloadData()
+        }
     }
     
     

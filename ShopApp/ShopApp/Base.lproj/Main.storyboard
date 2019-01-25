@@ -29,18 +29,54 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IrF-SD-iuH">
-                                                    <rect key="frame" x="15" y="11" width="290" height="58"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="63" translatesAutoresizingMaskIntoConstraints="NO" id="0Vv-Es-HYG">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="80"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IrF-SD-iuH">
+                                                            <rect key="frame" x="0.0" y="0.0" width="242" height="80"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="242" id="cQ5-nu-wvY"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qvf-ia-iTG">
+                                                            <rect key="frame" x="305" y="0.0" width="40" height="80"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5E4-YP-iXo">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="B53-QC-Q69"/>
+                                                                        <constraint firstAttribute="width" secondItem="5E4-YP-iXo" secondAttribute="height" multiplier="1:1" id="rfX-zS-BQd"/>
+                                                                    </constraints>
+                                                                    <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                                    <state key="normal" title="Button" image="up-arrow"/>
+                                                                    <connections>
+                                                                        <action selector="upButtonAction:" destination="atH-gY-9h1" eventType="touchUpInside" id="CaQ-iU-6uG"/>
+                                                                    </connections>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5z-ns-Dhj">
+                                                                    <rect key="frame" x="0.0" y="40" width="40" height="40"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="Cie-s9-6Ca"/>
+                                                                        <constraint firstAttribute="width" secondItem="i5z-ns-Dhj" secondAttribute="height" multiplier="1:1" id="Hkc-tq-OHq"/>
+                                                                    </constraints>
+                                                                    <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                                    <state key="normal" title="Button" image="down-arrow"/>
+                                                                    <connections>
+                                                                        <action selector="downButtonAction:" destination="atH-gY-9h1" eventType="touchUpInside" id="X3x-Nl-cd0"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="IrF-SD-iuH" firstAttribute="top" secondItem="6c7-Lc-6Hj" secondAttribute="topMargin" id="F2h-cI-k8P"/>
-                                                <constraint firstItem="IrF-SD-iuH" firstAttribute="trailing" secondItem="6c7-Lc-6Hj" secondAttribute="trailingMargin" id="Urk-NH-Vkm"/>
-                                                <constraint firstItem="IrF-SD-iuH" firstAttribute="leading" secondItem="6c7-Lc-6Hj" secondAttribute="leadingMargin" id="dYx-hn-3yT"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="IrF-SD-iuH" secondAttribute="bottom" id="kBT-yx-Zav"/>
+                                                <constraint firstAttribute="trailing" secondItem="0Vv-Es-HYG" secondAttribute="trailing" constant="15" id="Hsp-0z-MEd"/>
+                                                <constraint firstItem="0Vv-Es-HYG" firstAttribute="top" secondItem="6c7-Lc-6Hj" secondAttribute="top" id="P4S-8X-sZF"/>
+                                                <constraint firstItem="0Vv-Es-HYG" firstAttribute="leading" secondItem="6c7-Lc-6Hj" secondAttribute="leading" constant="15" id="XsW-wG-T4g"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -72,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ry-kI-Eqp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1805.625" y="179.57746478873239"/>
+            <point key="canvasLocation" x="1802.4000000000001" y="177.66116941529236"/>
         </scene>
         <!--Product Table View Controller-->
         <scene sceneID="9Lj-tF-heS">
@@ -652,4 +688,8 @@
             <point key="canvasLocation" x="869.60000000000002" y="181.25937031484258"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="down-arrow" width="384" height="384"/>
+        <image name="up-arrow" width="384" height="384"/>
+    </resources>
 </document>
