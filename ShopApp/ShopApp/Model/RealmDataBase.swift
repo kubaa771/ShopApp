@@ -19,13 +19,13 @@ class RealmDataBase {
         Realm.Configuration.defaultConfiguration = config
         Realm.Configuration.defaultConfiguration.deleteRealmIfMigrationNeeded = true
         self.realm = try! Realm()
+        
         //try! realm.write {
         //    realm.deleteAll()
         //}
         
         //uncomment to delete whole database
-        
-        
+
         //self.realm = nil
     }
     

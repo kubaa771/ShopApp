@@ -259,7 +259,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="name"/>
                                                 <connections>
-                                                    <action selector="addNewNameAction:" destination="npS-qF-I9d" eventType="editingDidEnd" id="BpD-nq-3DV"/>
+                                                    <action selector="addNewNameAction:" destination="npS-qF-I9d" eventType="editingChanged" id="XjE-Lm-WdR"/>
                                                 </connections>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="hst-61-KFZ">
@@ -271,7 +271,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="numberPad" enablesReturnKeyAutomatically="YES" smartQuotesType="no"/>
                                                         <connections>
-                                                            <action selector="addNewPriceAction:" destination="npS-qF-I9d" eventType="editingDidEnd" id="sbT-DW-xBb"/>
+                                                            <action selector="addNewPriceAction:" destination="npS-qF-I9d" eventType="editingChanged" id="1GZ-CI-Htw"/>
                                                         </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8YN-2n-IJ0">

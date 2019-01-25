@@ -19,6 +19,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var addCategory: UITextField!
     
     var pickerView = UIPickerView()
+    var categories = RealmDataBase.shared.getCategories()
     
     var imagePicker: UIImagePickerController!
     
@@ -42,8 +43,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     //MARK - Setting pickerView
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        //return CategorySection.Total.rawValue
-        return 1
+        return categories.count
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -51,17 +51,15 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        //return CategorySection(rawValue: row)?.descripiton
-        return ""
+        return categories[row].name
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        addCategory.text = CategorySection(rawValue: row)?.descripiton
-//        newCategory = CategorySection(rawValue: row)?.descripiton
+        addCategory.text = categories[row].name
+        newCategory = categories[row].name
     }
     
     //MARK - Setting textFields
-    
     
     @IBAction func addNewNameAction(_ sender: UITextField) {
         newName = sender.text!

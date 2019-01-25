@@ -19,7 +19,6 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view.
     }
     
     //MARK - Configuring TableView
@@ -30,14 +29,15 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
-        let categoryCell = categories[indexPath.row] //CategorySection(rawValue: indexPath.row) {
+        let categoryCell = categories[indexPath.row]
         cell.model = categoryCell.name
         cell.delegate = self
         
         return cell
     }
     
-
+    //MARK - Handling cell's buttons tapping
+    
     func btnUPTapped(cell: CategoryTableViewCell) {
         let indexPath = self.tableView.indexPath(for: cell)
         let chosenCell = categories[indexPath!.row]
@@ -62,13 +62,14 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    //MARK - Displaying alert
     
     @IBAction func displayAlertAction(_ sender: UIBarButtonItem) {
         displayAlertWithTextField()
     }
     
     func displayAlertWithTextField() {
-        let alert = UIAlertController(title: "Add", message: "Do you want to add new category?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add new category", message: "Type new category name below", preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControl.Event.editingChanged)
             textField.placeholder = "Category"
@@ -88,14 +89,4 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         newCategory = textF.text!
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
