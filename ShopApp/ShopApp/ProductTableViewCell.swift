@@ -24,19 +24,15 @@ class ProductTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func customize(product: Product) {
         productName.text = product.name
         productPrice.text = String(product.price) + "$"
-        //productImage.image = product.image
         productImage.image = UIImage(data: product.imageData! as Data)
         
     }

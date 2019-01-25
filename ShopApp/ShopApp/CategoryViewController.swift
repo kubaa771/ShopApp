@@ -36,6 +36,16 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let categoryCell = categories[indexPath.row]
+            RealmDataBase.shared.deleteCategory(category: categoryCell)
+            self.tableView?.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.tableView?.endUpdates()
+        }
+    }
+    
     //MARK - Handling cell's buttons tapping
     
     func btnUPTapped(cell: CategoryTableViewCell) {

@@ -42,7 +42,6 @@ class RealmDataBase {
         try! realm.write {
             realm.add(newCategory)
         }
-        print(realm.objects(CategorySection.self))
     }
     
     func getCategories() -> Results<CategorySection> {
@@ -58,5 +57,28 @@ class RealmDataBase {
         }
     }
     
+    func deleteCategory(category: CategorySection) {
+        try! realm.write {
+            realm.delete(category)
+        }
+    }
+    
+    func addNewProduct(product: Product, category: CategorySection) {
+        try! realm.write {
+            realm.add(product)
+            category.products.append(product)
+        }
+    }
+    
+    func getProducts() -> Results<Product> {
+        let products = realm.objects(Product.self)
+        return products
+    }
+    
+    func deleteProduct(product: Product) {
+        try! realm.write {
+            realm.delete(product)
+        }
+    }
 }
  

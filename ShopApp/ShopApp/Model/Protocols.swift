@@ -9,5 +9,5 @@
 import Foundation
 
 protocol NewProductProtocolDelegate {
-    func addNewProduct(product: Product)
+    func addNewProduct(product: Product, category: CategorySection)
 }

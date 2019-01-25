@@ -26,7 +26,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     var newImage: UIImage?
     var newName: String?
     var newPrice: Int?
-    var newCategory: String?
+    var newCategory: CategorySection?
     
     var delegate: NewProductProtocolDelegate?
     
@@ -37,10 +37,9 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
         addCategory.inputView = pickerView
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
-        // Do any additional setup after loading the view.
     }
     
-    //MARK - Setting pickerView
+    //MARK - Setting PickerView
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return categories.count
@@ -56,10 +55,10 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         addCategory.text = categories[row].name
-        newCategory = categories[row].name
+        newCategory = categories[row]
     }
     
-    //MARK - Setting textFields
+    //MARK - Setting TextFields
     
     @IBAction func addNewNameAction(_ sender: UITextField) {
         newName = sender.text!
@@ -76,6 +75,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
         }
     }
     
+    //MARK - ImagePicker configuration
     
     @IBAction func addNewPhotoAction(_ sender: UIButton) {
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
@@ -101,16 +101,18 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
         view.endEditing(true)
     }
     
+    //MARK - Done, Protocol Segue
+    
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
-//        if newName != "", newPrice != nil {
-//            let newProduct = Product(name: newName ?? "", category: newCategory ?? "Fruits", price: newPrice ?? 0, urlS: nil, image: newImage ?? nil)
-//            delegate?.addNewProduct(product: newProduct)
-//            self.navigationController?.popViewController(animated: true)
-//        } else {
-//            let alert = UIAlertController.init(title: "Alert", message: "Please fulfill all the fields!", preferredStyle: .alert)
-//            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-//            present(alert, animated: true)
-//        }
+        if newName != nil , newPrice != nil, newCategory != nil, newImage != nil {
+            let newProduct = Product(name: newName ?? "", category: newCategory!, price: newPrice ?? 0, urlS: nil, image: newImage ?? nil)
+            delegate?.addNewProduct(product: newProduct, category: newCategory!)
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            let alert = UIAlertController.init(title: "Alert", message: "Please fulfill all the fields!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alert, animated: true)
+        }
     }
     
 }
