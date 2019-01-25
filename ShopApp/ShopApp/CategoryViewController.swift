@@ -53,7 +53,6 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         let indexPath = self.tableView.indexPath(for: cell)
         let chosenCategory = categories[indexPath!.row]
         let neighbourUpCategory: CategorySection?
-        print(indexPath?.row)
         if indexPath!.row != 0 {
             neighbourUpCategory = categories[indexPath!.row - 1]
             RealmDataBase.shared.setSortingIDs(first: chosenCategory, second: neighbourUpCategory!)
