@@ -43,6 +43,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
             self.tableView?.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
             self.tableView?.endUpdates()
+            categories = RealmDataBase.shared.getCategories()
         }
     }
     
@@ -52,7 +53,8 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         let indexPath = self.tableView.indexPath(for: cell)
         let chosenCategory = categories[indexPath!.row]
         let neighbourUpCategory: CategorySection?
-        if categories[indexPath!.row].sortingID != 0 {
+        print(indexPath?.row)
+        if indexPath!.row != 0 {
             neighbourUpCategory = categories[indexPath!.row - 1]
             RealmDataBase.shared.setSortingIDs(first: chosenCategory, second: neighbourUpCategory!)
             categories = RealmDataBase.shared.getCategories()

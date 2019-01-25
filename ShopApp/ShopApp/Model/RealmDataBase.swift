@@ -38,7 +38,7 @@ class RealmDataBase {
         } else {
             newCategory = CategorySection(name: name, sortingID: lastSortingId!+1)
         }
-        
+        print(lastSortingId!)
         try! realm.write {
             realm.add(newCategory)
         }

@@ -23,6 +23,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     var imagePicker: UIImagePickerController!
     
+    var defaultImage = UIImage(named: "shop")
     var newImage: UIImage?
     var newName: String?
     var newPrice: Int?
@@ -104,8 +105,8 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     //MARK - Done, Protocol Segue
     
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
-        if newName != nil , newPrice != nil, newCategory != nil, newImage != nil {
-            let newProduct = Product(name: newName ?? "", category: newCategory!, price: newPrice ?? 0, urlS: nil, image: newImage ?? nil)
+        if newName != nil , newPrice != nil, newCategory != nil{
+            let newProduct = Product(name: newName ?? "", category: newCategory!, price: newPrice ?? 0, urlS: nil, image: newImage ?? defaultImage)
             delegate?.addNewProduct(product: newProduct, category: newCategory!)
             self.navigationController?.popViewController(animated: true)
         } else {
