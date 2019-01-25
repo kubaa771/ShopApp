@@ -40,11 +40,11 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func btnUPTapped(cell: CategoryTableViewCell) {
         let indexPath = self.tableView.indexPath(for: cell)
-        let chosenCell = categories[indexPath!.row]
-        let neighbourUpCell: CategorySection?
+        let chosenCategory = categories[indexPath!.row]
+        let neighbourUpCategory: CategorySection?
         if categories[indexPath!.row].sortingID != 0 {
-            neighbourUpCell = categories[indexPath!.row - 1]
-            RealmDataBase.shared.setSortingIDs(first: chosenCell, second: neighbourUpCell!)
+            neighbourUpCategory = categories[indexPath!.row - 1]
+            RealmDataBase.shared.setSortingIDs(first: chosenCategory, second: neighbourUpCategory!)
             categories = RealmDataBase.shared.getCategories()
             tableView.reloadData()
         }
@@ -52,11 +52,11 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func btnDOWNTapped(cell: CategoryTableViewCell) {
         let indexPath = self.tableView.indexPath(for: cell)
-        let chosenCell = categories[indexPath!.row]
-        let neighbourDownCell: CategorySection?
+        let chosenCategory = categories[indexPath!.row]
+        let neighbourDownCategory: CategorySection?
         if categories[indexPath!.row].sortingID != categories.last?.sortingID {
-            neighbourDownCell = categories[indexPath!.row + 1]
-            RealmDataBase.shared.setSortingIDs(first: chosenCell, second: neighbourDownCell!)
+            neighbourDownCategory = categories[indexPath!.row + 1]
+            RealmDataBase.shared.setSortingIDs(first: chosenCategory, second: neighbourDownCategory!)
             categories = RealmDataBase.shared.getCategories()
             tableView.reloadData()
         }
