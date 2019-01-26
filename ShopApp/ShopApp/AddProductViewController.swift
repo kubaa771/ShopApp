@@ -105,12 +105,12 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     //MARK - Done, Protocol Segue
     
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
-        if newName != nil , newPrice != nil, newCategory != nil{
+        if newName != nil , newPrice != nil, newCategory != nil, !categories.contains(where: {$0.products.contains(where: {$0.name == newName})}) {
             let newProduct = Product(name: newName ?? "", category: newCategory!, price: newPrice ?? 0, urlS: nil, image: newImage ?? defaultImage)
             delegate?.addNewProduct(product: newProduct, category: newCategory!)
             self.navigationController?.popViewController(animated: true)
         } else {
-            let alert = UIAlertController.init(title: "Alert", message: "Please fulfill all the fields!", preferredStyle: .alert)
+            let alert = UIAlertController.init(title: "Alert", message: "Please check all the fields!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             present(alert, animated: true)
         }

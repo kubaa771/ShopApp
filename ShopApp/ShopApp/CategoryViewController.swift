@@ -86,8 +86,13 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
             textField.placeholder = "Category"
         }
         alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action) in
-            if self.newCategory != "Category", self.newCategory != "" {
+            
+            if self.newCategory != "Category", self.newCategory != "", !self.categories.contains(where: {$0.name == self.newCategory}) {
                 RealmDataBase.shared.addNewCategory(name: self.newCategory)
+            } else {
+                let alertIfSomethingWentWrong = UIAlertController(title: "Something went wrong", message: "Probably that category already exist, or you left empty text field. Try Again!", preferredStyle: .alert)
+                alertIfSomethingWentWrong.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
+                self.present(alertIfSomethingWentWrong, animated: true)
             }
             self.categories = RealmDataBase.shared.getCategories()
             self.tableView.reloadData()
