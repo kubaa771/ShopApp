@@ -34,19 +34,19 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
-       return categories.count
+        return (categories?.count) ?? 0
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let tableSection = categories[section]
-        let tableProductData = tableSection.products
-        return tableProductData.count
+        let tableSection = categories?[section]
+        let tableProductData = tableSection?.products
+        return tableProductData!.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let tableSection = categories[section]
-        let tableProductData = tableSection.products
-        if tableProductData.count > 0 {
+        let tableSection = categories?[section]
+        let tableProductData = tableSection?.products
+        if tableProductData!.count > 0 {
             return 20
         }
         return 0
@@ -54,8 +54,8 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var text = ""
-        let tableSection = categories[section]
-        text = tableSection.name
+        let tableSection = categories?[section]
+        text = (tableSection?.name)!
        
         return text
     }
@@ -63,17 +63,17 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as! ProductTableViewCell
-        let tableSection = categories[indexPath.section]
-        let product = tableSection.products[indexPath.row]
+        let tableSection = categories?[indexPath.section]
+        let product = tableSection?.products[indexPath.row]
         cell.model = product
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let tableSection = categories[indexPath.section]
-            let product = tableSection.products[indexPath.row]
-            RealmDataBase.shared.deleteProduct(product: product)
+            let tableSection = categories?[indexPath.section]
+            let product = tableSection?.products[indexPath.row]
+            RealmDataBase.shared.deleteProduct(product: product!)
             self.tableView?.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
             self.tableView?.endUpdates()

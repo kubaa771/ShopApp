@@ -43,7 +43,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     //MARK - Setting PickerView
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return categories.count
+        return (categories?.count)!
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -51,12 +51,12 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return categories[row].name
+        return categories?[row].name
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        addCategory.text = categories[row].name
-        newCategory = categories[row]
+        addCategory.text = categories?[row].name
+        newCategory = categories?[row]
     }
     
     //MARK - Setting TextFields
@@ -105,7 +105,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     //MARK - Done, Protocol Segue
     
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
-        if newName != nil , newPrice != nil, newCategory != nil, !categories.contains(where: {$0.products.contains(where: {$0.name == newName})}) {
+        if newName != nil , newPrice != nil, newCategory != nil, !(categories?.contains(where: {$0.products.contains(where: {$0.name == newName})}))! {
             let newProduct = Product(name: newName ?? "", category: newCategory!, price: newPrice ?? 0.0, urlS: nil, image: newImage ?? defaultImage)
             delegate?.addNewProduct(product: newProduct, category: newCategory!)
             self.navigationController?.popViewController(animated: true)

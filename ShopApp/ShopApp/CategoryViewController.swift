@@ -13,7 +13,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var tableView: UITableView!
     
     var currentList = RealmDataBase.shared.getCurrentList()
-    var categories = //RealmDataBase.shared.getCategories()
+    var categories = RealmDataBase.shared.getCategories()
     var newCategory: String = ""
     
     override func viewDidLoad() {
@@ -22,20 +22,22 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.dataSource = self
     }
     
-    func model() {
-        var categories = currentList?.currentCategories
+    override func viewDidAppear(_ animated: Bool) {
+        currentList = RealmDataBase.shared.getCurrentList()
+        categories = RealmDataBase.shared.getCategories()
+        tableView.reloadData()
     }
     
     //MARK - Configuring TableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories.count
+        return (categories?.count) ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
-        let categoryCell = categories[indexPath.row]
-        cell.model = categoryCell.name
+        let categoryCell = categories?[indexPath.row]
+        cell.model = categoryCell?.name
         cell.delegate = self
         
         return cell
@@ -43,8 +45,8 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let categoryCell = categories[indexPath.row]
-            RealmDataBase.shared.deleteCategory(category: categoryCell)
+            let categoryCell = categories?[indexPath.row]
+            RealmDataBase.shared.deleteCategory(category: categoryCell!)
             self.tableView?.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
             self.tableView?.endUpdates()
@@ -56,11 +58,11 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func btnUPTapped(cell: CategoryTableViewCell) {
         let indexPath = self.tableView.indexPath(for: cell)
-        let chosenCategory = categories[indexPath!.row]
+        let chosenCategory = categories?[indexPath!.row]
         let neighbourUpCategory: CategorySection?
         if indexPath!.row != 0 {
-            neighbourUpCategory = categories[indexPath!.row - 1]
-            RealmDataBase.shared.setSortingIDs(first: chosenCategory, second: neighbourUpCategory!)
+            neighbourUpCategory = categories![indexPath!.row - 1]
+            RealmDataBase.shared.setSortingIDs(first: chosenCategory!, second: neighbourUpCategory!)
             categories = RealmDataBase.shared.getCategories()
             tableView.reloadData()
         }
@@ -68,10 +70,10 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func btnDOWNTapped(cell: CategoryTableViewCell) {
         let indexPath = self.tableView.indexPath(for: cell)
-        let chosenCategory = categories[indexPath!.row]
+        let chosenCategory = categories![indexPath!.row]
         let neighbourDownCategory: CategorySection?
-        if categories[indexPath!.row].sortingID != categories.last?.sortingID {
-            neighbourDownCategory = categories[indexPath!.row + 1]
+        if categories![indexPath!.row].sortingID != categories!.last?.sortingID {
+            neighbourDownCategory = categories![indexPath!.row + 1]
             RealmDataBase.shared.setSortingIDs(first: chosenCategory, second: neighbourDownCategory!)
             categories = RealmDataBase.shared.getCategories()
             tableView.reloadData()
@@ -96,7 +98,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
                 textField.placeholder = "Category"
             }
             alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action) in
-                if self.newCategory != "Category", self.newCategory != "", !self.categories.contains(where: {$0.name == self.newCategory}) {
+                if self.newCategory != "Category", self.newCategory != "", !self.categories!.contains(where: {$0.name == self.newCategory}) {
                     RealmDataBase.shared.addNewCategory(name: self.newCategory, list: self.currentList!)
                 } else {
                     let alertIfSomethingWentWrong = UIAlertController(title: "Something went wrong", message: "Probably that category already exist, or you left empty text field. Try Again!", preferredStyle: .alert)

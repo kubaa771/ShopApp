@@ -44,8 +44,14 @@ class RealmDataBase {
         }
     }
     
-    func getCategories() -> Results<CategorySection> {
-        let categories = realm.objects(CategorySection.self).sorted(byKeyPath: "sortingID", ascending: true)
+    func getCategories() -> Results<CategorySection>? {
+        var categories: Results<CategorySection>? //= realm.objects(CategorySection.self).sorted(byKeyPath: "sortingID", ascending: true)
+        let lists = realm.objects(MyList.self).sorted(byKeyPath: "date", ascending: false)
+        for list in lists {
+            if list.currentList == true {
+                categories = list.currentCategories.sorted(byKeyPath: "sortingID", ascending: true)
+            }
+        }
         return categories
     }
     
