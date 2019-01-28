@@ -127,5 +127,10 @@ class RealmDataBase {
         }
     }
     
+    func getProduct(byName name: String) -> Product? {
+        let currentProduct = realm.object(ofType: Product.self, forPrimaryKey: name)
+        return currentProduct
+    }
+    
 }
  

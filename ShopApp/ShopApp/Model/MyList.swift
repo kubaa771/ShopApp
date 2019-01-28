@@ -24,6 +24,7 @@ class MyList: Object {
         let contains = currentProducts.contains(productName)
         return contains
     }
+    
 
     
     /*override static func primaryKey() -> String? {
