@@ -52,7 +52,6 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func btnDoneTapped(cell: ListTableViewCell) {
-        print("A")
         if cell.model.currentList == true {
             let currentMyList = cell.model
             //if this is current list, end editing
@@ -63,9 +62,6 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
         } else {
             //view history
         }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     }
     
     

@@ -14,6 +14,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     //MARK - Model
     
     var categories = RealmDataBase.shared.getCategories()
+    var currentList = RealmDataBase.shared.getCurrentList()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -27,6 +28,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidAppear(_ animated: Bool) {
         //products = RealmDataBase.shared.getProducts()
+        currentList = RealmDataBase.shared.getCurrentList()
         categories = RealmDataBase.shared.getCategories()
         tableView.reloadData()
     }
@@ -90,7 +92,11 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     //MARK - Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "createNewProduct" {
+        if currentList == nil {
+            let alert = UIAlertController(title: "Error", message: "Add new list first", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alert, animated: true)
+        } else if segue.identifier == "createNewProduct" {
             let vc: AddProductViewController = segue.destination as! AddProductViewController
             vc.delegate = self
         }

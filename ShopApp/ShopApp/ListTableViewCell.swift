@@ -31,7 +31,6 @@ class ListTableViewCell: UITableViewCell {
     
     @IBAction func doneButtonAction(_ sender: UIButton) {
         delegate?.btnDoneTapped(cell: self)
-        print("Test")
     }
     
     func customize(list: MyList) {
