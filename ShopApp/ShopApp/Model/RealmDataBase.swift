@@ -20,16 +20,16 @@ class RealmDataBase {
         Realm.Configuration.defaultConfiguration.deleteRealmIfMigrationNeeded = true
         self.realm = try! Realm()
         
-        //try! realm.write {
-        //    realm.deleteAll()
-        //}
+        /*try! realm.write {
+            realm.deleteAll()
+        }
         
         //uncomment to delete whole database
 
-        //self.realm = nil
+        self.realm = nil*/
     }
     
-    func addNewCategory(name: String, list: MyList) {
+    func addNewCategory(name: String) {
         let categories = realm.objects(CategorySection.self).sorted(byKeyPath: "sortingID", ascending: true)
         let lastSortingId = categories.last?.sortingID
         var newCategory: CategorySection
@@ -40,18 +40,17 @@ class RealmDataBase {
         }
         try! realm.write {
             realm.add(newCategory)
-            list.currentCategories.append(newCategory)
         }
     }
     
-    func getCategories() -> Results<CategorySection>? {
-        var categories: Results<CategorySection>? //= realm.objects(CategorySection.self).sorted(byKeyPath: "sortingID", ascending: true)
-        let lists = realm.objects(MyList.self).sorted(byKeyPath: "date", ascending: false)
+    func getCategories() -> Results<CategorySection> {
+        let categories = realm.objects(CategorySection.self).sorted(byKeyPath: "sortingID", ascending: true)
+        /*let lists = realm.objects(MyList.self).sorted(byKeyPath: "date", ascending: false)
         for list in lists {
             if list.currentList == true {
                 categories = list.currentCategories.sorted(byKeyPath: "sortingID", ascending: true)
             }
-        }
+        }*/
         return categories
     }
     
@@ -113,6 +112,18 @@ class RealmDataBase {
     func editList(list: MyList) {
         try! realm.write {
             list.currentList = !list.currentList
+        }
+    }
+    
+    func addProduct(product: Product, toList list: MyList) {
+        try! realm.write {
+            list.currentProducts.append(product.name)
+        }
+    }
+    
+    func removeProduct(productIndex: Int, fromList list: MyList) {
+        try! realm.write {
+            list.currentProducts.remove(at: productIndex)
         }
     }
     
