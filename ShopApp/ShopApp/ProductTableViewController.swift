@@ -66,7 +66,6 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         let tableSection = categories[indexPath.section]
         let product = tableSection.products[indexPath.row]
         cell.model = product
-        
         return cell
     }
     
@@ -85,7 +84,6 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func addNewProduct(product: Product, category: CategorySection) {
         RealmDataBase.shared.addNewProduct(product: product, category: category)
-        //products = RealmDataBase.shared.getProducts()
         tableView.reloadData()
     }
     

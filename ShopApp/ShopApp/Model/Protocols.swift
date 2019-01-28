@@ -11,3 +11,7 @@ import Foundation
 protocol NewProductProtocolDelegate {
     func addNewProduct(product: Product, category: CategorySection)
 }
+
+protocol DoneListButtonDelegate {
+    func btnDoneTapped(cell: ListTableViewCell)
+}

@@ -12,13 +12,18 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
    
     @IBOutlet weak var tableView: UITableView!
     
-    var categories = RealmDataBase.shared.getCategories()
+    var currentList = RealmDataBase.shared.getCurrentList()
+    var categories = //RealmDataBase.shared.getCategories()
     var newCategory: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    func model() {
+        var categories = currentList?.currentCategories
     }
     
     //MARK - Configuring TableView
@@ -80,25 +85,30 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func displayAlertWithTextField() {
-        let alert = UIAlertController(title: "Add new category", message: "Type new category name below", preferredStyle: .alert)
-        alert.addTextField { (textField) in
-            textField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControl.Event.editingChanged)
-            textField.placeholder = "Category"
-        }
-        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action) in
-            
-            if self.newCategory != "Category", self.newCategory != "", !self.categories.contains(where: {$0.name == self.newCategory}) {
-                RealmDataBase.shared.addNewCategory(name: self.newCategory)
-            } else {
-                let alertIfSomethingWentWrong = UIAlertController(title: "Something went wrong", message: "Probably that category already exist, or you left empty text field. Try Again!", preferredStyle: .alert)
-                alertIfSomethingWentWrong.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
-                self.present(alertIfSomethingWentWrong, animated: true)
+        if currentList == nil {
+            let alert = UIAlertController(title: "Error", message: "Add new list first", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alert, animated: true)
+        } else {
+            let alert = UIAlertController(title: "Add new category", message: "Type new category name below", preferredStyle: .alert)
+            alert.addTextField { (textField) in
+                textField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControl.Event.editingChanged)
+                textField.placeholder = "Category"
             }
-            self.categories = RealmDataBase.shared.getCategories()
-            self.tableView.reloadData()
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        present(alert, animated: true)
+            alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action) in
+                if self.newCategory != "Category", self.newCategory != "", !self.categories.contains(where: {$0.name == self.newCategory}) {
+                    RealmDataBase.shared.addNewCategory(name: self.newCategory, list: self.currentList!)
+                } else {
+                    let alertIfSomethingWentWrong = UIAlertController(title: "Something went wrong", message: "Probably that category already exist, or you left empty text field. Try Again!", preferredStyle: .alert)
+                    alertIfSomethingWentWrong.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
+                    self.present(alertIfSomethingWentWrong, animated: true)
+                }
+                self.categories = RealmDataBase.shared.getCategories()
+                self.tableView.reloadData()
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(alert, animated: true)
+        }
     }
     
     @objc func textFieldDidChange(textF: UITextField) {

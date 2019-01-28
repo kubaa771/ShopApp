@@ -29,7 +29,7 @@ class RealmDataBase {
         //self.realm = nil
     }
     
-    func addNewCategory(name: String) {
+    func addNewCategory(name: String, list: MyList) {
         let categories = realm.objects(CategorySection.self).sorted(byKeyPath: "sortingID", ascending: true)
         let lastSortingId = categories.last?.sortingID
         var newCategory: CategorySection
@@ -40,6 +40,7 @@ class RealmDataBase {
         }
         try! realm.write {
             realm.add(newCategory)
+            list.currentCategories.append(newCategory)
         }
     }
     
@@ -79,5 +80,35 @@ class RealmDataBase {
             realm.delete(product)
         }
     }
+    
+    func addNewList(list: MyList) {
+        try! realm.write {
+            realm.add(list)
+        }
+    }
+    
+    func getCurrentList() -> MyList? {
+        let lists = realm.objects(MyList.self)
+        var currentList: MyList?
+        for list in lists {
+            if list.currentList == true {
+                currentList = list
+            }
+        }
+        return currentList
+        
+    }
+    
+    func getLists() -> Results<MyList> {
+        let lists = realm.objects(MyList.self).sorted(byKeyPath: "date", ascending: false)
+        return lists
+    }
+    
+    func editList(list: MyList) {
+        try! realm.write {
+            list.currentList = !list.currentList
+        }
+    }
+    
 }
  

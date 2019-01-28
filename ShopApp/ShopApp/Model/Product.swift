@@ -14,11 +14,11 @@ import RealmSwift
 class Product: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var category: CategorySection?
-    @objc dynamic var price: Int = 0
+    @objc dynamic var price: Double = 0.0
     
     @objc dynamic var imageData: NSData!
     
-    convenience init(name: String, category: CategorySection, price: Int, urlS: String?, image: UIImage?) {
+    convenience init(name: String, category: CategorySection, price: Double, urlS: String?, image: UIImage?) {
         self.init()
         self.name = name
         self.category = category

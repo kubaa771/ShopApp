@@ -26,7 +26,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     var defaultImage = UIImage(named: "shop")
     var newImage: UIImage?
     var newName: String?
-    var newPrice: Int?
+    var newPrice: Double?
     var newCategory: CategorySection?
     
     var delegate: NewProductProtocolDelegate?
@@ -70,9 +70,9 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     
     @IBAction func addNewPriceAction(_ sender: UITextField) {
-        newPrice = Int(sender.text!)
+        newPrice = Double(sender.text!)
         if sender.isEditing {
-            newPrice = Int(sender.text!)
+            newPrice = Double(sender.text!)
         }
     }
     
@@ -106,7 +106,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
         if newName != nil , newPrice != nil, newCategory != nil, !categories.contains(where: {$0.products.contains(where: {$0.name == newName})}) {
-            let newProduct = Product(name: newName ?? "", category: newCategory!, price: newPrice ?? 0, urlS: nil, image: newImage ?? defaultImage)
+            let newProduct = Product(name: newName ?? "", category: newCategory!, price: newPrice ?? 0.0, urlS: nil, image: newImage ?? defaultImage)
             delegate?.addNewProduct(product: newProduct, category: newCategory!)
             self.navigationController?.popViewController(animated: true)
         } else {
