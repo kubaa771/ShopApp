@@ -25,17 +25,20 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(listChangedNotification), name: NotificationNames.listChanged.notification, object: nil)
+        convertData()
         replaceButtonName()
+        startAnimatingButton()
         buttonView.layer.cornerRadius = 30
         buttonView.tappedClosure = addButtonActionClosure
         tableView.delegate = self
         tableView.dataSource = self
     }
     
-    override func viewDidAppear(_ animated: Bool){
+    @objc func listChangedNotification() {
         convertData()
-        startAnimatingButton()
     }
+    
     
     func startAnimatingButton() {
         if animationEnded  && isHistory == false {
@@ -128,7 +131,12 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     @IBAction func doneButtonAction(_ sender: UIBarButtonItem) {
-        RealmDataBase.shared.editList(list: currentList)
+        if isHistory {
+            let duplicateList = RealmDataBase.shared.duplicate(list: currentList)
+            RealmDataBase.shared.addNewList(list: duplicateList)
+        } else {
+            RealmDataBase.shared.editList(list: currentList)
+        }
         self.navigationController?.popViewController(animated: true)
     }
     

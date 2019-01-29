@@ -10,6 +10,7 @@ import Foundation
 
 enum NotificationNames: String {
     case applyProduct = "applyProduct"
+    case listChanged = "listChanged"
     
     var notification: Notification.Name {
         return Notification.Name(self.rawValue)

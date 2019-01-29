@@ -38,6 +38,16 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let listToDelete = lists[indexPath.row]
+            RealmDataBase.shared.delete(list: listToDelete)
+            self.tableView?.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.tableView?.endUpdates()
+        }
+    }
+    
     @IBAction func createNewList(_ sender: UIBarButtonItem) {
         let currentDate = Date()
         let newList = MyList(date: currentDate, isActive: true)

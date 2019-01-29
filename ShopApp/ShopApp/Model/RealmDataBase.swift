@@ -45,12 +45,6 @@ class RealmDataBase {
     
     func getCategories() -> Results<CategorySection> {
         let categories = realm.objects(CategorySection.self).sorted(byKeyPath: "sortingID", ascending: true)
-        /*let lists = realm.objects(MyList.self).sorted(byKeyPath: "date", ascending: false)
-        for list in lists {
-            if list.currentList == true {
-                categories = list.currentCategories.sorted(byKeyPath: "sortingID", ascending: true)
-            }
-        }*/
         return categories
     }
     
@@ -119,17 +113,34 @@ class RealmDataBase {
         try! realm.write {
             list.currentProducts.append(product.name)
         }
+        NotificationCenter.default.post(name: NotificationNames.listChanged.notification, object: nil)
     }
     
     func removeProduct(productIndex: Int, fromList list: MyList) {
         try! realm.write {
             list.currentProducts.remove(at: productIndex)
         }
+        NotificationCenter.default.post(name: NotificationNames.listChanged.notification, object: nil)
     }
     
     func getProduct(byName name: String) -> Product? {
         let currentProduct = realm.object(ofType: Product.self, forPrimaryKey: name)
         return currentProduct
+    }
+    
+    func delete(list: MyList) {
+        try! realm.write {
+            realm.delete(list)
+            
+        }
+    }
+    
+    func duplicate(list: MyList) -> MyList{
+        var copy: MyList!
+        try! realm.write {
+            copy = realm.create(MyList.self, value: list, update: false)
+        }
+        return copy
     }
     
 }

@@ -379,9 +379,9 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="XZQ-lm-8zO" firstAttribute="centerY" secondItem="5ti-X8-pYD" secondAttribute="centerY" id="4NU-1N-Fkm"/>
+                                                <constraint firstItem="XZQ-lm-8zO" firstAttribute="centerY" secondItem="5ti-X8-pYD" secondAttribute="centerY" priority="999" id="4NU-1N-Fkm"/>
                                                 <constraint firstItem="XZQ-lm-8zO" firstAttribute="centerX" secondItem="5ti-X8-pYD" secondAttribute="centerX" id="CQD-9V-PB0"/>
-                                                <constraint firstItem="XZQ-lm-8zO" firstAttribute="top" secondItem="5ti-X8-pYD" secondAttribute="topMargin" id="yTf-9v-dNz"/>
+                                                <constraint firstItem="XZQ-lm-8zO" firstAttribute="top" secondItem="5ti-X8-pYD" secondAttribute="topMargin" priority="999" id="yTf-9v-dNz"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

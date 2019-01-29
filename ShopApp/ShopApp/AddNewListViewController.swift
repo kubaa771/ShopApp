@@ -102,10 +102,6 @@ class AddNewListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     
-    @IBAction func doneButtonAction(_ sender: UIBarButtonItem) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     //MARK - Searchbar settings
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -117,6 +113,7 @@ class AddNewListViewController: UIViewController, UITableViewDelegate, UITableVi
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Products"
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
     }
     
