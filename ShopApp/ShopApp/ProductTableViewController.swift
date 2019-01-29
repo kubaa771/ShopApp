@@ -22,6 +22,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableFooterView = UIView()
         //RealmDataBase.init()
 
     }
