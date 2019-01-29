@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
     //MARK - Model
     
@@ -16,19 +16,63 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
     var categoriesWithProductsDict: [CategorySection:[Product]] = [:]
     var sortedKeys = [CategorySection]()
     var isHistory: Bool = false
+    var animationEnded = true
     
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var bottomSpacingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonView: FloatingButtonViewClass!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        convertData()
+        replaceButtonName()
+        buttonView.layer.cornerRadius = 30
+        buttonView.tappedClosure = addButtonActionClosure
         tableView.delegate = self
         tableView.dataSource = self
-        //RealmDataBase.init()
+    }
+    
+    override func viewDidAppear(_ animated: Bool){
+        convertData()
+        startAnimatingButton()
+    }
+    
+    func startAnimatingButton() {
+        if animationEnded  && isHistory == false {
+            animationEnded = false
+            Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { (Timer) in
+                self.bottomSpacingConstraint.constant = -110
+                UIView.animate(withDuration: 0.4, animations: {
+                    self.view.layoutIfNeeded()
+                }, completion: { (completed) in
+                    self.animationEnded = true
+                })
+            }
+            bottomSpacingConstraint.constant = 10
+            
+            UIView.animate(withDuration: 0.4) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    func addButtonActionClosure() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddNewListViewController") as! AddNewListViewController
+        vc.currentList = currentList
         
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func replaceButtonName() {
+        if isHistory {
+            doneButton.title = "❐"
+        } else {
+            doneButton.title = "Done"
+        }
     }
     
     func convertData() {
+        categoriesWithProductsDict.removeAll()
         if let currentProducts = currentList?.currentProducts {
             for productName in currentProducts {
                 if let productObj = RealmDataBase.shared.getProduct(byName: productName) {
@@ -77,6 +121,10 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
         let product = categoriesWithProductsDict[keySection]![indexPath.row]
         cell.model = product
         return cell
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        startAnimatingButton()
     }
     
     @IBAction func doneButtonAction(_ sender: UIBarButtonItem) {

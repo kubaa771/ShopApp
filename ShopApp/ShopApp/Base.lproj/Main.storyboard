@@ -426,7 +426,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BcR-1y-lgl">
-                                <rect key="frame" x="0.0" y="81" width="375" height="586"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProductCell" rowHeight="92" id="oia-ED-tVh" customClass="ProductTableViewCell" customModule="ShopApp" customModuleProvider="target">
@@ -497,28 +497,17 @@
                                     <outlet property="dataSource" destination="yYz-hz-Klb" id="D9q-1D-R8C"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Ggn-oi-eyl">
-                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Ggn-oi-eyl" firstAttribute="leading" secondItem="Nob-Cv-Ket" secondAttribute="leading" id="7E6-ai-vOE"/>
                             <constraint firstAttribute="trailing" secondItem="BcR-1y-lgl" secondAttribute="trailing" id="GJM-8q-Spn"/>
-                            <constraint firstItem="Ggn-oi-eyl" firstAttribute="top" secondItem="Nob-Cv-Ket" secondAttribute="top" id="Im5-tc-a9E"/>
-                            <constraint firstItem="Ggn-oi-eyl" firstAttribute="trailing" secondItem="Nob-Cv-Ket" secondAttribute="trailing" id="gnD-iP-Azn"/>
+                            <constraint firstItem="BcR-1y-lgl" firstAttribute="top" secondItem="Nob-Cv-Ket" secondAttribute="top" id="aSE-zo-SCH"/>
                             <constraint firstItem="BcR-1y-lgl" firstAttribute="leading" secondItem="Nob-Cv-Ket" secondAttribute="leading" id="pDb-Eq-GqZ"/>
                             <constraint firstAttribute="bottom" secondItem="BcR-1y-lgl" secondAttribute="bottom" id="pad-OL-cla"/>
-                            <constraint firstItem="BcR-1y-lgl" firstAttribute="top" secondItem="Ggn-oi-eyl" secondAttribute="bottom" constant="5" id="xtq-dc-Bej"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nob-Cv-Ket"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Aaa-uC-BMD">
-                        <barButtonItem key="rightBarButtonItem" title="✓" style="done" id="i6m-Rc-GFV">
-                            <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Aaa-uC-BMD"/>
                     <connections>
                         <outlet property="tableView" destination="BcR-1y-lgl" id="0Pm-7W-SHt"/>
                     </connections>
@@ -597,30 +586,45 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3T-db-7Hh" customClass="FloatingButtonViewClass" customModule="ShopApp" customModuleProvider="target">
+                                <rect key="frame" x="155" y="712" width="65" height="65"/>
+                                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="0.29906892123287671" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="YuE-m5-k3c"/>
+                                    <constraint firstAttribute="width" constant="65" id="kpI-Y1-r7A"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5kY-ub-cBF" firstAttribute="top" secondItem="44G-t7-ay2" secondAttribute="top" id="72Y-ew-MMk"/>
+                            <constraint firstItem="5kY-ub-cBF" firstAttribute="leading" secondItem="44G-t7-ay2" secondAttribute="leading" id="7mr-yS-Wsh"/>
+                            <constraint firstItem="44G-t7-ay2" firstAttribute="bottom" secondItem="e3T-db-7Hh" secondAttribute="bottom" constant="-110" id="E4E-fb-5kG"/>
                             <constraint firstItem="5kY-ub-cBF" firstAttribute="leading" secondItem="44G-t7-ay2" secondAttribute="leading" id="NWH-UU-99y"/>
+                            <constraint firstItem="5kY-ub-cBF" firstAttribute="top" secondItem="44G-t7-ay2" secondAttribute="top" id="l6l-oj-zun"/>
+                            <constraint firstItem="e3T-db-7Hh" firstAttribute="centerX" secondItem="ZfX-Ur-YSc" secondAttribute="centerX" id="nGI-tZ-kuw"/>
                             <constraint firstAttribute="trailing" secondItem="5kY-ub-cBF" secondAttribute="trailing" id="qXk-Jg-1ga"/>
                             <constraint firstAttribute="bottom" secondItem="5kY-ub-cBF" secondAttribute="bottom" id="qtt-Up-Zk6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="44G-t7-ay2"/>
                     </view>
                     <navigationItem key="navigationItem" title="Data" id="fHl-y6-TNu">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="2Ff-7e-nDs">
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="2Ff-7e-nDs">
                             <connections>
                                 <action selector="doneButtonAction:" destination="Clh-oa-ra0" id="uhZ-Eb-NYb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bottomSpacingConstraint" destination="E4E-fb-5kG" id="3Eg-AP-VhI"/>
+                        <outlet property="buttonView" destination="e3T-db-7Hh" id="IwS-k5-Viv"/>
+                        <outlet property="doneButton" destination="2Ff-7e-nDs" id="azg-IC-nkb"/>
                         <outlet property="tableView" destination="5kY-ub-cBF" id="sQC-Rg-9e7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ILf-0N-ZFe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2244" y="1645"/>
+            <point key="canvasLocation" x="2244" y="1644.8275862068967"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fCT-wq-UyY">

@@ -13,6 +13,7 @@ class MyList: Object {
     @objc dynamic var date: Date = Date()
     @objc dynamic var isActive: Bool = true
     var currentProducts = List<String>()
+    var originalProducts = List<String>()
     
     convenience init(date: Date, isActive: Bool){
         self.init()

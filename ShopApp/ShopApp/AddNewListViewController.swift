@@ -8,41 +8,43 @@
 
 import UIKit
 
-class AddNewListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AddNewListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
     
     //MARK - Model
     
     var categories = RealmDataBase.shared.getCategories()
+    var allProducts = RealmDataBase.shared.getProducts()
+    var filteredProducts = [Product]()
     var currentList: MyList!
+    let searchController = UISearchController(searchResultsController: nil)
     
     @IBOutlet weak var tableView: UITableView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupSearchController()
         tableView.delegate = self
         tableView.dataSource = self
         //RealmDataBase.init()
         
     }
     
-    
-    override func viewDidAppear(_ animated: Bool) {
-        //products = RealmDataBase.shared.getProducts()
-        currentList = RealmDataBase.shared.getCurrentList()
-        categories = RealmDataBase.shared.getCategories()
-        tableView.reloadData()
-        
-    }
-    
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return categories.count
+        if isFiltering() {
+            return 1
+        } else {
+            return categories.count
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let tableSection = categories[section]
         let tableProductData = tableSection.products
+        if isFiltering() {
+            return filteredProducts.count
+        }
         return tableProductData.count
     }
     
@@ -59,6 +61,9 @@ class AddNewListViewController: UIViewController, UITableViewDelegate, UITableVi
         var text = ""
         let tableSection = categories[section]
         text = tableSection.name
+        if isFiltering() {
+            return ""
+        }
         
         return text
     }
@@ -67,7 +72,12 @@ class AddNewListViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as! ProductTableViewCell
         let tableSection = categories[indexPath.section]
-        let product = tableSection.products[indexPath.row]
+        let product: Product
+        if isFiltering() {
+            product = filteredProducts[indexPath.row]
+        } else {
+            product = tableSection.products[indexPath.row]
+        }
         cell.model = product
         if currentList.containsProduct(productName: product.name) {
             cell.selectedLabel.text = "✓"
@@ -80,16 +90,50 @@ class AddNewListViewController: UIViewController, UITableViewDelegate, UITableVi
    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as! ProductTableViewCell
         let tableSection = categories[indexPath.section]
         let product = tableSection.products[indexPath.row]
         if currentList.containsProduct(productName: product.name) {
             RealmDataBase.shared.removeProduct(productIndex: indexPath.row, fromList: currentList)
-        } else if cell.selectedLabel.text == "" {
+        } else {
             RealmDataBase.shared.addProduct(product: product, toList: currentList)
         }
         tableView.reloadData()
         
+    }
+    
+    
+    @IBAction func doneButtonAction(_ sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    //MARK - Searchbar settings
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Products"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        filteredProducts = allProducts.filter({( product : Product) -> Bool in
+            return product.name.lowercased().contains(searchText.lowercased())
+        })
+        
+        tableView.reloadData()
+    }
+    
+    func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
     }
     
     

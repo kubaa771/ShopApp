@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FloatingButtonViewClass" customModule="ShopApp" customModuleProvider="target">
+            <connections>
+                <outlet property="addButton" destination="X2i-1A-Bnx" id="kUd-tR-eh6"/>
+                <outlet property="buttonView" destination="iN0-l3-epB" id="pfS-j5-pl5"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X2i-1A-Bnx">
+                    <rect key="frame" x="30" y="15" width="30" height="60"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                    <state key="normal" title="+"/>
+                    <connections>
+                        <action selector="tappedAction:" destination="-1" eventType="touchUpInside" id="224-YK-uhD"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="X2i-1A-Bnx" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="BIl-RG-bdl"/>
+                <constraint firstItem="X2i-1A-Bnx" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="imN-ZQ-ysd"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-2252.8000000000002" y="364.31784107946032"/>
+        </view>
+    </objects>
+</document>

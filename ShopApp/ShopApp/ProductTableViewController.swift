@@ -85,7 +85,6 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func addNewProduct(product: Product, category: CategorySection) {
         RealmDataBase.shared.addNewProduct(product: product, category: category)
-        RealmDataBase.shared.addProduct(product: product, toList: currentList!)
         tableView.reloadData()
     }
     

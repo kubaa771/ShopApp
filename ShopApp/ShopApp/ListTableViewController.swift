@@ -56,13 +56,13 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
         if cell.model.isActive == true {
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditCurrentListViewController") as! EditCurrentListViewController
             vc.title = cell.dataLabel.text
-            vc.currentList = currentList //pobrac produkty z tej listy
+            vc.currentList = cell.model
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditCurrentListViewController") as! EditCurrentListViewController
             vc.title = cell.dataLabel.text
             vc.isHistory = true
-            //wyslac liste a w historylistvc pobrac z niej produkty
+            vc.currentList = cell.model
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
