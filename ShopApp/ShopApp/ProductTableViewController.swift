@@ -15,33 +15,18 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     
     var categories = RealmDataBase.shared.getCategories()
     var currentList = RealmDataBase.shared.getCurrentList()
-    var productsNameArray = [String]()
-    var products2DArray: [(Product, CategorySection)] = []
-    var dict: [String:[Product]] = [:]
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateModel()
         tableView.delegate = self
         tableView.dataSource = self
         //RealmDataBase.init()
 
     }
     
-    func updateModel() {
-        for category in categories {
-            for product in category.products {
-                productsNameArray.append(product.name)
-            }
-        }
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
-        //products = RealmDataBase.shared.getProducts()
-        currentList = RealmDataBase.shared.getCurrentList()
-        categories = RealmDataBase.shared.getCategories()
         tableView.reloadData()
         
     }
@@ -55,7 +40,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let tableSection = categories[section]
         //let tableSection = products2DArray[section].1
-        let tableProductData = tableSection.products
+        let tableProductData = tableSection.products//categoriesWithProductsDict[tableSection]
         return tableProductData.count
     }
     
@@ -100,6 +85,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func addNewProduct(product: Product, category: CategorySection) {
         RealmDataBase.shared.addNewProduct(product: product, category: category)
+        RealmDataBase.shared.addProduct(product: product, toList: currentList!)
         tableView.reloadData()
     }
     

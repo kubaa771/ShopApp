@@ -11,13 +11,13 @@ import RealmSwift
 
 class MyList: Object {
     @objc dynamic var date: Date = Date()
-    @objc dynamic var currentList: Bool = true
-    var currentProducts: [String] = []
+    @objc dynamic var isActive: Bool = true
+    var currentProducts = List<String>()
     
-    convenience init(date: Date, currentList: Bool){
+    convenience init(date: Date, isActive: Bool){
         self.init()
         self.date = date
-        self.currentList = currentList
+        self.isActive = isActive
     }
     
     func containsProduct(productName: String) -> Bool{

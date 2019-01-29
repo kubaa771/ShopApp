@@ -12,65 +12,60 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
     
     //MARK - Model
     
-    var categories = RealmDataBase.shared.getCategories()
     var currentList: MyList!
-    var productsNameArray = [String]()
-    var products2DArray: [(Product, CategorySection)] = []
-    var dict: [String:[Product]] = [:]
+    var categoriesWithProductsDict: [CategorySection:[Product]] = [:]
+    var sortedKeys = [CategorySection]()
+    var isHistory: Bool = false
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateModel()
+        convertData()
         tableView.delegate = self
         tableView.dataSource = self
         //RealmDataBase.init()
         
     }
     
-    func updateModel() {
-        for category in categories {
-            for product in category.products {
-                productsNameArray.append(product.name)
+    func convertData() {
+        if let currentProducts = currentList?.currentProducts {
+            for productName in currentProducts {
+                if let productObj = RealmDataBase.shared.getProduct(byName: productName) {
+                    let productCat = productObj.category
+                    var categoryProductsArray = categoriesWithProductsDict[productCat!] ?? []
+                    categoryProductsArray.append(productObj)
+                    categoriesWithProductsDict[productCat!] = categoryProductsArray
+                    }
+            }
+            sortedKeys = categoriesWithProductsDict.keys.sorted { (left, right) -> Bool in
+                return left.sortingID < right.sortingID
             }
         }
-    }
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-        //products = RealmDataBase.shared.getProducts()
-        currentList = RealmDataBase.shared.getCurrentList()
-        categories = RealmDataBase.shared.getCategories()
         tableView.reloadData()
-        
     }
+    
     
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return categories.count
+        return categoriesWithProductsDict.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let tableSection = categories[section]
-        let tableProductData = tableSection.products
-        return tableProductData.count
+        let keySection = sortedKeys[section]
+        let tableProductData = categoriesWithProductsDict[keySection]
+        return tableProductData!.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let tableSection = categories[section]
-        let tableProductData = tableSection.products
-        if tableProductData.count > 0 {
-            return 20
-        }
-        return 0
+        return 20
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var text = ""
-        let tableSection = categories[section]
-        text = tableSection.name
+        let keySection = sortedKeys[section]
+        text = keySection.name
         
         return text
     }
@@ -78,8 +73,8 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as! ProductTableViewCell
-        let tableSection = categories[indexPath.section]
-        let product = tableSection.products[indexPath.row]
+        let keySection = sortedKeys[indexPath.section]
+        let product = categoriesWithProductsDict[keySection]![indexPath.row]
         cell.model = product
         return cell
     }
@@ -88,7 +83,6 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
         RealmDataBase.shared.editList(list: currentList)
         self.navigationController?.popViewController(animated: true)
     }
-    
     
     
 }

@@ -14,27 +14,15 @@ class AddNewListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var categories = RealmDataBase.shared.getCategories()
     var currentList: MyList!
-    var productsNameArray = [String]()
-    var products2DArray: [(Product, CategorySection)] = []
-    var dict: [String:[Product]] = [:]
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateModel()
         tableView.delegate = self
         tableView.dataSource = self
         //RealmDataBase.init()
         
-    }
-    
-    func updateModel() {
-        for category in categories {
-            for product in category.products {
-                productsNameArray.append(product.name)
-            }
-        }
     }
     
     

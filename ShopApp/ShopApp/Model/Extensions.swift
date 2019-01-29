@@ -15,3 +15,9 @@ extension UIImage {
         return data?.base64EncodedString(options: .endLineWithLineFeed)
     }
 }
+
+extension Dictionary {
+    subscript(i: Int) -> (key: Key, value: Value) {
+        return self[index(startIndex, offsetBy: i)]
+    }
+}

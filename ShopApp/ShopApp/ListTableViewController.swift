@@ -40,7 +40,7 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBAction func createNewList(_ sender: UIBarButtonItem) {
         let currentDate = Date()
-        let newList = MyList(date: currentDate, currentList: true)
+        let newList = MyList(date: currentDate, isActive: true)
         RealmDataBase.shared.addNewList(list: newList)
         self.lists = RealmDataBase.shared.getLists()
         self.currentList = RealmDataBase.shared.getCurrentList()
@@ -53,15 +53,15 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func btnDoneTapped(cell: ListTableViewCell) {
-        if cell.model.currentList == true {
-            let myCurrentList = cell.model
+        if cell.model.isActive == true {
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditCurrentListViewController") as! EditCurrentListViewController
             vc.title = cell.dataLabel.text
-            vc.currentList = myCurrentList //pobrac produkty z tej listy
+            vc.currentList = currentList //pobrac produkty z tej listy
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HistoryListViewController") as! HistoryListViewController
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditCurrentListViewController") as! EditCurrentListViewController
             vc.title = cell.dataLabel.text
+            vc.isHistory = true
             //wyslac liste a w historylistvc pobrac z niej produkty
             self.navigationController?.pushViewController(vc, animated: true)
         }

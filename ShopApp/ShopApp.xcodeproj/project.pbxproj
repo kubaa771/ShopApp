@@ -24,7 +24,6 @@
 		F9273B2421FEF79900191839 /* MyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9273B2321FEF79900191839 /* MyList.swift */; };
 		F9273B2621FF250100191839 /* AddNewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9273B2521FF250100191839 /* AddNewListViewController.swift */; };
 		F9273B2821FF3A5600191839 /* EditCurrentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9273B2721FF3A5600191839 /* EditCurrentListViewController.swift */; };
-		F9273B2A21FF401F00191839 /* HistoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9273B2921FF401F00191839 /* HistoryListViewController.swift */; };
 		F928CABC21F8617E00B66EE0 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F928CABB21F8617E00B66EE0 /* CategoryTableViewCell.swift */; };
 		F928CABF21F8627E00B66EE0 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F928CABE21F8627E00B66EE0 /* Product.swift */; };
 		F93A8DFD21F76B9A00ACC47D /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93A8DFC21F76B9A00ACC47D /* AddProductViewController.swift */; };
@@ -82,7 +81,6 @@
 		F9273B2321FEF79900191839 /* MyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyList.swift; sourceTree = "<group>"; };
 		F9273B2521FF250100191839 /* AddNewListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewListViewController.swift; sourceTree = "<group>"; };
 		F9273B2721FF3A5600191839 /* EditCurrentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCurrentListViewController.swift; sourceTree = "<group>"; };
-		F9273B2921FF401F00191839 /* HistoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListViewController.swift; sourceTree = "<group>"; };
 		F928CABB21F8617E00B66EE0 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		F928CABE21F8627E00B66EE0 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		F93A8DFC21F76B9A00ACC47D /* AddProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductViewController.swift; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				8AF9DC1021FA046E0040AA86 /* ListTableViewCell.swift */,
 				F9273B2521FF250100191839 /* AddNewListViewController.swift */,
 				F9273B2721FF3A5600191839 /* EditCurrentListViewController.swift */,
-				F9273B2921FF401F00191839 /* HistoryListViewController.swift */,
 				F90B172921F742BC00965049 /* ProductTableViewController.swift */,
 				F90B172B21F7437B00965049 /* ProductTableViewCell.swift */,
 				F93A8DFC21F76B9A00ACC47D /* AddProductViewController.swift */,
@@ -480,7 +477,6 @@
 				8AF9DC1121FA046E0040AA86 /* ListTableViewCell.swift in Sources */,
 				F90B16FA21F73DB100965049 /* AppDelegate.swift in Sources */,
 				F9273B2421FEF79900191839 /* MyList.swift in Sources */,
-				F9273B2A21FF401F00191839 /* HistoryListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

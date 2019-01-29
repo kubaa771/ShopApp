@@ -96,7 +96,7 @@ class RealmDataBase {
         let lists = realm.objects(MyList.self)
         var currentList: MyList?
         for list in lists {
-            if list.currentList == true {
+            if list.isActive == true {
                 currentList = list
             }
         }
@@ -111,7 +111,7 @@ class RealmDataBase {
     
     func editList(list: MyList) {
         try! realm.write {
-            list.currentList = !list.currentList
+            list.isActive = !list.isActive
         }
     }
     
