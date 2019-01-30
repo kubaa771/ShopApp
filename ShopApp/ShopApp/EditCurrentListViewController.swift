@@ -130,7 +130,15 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
         if editingStyle == .delete {
             let keySection = sortedKeys[indexPath.section]
             let product = categoriesWithProductsDict[keySection]![indexPath.row]
-            RealmDataBase.shared.removeProduct(productName: product.name, fromList: currentList)
+            tableView.performBatchUpdates({
+                RealmDataBase.shared.removeProduct(productName: product.name, fromList: currentList)
+                convertData()
+                if indexPath.row == 0 {
+                    let indexSet = IndexSet(arrayLiteral: indexPath.section)
+                    tableView.deleteSections(indexSet, with: .automatic)
+                }
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }, completion: nil)
         }
     }
     

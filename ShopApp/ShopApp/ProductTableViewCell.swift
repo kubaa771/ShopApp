@@ -15,7 +15,7 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productPrice: UILabel!
-    @IBOutlet weak var selectedLabel: UILabel!
+    @IBOutlet weak var checkedImageView: UIImageView!
     
     var model: Product! {
         didSet {

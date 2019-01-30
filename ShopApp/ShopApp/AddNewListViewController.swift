@@ -80,9 +80,9 @@ class AddNewListViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         cell.model = product
         if currentList.containsProduct(productName: product.name) {
-            cell.selectedLabel.text = "✓"
+            cell.checkedImageView.isHidden = false
         } else {
-            cell.selectedLabel.text = ""
+            cell.checkedImageView.isHidden = true
         }
         return cell
     }
