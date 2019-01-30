@@ -91,9 +91,14 @@ class AddNewListViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         let tableSection = categories[indexPath.section]
-        let product = tableSection.products[indexPath.row]
+        let product: Product
+        if isFiltering() {
+            product = filteredProducts[indexPath.row]
+        } else {
+            product = tableSection.products[indexPath.row]
+        }
         if currentList.containsProduct(productName: product.name) {
-            RealmDataBase.shared.removeProduct(productIndex: indexPath.row, fromList: currentList)
+            RealmDataBase.shared.removeProduct(productName: product.name , fromList: currentList)
         } else {
             RealmDataBase.shared.addProduct(product: product, toList: currentList)
         }

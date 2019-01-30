@@ -126,6 +126,14 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let keySection = sortedKeys[indexPath.section]
+            let product = categoriesWithProductsDict[keySection]![indexPath.row]
+            RealmDataBase.shared.removeProduct(productName: product.name, fromList: currentList)
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         startAnimatingButton()
     }

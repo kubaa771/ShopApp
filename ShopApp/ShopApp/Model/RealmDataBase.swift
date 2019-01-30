@@ -116,9 +116,10 @@ class RealmDataBase {
         NotificationCenter.default.post(name: NotificationNames.listChanged.notification, object: nil)
     }
     
-    func removeProduct(productIndex: Int, fromList list: MyList) {
+    func removeProduct(productName: String, fromList list: MyList) {
         try! realm.write {
-            list.currentProducts.remove(at: productIndex)
+            let productIndex = list.currentProducts.index(of: productName)
+            list.currentProducts.remove(at: productIndex!)
         }
         NotificationCenter.default.post(name: NotificationNames.listChanged.notification, object: nil)
     }
