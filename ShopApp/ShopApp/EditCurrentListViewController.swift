@@ -106,7 +106,7 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
+        return 25
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -115,6 +115,10 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
         text = keySection.name
         
         return text
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = #colorLiteral(red: 0.7346123007, green: 0.8870626161, blue: 1, alpha: 1)
     }
     
     
@@ -127,7 +131,7 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+        if editingStyle == .delete && isHistory == false{
             let keySection = sortedKeys[indexPath.section]
             let product = categoriesWithProductsDict[keySection]![indexPath.row]
             tableView.performBatchUpdates({

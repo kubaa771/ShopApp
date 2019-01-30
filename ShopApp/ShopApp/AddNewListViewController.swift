@@ -52,7 +52,7 @@ class AddNewListViewController: UIViewController, UITableViewDelegate, UITableVi
         let tableSection = categories[section]
         let tableProductData = tableSection.products
         if tableProductData.count > 0 {
-            return 20
+            return 25
         }
         return 0
     }
@@ -66,6 +66,10 @@ class AddNewListViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         return text
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = #colorLiteral(red: 0.7346123007, green: 0.8870626161, blue: 1, alpha: 1)
     }
     
     
