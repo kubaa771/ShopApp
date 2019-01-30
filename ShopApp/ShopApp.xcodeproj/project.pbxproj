@@ -173,21 +173,11 @@
 		F90B16F821F73DB100965049 /* ShopApp */ = {
 			isa = PBXGroup;
 			children = (
+				F9133C922201DDA60017E7DC /* Storyboards */,
 				F928CABD21F8626500B66EE0 /* Model */,
-				F961A2EF21F74B300084DC72 /* CategoryViewController.swift */,
-				F928CABB21F8617E00B66EE0 /* CategoryTableViewCell.swift */,
-				F90B172721F7428200965049 /* ListTableViewController.swift */,
-				8AF9DC1021FA046E0040AA86 /* ListTableViewCell.swift */,
-				F9273B2521FF250100191839 /* AddNewListViewController.swift */,
-				F9273B2721FF3A5600191839 /* EditCurrentListViewController.swift */,
-				F90B172921F742BC00965049 /* ProductTableViewController.swift */,
-				F90B172B21F7437B00965049 /* ProductTableViewCell.swift */,
-				F93A8DFC21F76B9A00ACC47D /* AddProductViewController.swift */,
+				F9133C902201DD060017E7DC /* Controllers */,
+				F9133C912201DD860017E7DC /* Views */,
 				F90B16F921F73DB100965049 /* AppDelegate.swift */,
-				F90B16FD21F73DB100965049 /* Main.storyboard */,
-				F9A36E7F22005AD5009903AA /* FloatingButtonView.xib */,
-				F9A36E8122005CFA009903AA /* FloatingButtonViewClass.swift */,
-				F90B170221F73DB300965049 /* LaunchScreen.storyboard */,
 				F90B170021F73DB300965049 /* Assets.xcassets */,
 				F90B170521F73DB300965049 /* Info.plist */,
 				8AF9DC0E21F9B0B30040AA86 /* GoogleService-Info.plist */,
@@ -211,6 +201,40 @@
 				F90B171B21F73DB400965049 /* Info.plist */,
 			);
 			path = ShopAppUITests;
+			sourceTree = "<group>";
+		};
+		F9133C902201DD060017E7DC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F961A2EF21F74B300084DC72 /* CategoryViewController.swift */,
+				F928CABB21F8617E00B66EE0 /* CategoryTableViewCell.swift */,
+				F90B172721F7428200965049 /* ListTableViewController.swift */,
+				8AF9DC1021FA046E0040AA86 /* ListTableViewCell.swift */,
+				F9273B2521FF250100191839 /* AddNewListViewController.swift */,
+				F9273B2721FF3A5600191839 /* EditCurrentListViewController.swift */,
+				F90B172921F742BC00965049 /* ProductTableViewController.swift */,
+				F90B172B21F7437B00965049 /* ProductTableViewCell.swift */,
+				F93A8DFC21F76B9A00ACC47D /* AddProductViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F9133C912201DD860017E7DC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F9A36E7F22005AD5009903AA /* FloatingButtonView.xib */,
+				F9A36E8122005CFA009903AA /* FloatingButtonViewClass.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F9133C922201DDA60017E7DC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F90B16FD21F73DB100965049 /* Main.storyboard */,
+				F90B170221F73DB300965049 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		F928CABD21F8626500B66EE0 /* Model */ = {
@@ -239,6 +263,7 @@
 				F90B16F321F73DB100965049 /* Frameworks */,
 				F90B16F421F73DB100965049 /* Resources */,
 				A2B4E9182C5104FC41C4B3A9 /* [CP] Embed Pods Frameworks */,
+				F9133C8F2201D3F70017E7DC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -460,6 +485,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F9133C8F2201D3F70017E7DC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 9c79cc908dc646bb3a91f48dadceb39360d7386a 9bba0b86ebd939096de1561d98d4870fce4ef870e1a15552b6f75df2be51646a\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -661,6 +703,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 99QHEE7B97;
 				INFOPLIST_FILE = ShopApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

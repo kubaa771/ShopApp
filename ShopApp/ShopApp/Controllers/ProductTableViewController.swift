@@ -40,8 +40,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let tableSection = categories[section]
-        //let tableSection = products2DArray[section].1
-        let tableProductData = tableSection.products//categoriesWithProductsDict[tableSection]
+        let tableProductData = tableSection.products
         return tableProductData.count
     }
     
@@ -86,14 +85,14 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
-    //MARK - Adding new product
+    //MARK: - Adding new product
     
     func addNewProduct(product: Product, category: CategorySection) {
         RealmDataBase.shared.addNewProduct(product: product, category: category)
         tableView.reloadData()
     }
     
-    //MARK - Segue
+    //MARK: - Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if categories.isEmpty {

@@ -23,18 +23,6 @@ class Product: Object {
         self.name = name
         self.category = category
         self.price = price
-    
-        
-        /*if let urlS = urlS, let url = URL(string: urlS) {
-            SDWebImageManager.shared().imageDownloader?.downloadImage(with: url, options: .highPriority, progress: { (_, _, url) in
-            }) { (downloadedImage, _, _, _) in
-                if let downloaded = downloadedImage {
-                    let data = NSData(data: downloaded.jpegData(compressionQuality: 0.9)!)
-                    self.imageData = data
-                    //self.image = downloaded
-                }
-            }
-        }*/
         
         if let image = image {
             let data = NSData(data: image.jpegData(compressionQuality: 0.9)!)

@@ -9,6 +9,8 @@
 import UIKit
 
 class ListTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DoneListButtonDelegate {
+    
+    //MARK: - Model
    
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,6 +28,8 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
         currentList = RealmDataBase.shared.getCurrentList()
         tableView.reloadData()
     }
+    
+    //MARK: - TableView Settings
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lists.count
@@ -48,6 +52,8 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
+    //MARK - Creating new list
+    
     @IBAction func createNewList(_ sender: UIBarButtonItem) {
         let currentDate = Date()
         let newList = MyList(date: currentDate, isActive: true)
@@ -61,6 +67,8 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    //MARK - Handling tapping at done button
     
     func btnDoneTapped(cell: ListTableViewCell) {
         if cell.model.isActive == true {

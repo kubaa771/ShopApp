@@ -15,3 +15,8 @@ protocol NewProductProtocolDelegate {
 protocol DoneListButtonDelegate {
     func btnDoneTapped(cell: ListTableViewCell)
 }
+
+protocol buttonTappedDelegate: AnyObject {
+    func btnUPTapped(cell: CategoryTableViewCell)
+    func btnDOWNTapped(cell: CategoryTableViewCell)
+}

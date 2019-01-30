@@ -11,7 +11,7 @@ import CropViewController
 
 class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate {
     
-    //MARK - Model
+    //MARK: - Model
 
     @IBOutlet weak var addImage: UIImageView!
     @IBOutlet weak var addName: UITextField!
@@ -40,7 +40,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
         view.addGestureRecognizer(tap)
     }
     
-    //MARK - Setting PickerView
+    //MARK: - Setting PickerView
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return categories.count
@@ -60,7 +60,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     
-    //MARK - Setting TextFields
+    //MARK: - Setting TextFields
     
     @IBAction func addNewNameAction(_ sender: UITextField) {
         newName = sender.text!
@@ -84,7 +84,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
         newCategory = categories[0]
     }
     
-    //MARK - ImagePicker configuration
+    //MARK: - ImagePicker configuration
     
     @IBAction func addNewPhotoAction(_ sender: UIButton) {
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
@@ -110,7 +110,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
         view.endEditing(true)
     }
     
-    //MARK - Done, Protocol Segue
+    //MARK: - Done, Protocol Segue
     
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
         if newName != nil , newPrice != nil, newCategory != nil, !categories.contains(where: {$0.products.contains(where: {$0.name == newName})}) {

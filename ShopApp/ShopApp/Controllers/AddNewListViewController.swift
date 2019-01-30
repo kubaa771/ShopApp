@@ -29,7 +29,7 @@ class AddNewListViewController: UIViewController, UITableViewDelegate, UITableVi
         
     }
     
-    // MARK: - Table view data source
+    //MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if isFiltering() {
@@ -111,7 +111,7 @@ class AddNewListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     
-    //MARK - Searchbar settings
+    //MARK: - Searchbar settings
     
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)

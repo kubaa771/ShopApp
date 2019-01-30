@@ -8,12 +8,9 @@
 
 import UIKit
 
-protocol buttonTappedDelegate: AnyObject {
-    func btnUPTapped(cell: CategoryTableViewCell)
-    func btnDOWNTapped(cell: CategoryTableViewCell)
-}
-
 class CategoryTableViewCell: UITableViewCell {
+    
+    //MARK: - Model
 
     @IBOutlet weak var categoryLabel: UILabel!
     weak var delegate: buttonTappedDelegate?
@@ -36,6 +33,8 @@ class CategoryTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    //MARK: - Tapping at buttons UP, DOWN delegates
     
     @IBAction func upButtonAction(_ sender: UIButton) {
         delegate?.btnUPTapped(cell: self)

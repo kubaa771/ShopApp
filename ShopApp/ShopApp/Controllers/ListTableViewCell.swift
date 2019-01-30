@@ -10,6 +10,8 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
     
+    //MARK: Model
+    
     @IBOutlet weak var dataLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
     
@@ -28,6 +30,8 @@ class ListTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    //MARK: Button actions, customization
     
     @IBAction func doneButtonAction(_ sender: UIButton) {
         delegate?.btnDoneTapped(cell: self)

@@ -9,6 +9,8 @@
 import UIKit
 
 class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, buttonTappedDelegate {
+    
+    //MARK: - Model
    
     @IBOutlet weak var tableView: UITableView!
     
@@ -29,7 +31,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.reloadData()
     }
     
-    //MARK - Configuring TableView
+    //MARK: - Configuring TableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
@@ -55,7 +57,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    //MARK - Handling cell's buttons tapping
+    //MARK: - Handling cell's buttons tapping
     
     func btnUPTapped(cell: CategoryTableViewCell) {
         let indexPath = self.tableView.indexPath(for: cell)
@@ -81,7 +83,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    //MARK - Displaying alert
+    //MARK: - Displaying alert
     
     @IBAction func displayAlertAction(_ sender: UIBarButtonItem) {
         displayAlertWithTextField()

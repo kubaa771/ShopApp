@@ -11,6 +11,7 @@ import SDWebImage
 
 class ProductTableViewCell: UITableViewCell {
     
+    //MARK: - Model
     
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productImage: UIImageView!
@@ -30,6 +31,8 @@ class ProductTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    //MARK: - Cell customization
     
     func customize(product: Product) {
         productName.text = product.name

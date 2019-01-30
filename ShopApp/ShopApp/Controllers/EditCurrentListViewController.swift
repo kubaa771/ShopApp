@@ -10,7 +10,7 @@ import UIKit
 
 class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
-    //MARK - Model
+    //MARK: - Model
     
     var currentList: MyList!
     var categoriesWithProductsDict: [CategorySection:[Product]] = [:]
@@ -35,10 +35,13 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
         tableView.dataSource = self
     }
     
+    //MARK: - NotificationCenter action
+    
     @objc func listChangedNotification() {
         convertData()
     }
     
+    //MARK: - Button Animation
     
     func startAnimatingButton() {
         if animationEnded  && isHistory == false {
@@ -146,6 +149,8 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
             }, completion: nil)
         }
     }
+    
+    //MARK: - Starting animations
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         startAnimatingButton()

@@ -25,12 +25,4 @@ class MyList: Object {
         let contains = currentProducts.contains(productName)
         return contains
     }
-    
-
-    
-    /*override static func primaryKey() -> String? {
-     let dateFormatter = DateFormatter()
-     let stringKey = dateFormatter.string(from: date)
-     return "date"
-     }*/
 }
