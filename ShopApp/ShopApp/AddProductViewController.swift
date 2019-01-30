@@ -59,6 +59,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
         newCategory = categories[row]
     }
     
+    
     //MARK - Setting TextFields
     
     @IBAction func addNewNameAction(_ sender: UITextField) {
@@ -74,6 +75,13 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
         if sender.isEditing {
             newPrice = Double(sender.text!)
         }
+    }
+    
+    
+    
+    @IBAction func tappedAction(_ sender: UITextField) {
+        addCategory.text = categories[0].name
+        newCategory = categories[0]
     }
     
     //MARK - ImagePicker configuration

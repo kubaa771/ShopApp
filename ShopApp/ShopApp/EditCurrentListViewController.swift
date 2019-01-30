@@ -133,11 +133,12 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete && isHistory == false{
             let keySection = sortedKeys[indexPath.section]
+            let productsFromCategory = categoriesWithProductsDict[keySection]
             let product = categoriesWithProductsDict[keySection]![indexPath.row]
             tableView.performBatchUpdates({
                 RealmDataBase.shared.removeProduct(productName: product.name, fromList: currentList)
                 convertData()
-                if indexPath.row == 0 {
+                if indexPath.row == 0, productsFromCategory!.count < 2{
                     let indexSet = IndexSet(arrayLiteral: indexPath.section)
                     tableView.deleteSections(indexSet, with: .automatic)
                 }
