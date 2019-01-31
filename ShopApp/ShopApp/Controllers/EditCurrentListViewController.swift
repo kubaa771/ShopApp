@@ -82,10 +82,11 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
         if let currentProducts = currentList?.currentProducts {
             for productName in currentProducts {
                 if let productObj = RealmDataBase.shared.getProduct(byName: productName) {
-                    let productCat = productObj.category
-                    var categoryProductsArray = categoriesWithProductsDict[productCat!] ?? []
-                    categoryProductsArray.append(productObj)
-                    categoriesWithProductsDict[productCat!] = categoryProductsArray
+                    if let productCat = productObj.category {
+                        var categoryProductsArray = categoriesWithProductsDict[productCat] ?? []
+                        categoryProductsArray.append(productObj)
+                        categoriesWithProductsDict[productCat] = categoryProductsArray
+                    }
                     }
             }
             sortedKeys = categoriesWithProductsDict.keys.sorted { (left, right) -> Bool in
