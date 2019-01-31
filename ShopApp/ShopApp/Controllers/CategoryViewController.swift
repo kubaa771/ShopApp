@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import AMPopTip
 
-class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, buttonTappedDelegate {
+class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, buttonTappedDelegate, UIPopoverPresentationControllerDelegate {
     
     //MARK: - Model
    
     @IBOutlet weak var tableView: UITableView!
+    
     
     var currentList = RealmDataBase.shared.getCurrentList()
     var categories = RealmDataBase.shared.getCategories()
@@ -29,6 +31,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         currentList = RealmDataBase.shared.getCurrentList()
         categories = RealmDataBase.shared.getCategories()
         tableView.reloadData()
+        handlePopover()
     }
     
     //MARK: - Configuring TableView
@@ -112,6 +115,43 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @objc func textFieldDidChange(textF: UITextField) {
         newCategory = textF.text!
+    }
+    
+    func handlePopover() {
+        /*let popoverViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PopoverViewController")
+        popoverViewController.modalPresentationStyle = .popover
+        
+        let label = popoverViewController.view.viewWithTag(1) as! UILabel
+        let dismissBtn = popoverViewController.view.subviews[1] as! UIButton
+        let nextBtn = popoverViewController.view.subviews[2] as! UIButton
+        
+        label.text = "Test tooltip"
+        label.textAlignment = .center
+        
+        let height = label.heightForWidth(168)
+        popoverViewController.preferredContentSize = CGSize(width: 200, height: 150)
+        
+        let popover = popoverViewController.presentationController as! UIPopoverPresentationController
+        popover.sourceView = self.view
+        popover.delegate = self
+        popover.sourceRect = self.view.bounds
+        popover.permittedArrowDirections = [.down, .up]
+        
+        self.present(popoverViewController, animated: true, completion: nil)*/
+        
+        let frame: CGRect!
+        let rightBarButton = self.navigationItem.rightBarButtonItem
+        let buttonView = rightBarButton!.value(forKey: "view") as! UIView
+        frame = buttonView.superview?.frame
+        //buttonView.superview?.frame = (UIApplication.shared.keyWindow?.frame)!
+        print(frame)
+            
+        
+        let popTip = PopTip()
+        popTip.show(text: "Add new category!", direction: PopTipDirection.down, maxWidth: 200, in: view, from: frame)
+        UIApplication.shared.keyWindow?.addSubview(popTip)
+        
+        
     }
     
 }

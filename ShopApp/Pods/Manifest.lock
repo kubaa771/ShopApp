@@ -1,4 +1,5 @@
 PODS:
+  - AMPopTip (3.5.0)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - CropViewController (2.4.0)
@@ -63,6 +64,7 @@ PODS:
   - TPKeyboardAvoidingSwift (3.1)
 
 DEPENDENCIES:
+  - AMPopTip
   - Crashlytics (~> 3.12.0)
   - CropViewController
   - Fabric (~> 1.9.0)
@@ -73,6 +75,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AMPopTip
     - Crashlytics
     - CropViewController
     - Fabric
@@ -89,6 +92,7 @@ SPEC REPOS:
     - TPKeyboardAvoidingSwift
 
 SPEC CHECKSUMS:
+  AMPopTip: 871ae0570b68fe396e714922b3f7d8ed6a36bb71
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   CropViewController: a090820b15fc3da68e694d7c192a4708c576828b
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
@@ -104,6 +108,6 @@ SPEC CHECKSUMS:
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
   TPKeyboardAvoidingSwift: b518d6e0c325d62ef5bddb712f22852b41cd165c
 
-PODFILE CHECKSUM: 0e997368c652e331e6cb8c82efe127de147ca4d3
+PODFILE CHECKSUM: 813d17a3c3928d3f0b3938798d059fc7cf004e71
 
 COCOAPODS: 1.5.3
