@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self])
         let navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        navigationBarAppearance.barTintColor = #colorLiteral(red: 0, green: 0.5019607843, blue: 0.9725490196, alpha: 0)
+        navigationBarAppearance.barTintColor = #colorLiteral(red: 0, green: 0.4772997623, blue: 0.9254360754, alpha: 0)
         return true
     }
 
