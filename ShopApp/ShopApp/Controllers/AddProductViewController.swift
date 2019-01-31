@@ -33,6 +33,9 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addName.setBottomBorder()
+        addPrice.setBottomBorder()
+        addCategory.setBottomBorder()
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
         addCategory.inputView = pickerView
