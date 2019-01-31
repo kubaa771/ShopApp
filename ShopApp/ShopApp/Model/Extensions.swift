@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import AMPopTip
 
 extension UIImage {
     func toString() -> String? {
@@ -44,5 +45,38 @@ extension UILabel {
         label.text = self.text
         label.sizeToFit()
         return label.frame.height
+    }
+}
+
+final class FirstLaunch {
+    
+    let userDefaults: UserDefaults = .standard
+    
+    let wasLaunchedBefore: Bool
+    var isFirstLaunch: Bool {
+        return !wasLaunchedBefore
+    }
+    
+    init() {
+        let key = "com.any-suggestion.FirstLaunch.WasLaunchedBefore"
+        let wasLaunchedBefore = userDefaults.bool(forKey: key)
+        self.wasLaunchedBefore = wasLaunchedBefore
+        if !wasLaunchedBefore {
+            userDefaults.set(true, forKey: key)
+        }
+    }
+    
+}
+
+class PopTipClass {
+    static let shared = PopTipClass()
+    
+    func displayPopTipForFirstTime(with text: String, with direction: PopTipDirection , in view: UIView, from rect: CGRect) {
+        //let firstLaunch = FirstLaunch()
+        //if firstLaunch.isFirstLaunch {
+            let popTip = PopTip()
+            popTip.show(text: text, direction: direction, maxWidth: 200, in: view, from: rect)
+            UIApplication.shared.keyWindow?.addSubview(popTip)
+        //}
     }
 }

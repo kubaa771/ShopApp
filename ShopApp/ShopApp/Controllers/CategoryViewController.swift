@@ -144,13 +144,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         let buttonView = rightBarButton!.value(forKey: "view") as! UIView
         frame = buttonView.superview?.frame
         //buttonView.superview?.frame = (UIApplication.shared.keyWindow?.frame)!
-        print(frame)
-            
-        
-        let popTip = PopTip()
-        popTip.show(text: "Add new category!", direction: PopTipDirection.down, maxWidth: 200, in: view, from: frame)
-        UIApplication.shared.keyWindow?.addSubview(popTip)
-        
+        PopTipClass.shared.displayPopTipForFirstTime(with: "Add new category!", with: .down, in: view, from: frame)
         
     }
     
