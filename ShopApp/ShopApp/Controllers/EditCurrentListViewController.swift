@@ -33,6 +33,7 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
         buttonView.tappedClosure = addButtonActionClosure
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableFooterView = UIView()
     }
     
     //MARK: - NotificationCenter action

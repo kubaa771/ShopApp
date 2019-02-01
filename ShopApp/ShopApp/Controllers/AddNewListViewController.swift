@@ -25,7 +25,7 @@ class AddNewListViewController: UIViewController, UITableViewDelegate, UITableVi
         setupSearchController()
         tableView.delegate = self
         tableView.dataSource = self
-        //RealmDataBase.init()
+        tableView.tableFooterView = UIView()
         
     }
     
@@ -122,6 +122,9 @@ class AddNewListViewController: UIViewController, UITableViewDelegate, UITableVi
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Products"
         navigationItem.searchController = searchController
+       
+        searchController.searchBar.tintColor = .white
+        searchController.searchBar.setImage(UIImage(named: "search.png"), for: .search, state: .normal)
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
     }
