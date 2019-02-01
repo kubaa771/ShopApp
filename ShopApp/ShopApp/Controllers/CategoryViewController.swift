@@ -9,7 +9,7 @@
 import UIKit
 import AMPopTip
 
-class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, buttonTappedDelegate, UIPopoverPresentationControllerDelegate {
+class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, buttonTappedDelegate{
     
     //MARK: - Model
    
@@ -132,28 +132,5 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         
     }
     
-    @objc func dismissPopover() {
-        self.dismiss(animated: true, completion: nil)
-    }
     
-    @objc func nextPopover() {
-        //let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductTableViewController")
-        //handlePopover()
-        print("asd")
-    }
-    
-    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
-        
-    }
-    
-    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
-        return true
-    }
-    func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
-        
-    }
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
-    }
 }
