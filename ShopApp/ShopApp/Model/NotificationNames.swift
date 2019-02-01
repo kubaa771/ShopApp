@@ -11,6 +11,8 @@ import Foundation
 enum NotificationNames: String {
     case applyProduct = "applyProduct"
     case listChanged = "listChanged"
+    case handlePopoverFirst = "handlePopoverFirst"
+    case handlePopoverSecond = "handlePopoverSecond"
     
     var notification: Notification.Name {
         return Notification.Name(self.rawValue)

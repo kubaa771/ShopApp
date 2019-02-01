@@ -11,8 +11,19 @@ import UIKit
 class PopoverManager: NSObject {
     
     static let shared = PopoverManager()
+    weak var currentViewController: UIViewController!
+    weak var currentView: UIView!
+    var iterator = 0
+    var handlerBlock: (Bool) -> Void = { done in
+        if done {
+            NotificationCenter.default.post(name: NotificationNames.handlePopoverSecond.notification, object: nil)
+        }
+    }
 
-    func handlePopover(viewController: UIViewController, view: UIView) {
+    func handlePopover(viewController: UIViewController, view: UIView, labelText: String) {
+        currentViewController = viewController
+        currentView = view
+        iterator += 1
         let popoverViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PopoverViewController")
         popoverViewController.modalPresentationStyle = .popover
         
@@ -21,7 +32,7 @@ class PopoverManager: NSObject {
         
         nextBtn.addTarget(self, action: #selector(nextPopover), for: .touchUpInside)
         
-        label.text = "Test tooltip"
+        label.text = labelText
         label.textAlignment = .center
         
         let height = label.heightForWidth(168)
@@ -37,12 +48,24 @@ class PopoverManager: NSObject {
 
     }
     
+    
     @objc func nextPopover() {
-        //let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductTableViewController")
-        //handlePopover()
+        currentViewController.dismiss(animated: true, completion: nil)
+        if iterator == 1 {
+            if let tabBarController = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController {
+                tabBarController.selectedIndex = 0
+                NotificationCenter.default.post(name: NotificationNames.handlePopoverFirst.notification, object: nil)
+            }
+        } else {
+            if let tabBarController = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController {
+                tabBarController.selectedIndex = 2
+                iterator = 0
+            }
+        }
+        
+        //tabBarController?.selectedIndex = 0
         
     }
-    
     
 }
 

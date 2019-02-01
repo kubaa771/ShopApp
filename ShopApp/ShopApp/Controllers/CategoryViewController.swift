@@ -121,7 +121,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         let rightBarButton = self.navigationItem.rightBarButtonItem
         let buttonView = rightBarButton!.value(forKey: "view") as! UIView
         
-        PopoverManager.shared.handlePopover(viewController: self, view: buttonView)
+        PopoverManager.shared.handlePopover(viewController: self, view: buttonView, labelText: "Here you can add some new categories!")
         
         /*let frame: CGRect!
         let rightBarButton = self.navigationItem.rightBarButtonItem

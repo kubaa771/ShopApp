@@ -24,9 +24,18 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(handlePopover), name: NotificationNames.handlePopoverSecond.notification, object: nil)
+        PopoverManager.shared.handlerBlock(true)
         lists = RealmDataBase.shared.getLists()
         currentList = RealmDataBase.shared.getCurrentList()
         tableView.reloadData()
+    }
+    
+    
+    @objc func handlePopover() {
+        let rightBarButton = self.navigationItem.rightBarButtonItem
+        let buttonView = rightBarButton!.value(forKey: "view") as! UIView
+        PopoverManager.shared.handlePopover(viewController: self, view: buttonView, labelText: "After you are done adding new products and categories, here you can create new shopping list and add these to the list!")
     }
     
     //MARK: - TableView Settings

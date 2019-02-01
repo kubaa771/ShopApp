@@ -28,8 +28,15 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(handlePopover), name: NotificationNames.handlePopoverFirst.notification, object: nil)
         tableView.reloadData()
         
+    }
+    
+    @objc func handlePopover() {
+        let rightBarButton = self.navigationItem.rightBarButtonItem
+        let buttonView = rightBarButton!.value(forKey: "view") as! UIView
+        PopoverManager.shared.handlePopover(viewController: self, view: buttonView, labelText: "Here you can add some new products with the categories you created earlier!")
     }
     
     // MARK: - Table view data source

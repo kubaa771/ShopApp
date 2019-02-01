@@ -26,6 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearance.barTintColor = #colorLiteral(red: 0, green: 0.4772997623, blue: 0.9254360754, alpha: 0)
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search product", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        /*if let tabBarController = self.window!.rootViewController as? UITabBarController {
+            tabBarController.selectedIndex = 1
+        }*/
+
         return true
     }
 
