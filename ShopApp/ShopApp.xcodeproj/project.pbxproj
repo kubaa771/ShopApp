@@ -32,7 +32,7 @@
 		F992D4CF21F89FCB00BA632C /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = F992D4CE21F89FCB00BA632C /* NotificationNames.swift */; };
 		F992D4D121F8A3DB00BA632C /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F992D4D021F8A3DB00BA632C /* Protocols.swift */; };
 		F992D4D321F8AD1400BA632C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F992D4D221F8AD1400BA632C /* Extensions.swift */; };
-		F9940EF02203253C007FAD38 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9940EEF2203253C007FAD38 /* PopoverViewController.swift */; };
+		F9940EF02203253C007FAD38 /* PopoverMenager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9940EEF2203253C007FAD38 /* PopoverMenager.swift */; };
 		F9A36E8022005AD5009903AA /* FloatingButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9A36E7F22005AD5009903AA /* FloatingButtonView.xib */; };
 		F9A36E8222005CFA009903AA /* FloatingButtonViewClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A36E8122005CFA009903AA /* FloatingButtonViewClass.swift */; };
 		F9C5353521FB19B8001B23AB /* RealmDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C5353421FB19B8001B23AB /* RealmDataBase.swift */; };
@@ -92,7 +92,7 @@
 		F992D4CE21F89FCB00BA632C /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 		F992D4D021F8A3DB00BA632C /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		F992D4D221F8AD1400BA632C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		F9940EEF2203253C007FAD38 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		F9940EEF2203253C007FAD38 /* PopoverMenager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenager.swift; sourceTree = "<group>"; };
 		F9A36E7F22005AD5009903AA /* FloatingButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FloatingButtonView.xib; sourceTree = "<group>"; };
 		F9A36E8122005CFA009903AA /* FloatingButtonViewClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtonViewClass.swift; sourceTree = "<group>"; };
 		F9C5353421FB19B8001B23AB /* RealmDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataBase.swift; sourceTree = "<group>"; };
@@ -217,7 +217,6 @@
 				F90B172921F742BC00965049 /* ProductTableViewController.swift */,
 				F90B172B21F7437B00965049 /* ProductTableViewCell.swift */,
 				F93A8DFC21F76B9A00ACC47D /* AddProductViewController.swift */,
-				F9940EEF2203253C007FAD38 /* PopoverViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -250,6 +249,7 @@
 				F992D4CC21F876F800BA632C /* CategorySection.swift */,
 				F928CABE21F8627E00B66EE0 /* Product.swift */,
 				F9273B2321FEF79900191839 /* MyList.swift */,
+				F9940EEF2203253C007FAD38 /* PopoverMenager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -519,7 +519,7 @@
 				F9C5353521FB19B8001B23AB /* RealmDataBase.swift in Sources */,
 				F928CABF21F8627E00B66EE0 /* Product.swift in Sources */,
 				F992D4D121F8A3DB00BA632C /* Protocols.swift in Sources */,
-				F9940EF02203253C007FAD38 /* PopoverViewController.swift in Sources */,
+				F9940EF02203253C007FAD38 /* PopoverMenager.swift in Sources */,
 				F90B172821F7428200965049 /* ListTableViewController.swift in Sources */,
 				F93A8DFD21F76B9A00ACC47D /* AddProductViewController.swift in Sources */,
 				F9273B2621FF250100191839 /* AddNewListViewController.swift in Sources */,

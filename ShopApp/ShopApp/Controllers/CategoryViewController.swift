@@ -118,34 +118,42 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func handlePopover() {
-        /*let popoverViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PopoverViewController")
-        popoverViewController.modalPresentationStyle = .popover
+        let rightBarButton = self.navigationItem.rightBarButtonItem
+        let buttonView = rightBarButton!.value(forKey: "view") as! UIView
         
-        let label = popoverViewController.view.viewWithTag(1) as! UILabel
-        let dismissBtn = popoverViewController.view.subviews[1] as! UIButton
-        let nextBtn = popoverViewController.view.subviews[2] as! UIButton
+        PopoverManager.shared.handlePopover(viewController: self, view: buttonView)
         
-        label.text = "Test tooltip"
-        label.textAlignment = .center
-        
-        let height = label.heightForWidth(168)
-        popoverViewController.preferredContentSize = CGSize(width: 200, height: 150)
-        
-        let popover = popoverViewController.presentationController as! UIPopoverPresentationController
-        popover.sourceView = self.view
-        popover.delegate = self
-        popover.sourceRect = self.view.bounds
-        popover.permittedArrowDirections = [.down, .up]
-        
-        self.present(popoverViewController, animated: true, completion: nil)*/
-        
-        let frame: CGRect!
+        /*let frame: CGRect!
         let rightBarButton = self.navigationItem.rightBarButtonItem
         let buttonView = rightBarButton!.value(forKey: "view") as! UIView
         frame = buttonView.superview?.frame
         //buttonView.superview?.frame = (UIApplication.shared.keyWindow?.frame)!
-        PopTipClass.shared.displayPopTipForFirstTime(with: "Add new category!", with: .down, in: view, from: frame)
+        PopTipClass.shared.displayPopTipForFirstTime(with: "Add new category!", with: .down, in: view, from: frame)*/
         
     }
     
+    @objc func dismissPopover() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func nextPopover() {
+        //let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductTableViewController")
+        //handlePopover()
+        print("asd")
+    }
+    
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        
+    }
+    
+    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        return true
+    }
+    func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
+        
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
 }
