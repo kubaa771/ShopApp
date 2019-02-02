@@ -16,6 +16,12 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     var lists = RealmDataBase.shared.getLists()
     var currentList = RealmDataBase.shared.getCurrentList()
+    var listsSortedSection = [TableSection: [MyList]]()
+    
+    func sortListsToSections() {
+        listsSortedSection[.Active] = lists.filter {$0.isActive == true}
+        listsSortedSection[.History] = lists.filter {$0.isActive == false}
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +31,10 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(handlePopover), name: NotificationNames.handlePopoverSecond.notification, object: nil)
-        PopoverManager.shared.handlerBlock(true)
-        lists = RealmDataBase.shared.getLists()
+        if PopoverManager.shared.iterator == 2 {
+            PopoverManager.shared.handlerBlock(true)
+        }
+        sortListsToSections()
         currentList = RealmDataBase.shared.getCurrentList()
         tableView.reloadData()
     }
@@ -38,15 +46,47 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
         PopoverManager.shared.handlePopover(viewController: self, view: buttonView, labelText: "After you are done adding new products and categories, here you can create new shopping list and add these to the list!")
     }
     
+    enum TableSection: Int {
+        case Active = 0, History
+    }
+    
     //MARK: - TableView Settings
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return lists.count
+        if let tableSection = TableSection(rawValue: section), let data = listsSortedSection[tableSection], data.count > 0 {
+            return data.count
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 25
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var text = ""
+        if let tableSection = TableSection(rawValue: section){
+            switch tableSection {
+            case .Active:
+                text = "Active"
+            case .History:
+                text = "History"
+            }
+        }
+        
+        return text
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! ListTableViewCell
-        cell.model = lists[indexPath.row]
+        if let tableSection = TableSection(rawValue: indexPath.section), let data = listsSortedSection[tableSection]?[indexPath.row] {
+            cell.model = data
+        }
+        //cell.model = lists[indexPath.row]
         cell.delegate = self
         return cell
     }
@@ -55,6 +95,7 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
         if editingStyle == .delete {
             let listToDelete = lists[indexPath.row]
             RealmDataBase.shared.delete(list: listToDelete)
+            sortListsToSections()
             self.tableView?.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
             self.tableView?.endUpdates()

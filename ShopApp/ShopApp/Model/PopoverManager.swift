@@ -58,7 +58,7 @@ class PopoverManager: NSObject {
                 tabBarController.selectedIndex = 0
                 NotificationCenter.default.post(name: NotificationNames.handlePopoverFirst.notification, object: nil)
             }
-        } else {
+        } else if iterator == 2{
             if let tabBarController = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController {
                 tabBarController.selectedIndex = 2
             }

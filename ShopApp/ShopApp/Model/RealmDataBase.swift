@@ -82,6 +82,7 @@ class RealmDataBase {
     
     func addNewList(list: MyList) {
         try! realm.write {
+            list.isActive = true
             realm.add(list)
         }
     }
