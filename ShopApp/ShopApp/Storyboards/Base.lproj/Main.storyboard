@@ -203,7 +203,7 @@
                         <viewLayoutGuide key="safeArea" id="WwL-hX-LwN"/>
                     </view>
                     <navigationItem key="navigationItem" id="0M4-3J-9Zf">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="n7m-UZ-fCh">
+                        <barButtonItem key="rightBarButtonItem" image="addbadge" style="done" id="n7m-UZ-fCh">
                             <connections>
                                 <segue destination="npS-qF-I9d" kind="show" identifier="createNewProduct" id="bvX-Ov-zda"/>
                             </connections>
@@ -822,6 +822,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="addbadge" width="22.5" height="22.5"/>
         <image name="camera" width="30" height="30"/>
         <image name="checked1" width="30" height="30"/>
         <image name="create_new" width="30" height="30"/>

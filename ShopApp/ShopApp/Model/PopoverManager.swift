@@ -21,30 +21,32 @@ class PopoverManager: NSObject {
     }
 
     func handlePopover(viewController: UIViewController, view: UIView, labelText: String) {
-        currentViewController = viewController
-        currentView = view
-        iterator += 1
-        let popoverViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PopoverViewController")
-        popoverViewController.modalPresentationStyle = .popover
-        
-        let label = popoverViewController.view.viewWithTag(1) as! UILabel
-        let nextBtn = popoverViewController.view.viewWithTag(2) as! UIButton//subviews[1] as! UIButton
-        
-        nextBtn.addTarget(self, action: #selector(nextPopover), for: .touchUpInside)
-        
-        label.text = labelText
-        label.textAlignment = .center
-        
-        let height = label.heightForWidth(168)
-        popoverViewController.preferredContentSize = CGSize(width: 200, height: height + 80)
-        
-        let popover = popoverViewController.presentationController as! UIPopoverPresentationController
-        popover.sourceView = view//?
-        popover.delegate = self
-        popover.sourceRect = view.bounds //?
-        popover.permittedArrowDirections = [.down, .up]
-        
-        viewController.present(popoverViewController, animated: true, completion: nil)
+        if iterator <= 2 {
+            currentViewController = viewController
+            currentView = view
+            iterator += 1
+            let popoverViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PopoverViewController")
+            popoverViewController.modalPresentationStyle = .popover
+            
+            let label = popoverViewController.view.viewWithTag(1) as! UILabel
+            let nextBtn = popoverViewController.view.viewWithTag(2) as! UIButton//subviews[1] as! UIButton
+            
+            nextBtn.addTarget(self, action: #selector(nextPopover), for: .touchUpInside)
+            
+            label.text = labelText
+            label.textAlignment = .center
+            
+            let height = label.heightForWidth(168)
+            popoverViewController.preferredContentSize = CGSize(width: 200, height: height + 80)
+            
+            let popover = popoverViewController.presentationController as! UIPopoverPresentationController
+            popover.sourceView = view//?
+            popover.delegate = self
+            popover.sourceRect = view.bounds //?
+            popover.permittedArrowDirections = [.down, .up]
+            
+            viewController.present(popoverViewController, animated: true, completion: nil)
+        }
 
     }
     
@@ -59,7 +61,6 @@ class PopoverManager: NSObject {
         } else {
             if let tabBarController = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController {
                 tabBarController.selectedIndex = 2
-                iterator = 0
             }
         }
         
