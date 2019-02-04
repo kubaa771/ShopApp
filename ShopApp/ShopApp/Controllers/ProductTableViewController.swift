@@ -30,6 +30,9 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(handlePopover), name: NotificationNames.handlePopoverFirst.notification, object: nil)
+        if PopoverManager.shared.iterator == 1 {
+            PopoverManager.shared.handlerBlock(true)
+        }
         tableView.reloadData()
         
     }

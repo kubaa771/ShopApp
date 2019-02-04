@@ -16,7 +16,7 @@ class PopoverManager: NSObject {
     var iterator = 0
     var handlerBlock: (Bool) -> Void = { done in
         if done {
-            NotificationCenter.default.post(name: NotificationNames.handlePopoverSecond.notification, object: nil)
+            NotificationCenter.default.post(name: NotificationNames.handlePopoverFirst.notification, object: nil)
         }
     }
 
@@ -56,11 +56,12 @@ class PopoverManager: NSObject {
         if iterator == 1 {
             if let tabBarController = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController {
                 tabBarController.selectedIndex = 0
-                NotificationCenter.default.post(name: NotificationNames.handlePopoverFirst.notification, object: nil)
+                
             }
         } else if iterator == 2{
             if let tabBarController = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController {
                 tabBarController.selectedIndex = 2
+                NotificationCenter.default.post(name: NotificationNames.handlePopoverSecond.notification, object: nil)
             }
         }
         

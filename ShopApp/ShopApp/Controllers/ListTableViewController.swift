@@ -31,9 +31,6 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(handlePopover), name: NotificationNames.handlePopoverSecond.notification, object: nil)
-        if PopoverManager.shared.iterator == 2 {
-            PopoverManager.shared.handlerBlock(true)
-        }
         sortListsToSections()
         currentList = RealmDataBase.shared.getCurrentList()
         tableView.reloadData()
