@@ -93,8 +93,11 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let listToDelete = lists[indexPath.row]
-            RealmDataBase.shared.delete(list: listToDelete)
+            if let tableSection = TableSection(rawValue: indexPath.section), let data = listsSortedSection[tableSection]?[indexPath.row] {
+                let listToDelete = data
+                RealmDataBase.shared.delete(list: listToDelete)
+            }
+            
             sortListsToSections()
             self.tableView?.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)

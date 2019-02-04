@@ -80,6 +80,17 @@ class RealmDataBase {
         }
     }
     
+    func edit(product: Product, name: String, price: Double, categoryToAdd: CategorySection, categoryToDelete: CategorySection, productIndex: Int , imageData: NSData?) {
+        try! realm.write {
+            categoryToDelete.products.remove(at: productIndex)
+            product.name = name
+            product.price = price
+            product.category = categoryToAdd
+            product.imageData = imageData
+            categoryToAdd.products.append(product)
+        }
+    }
+    
     func addNewList(list: MyList) {
         try! realm.write {
             list.isActive = true
@@ -112,21 +123,21 @@ class RealmDataBase {
     
     func addProduct(product: Product, toList list: MyList) {
         try! realm.write {
-            list.currentProducts.append(product.name)
+            list.currentProducts.append(product.uuid)
         }
         NotificationCenter.default.post(name: NotificationNames.listChanged.notification, object: nil)
     }
     
-    func removeProduct(productName: String, fromList list: MyList) {
+    func removeProduct(productId: String, fromList list: MyList) {
         try! realm.write {
-            let productIndex = list.currentProducts.index(of: productName)
+            let productIndex = list.currentProducts.index(of: productId)
             list.currentProducts.remove(at: productIndex!)
         }
         NotificationCenter.default.post(name: NotificationNames.listChanged.notification, object: nil)
     }
     
-    func getProduct(byName name: String) -> Product? {
-        let currentProduct = realm.object(ofType: Product.self, forPrimaryKey: name)
+    func getProduct(byId id: String) -> Product? {
+        let currentProduct = realm.object(ofType: Product.self, forPrimaryKey: id)
         return currentProduct
     }
     

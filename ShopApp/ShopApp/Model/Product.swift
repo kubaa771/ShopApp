@@ -15,14 +15,16 @@ class Product: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var category: CategorySection?
     @objc dynamic var price: Double = 0.0
+    @objc dynamic var uuid = UUID().uuidString
     
     @objc dynamic var imageData: NSData!
     
-    convenience init(name: String, category: CategorySection, price: Double, urlS: String?, image: UIImage?) {
+    convenience init(name: String, category: CategorySection, price: Double, urlS: String?, image: UIImage?, id: String) {
         self.init()
         self.name = name
         self.category = category
         self.price = price
+        self.uuid = id
         
         if let image = image {
             let data = NSData(data: image.jpegData(compressionQuality: 0.9)!)
@@ -31,6 +33,6 @@ class Product: Object {
     }
     
     override static func primaryKey() -> String? {
-        return "name"
+        return "uuid"
     }
 }

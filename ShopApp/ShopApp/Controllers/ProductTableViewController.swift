@@ -23,6 +23,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
+        navigationItem.leftBarButtonItem = editButtonItem
         //RealmDataBase.init()
 
     }
@@ -81,6 +82,15 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(!isEditing, animated: true)
+        tableView.setEditing(!tableView.isEditing, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let tableSection = categories[indexPath.section]
@@ -90,6 +100,21 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
             tableView.deleteRows(at: [indexPath], with: .automatic)
             self.tableView?.endUpdates()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let tableSection = categories[indexPath.section]
+        let product = tableSection.products[indexPath.row]
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditProductViewController") as! EditProductViewController
+        vc.currentProduct = product
+        vc.currentImage = UIImage(data: product.imageData as Data)
+        vc.currentImageData = product.imageData
+        vc.currentName = product.name
+        vc.currentPrice = product.price
+        vc.currentCategory = product.category
+        vc.oldCategory = product.category
+        vc.productIndex = indexPath.row
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     //MARK: - Adding new product
@@ -102,13 +127,15 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     //MARK: - Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if categories.isEmpty {
-            let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("You should add some categories first!", comment: ""), preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            present(alert, animated: true)
-        } else if segue.identifier == "createNewProduct" {
-            let vc: AddProductViewController = segue.destination as! AddProductViewController
-            vc.delegate = self
+        if segue.identifier == "createNewProduct" {
+            if categories.isEmpty {
+                let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("You should add some categories first!", comment: ""), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                present(alert, animated: true)
+            } else {
+                let vc: AddProductViewController = segue.destination as! AddProductViewController
+                vc.delegate = self
+            }
         }
     }
     

@@ -81,8 +81,8 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
     func convertData() {
         categoriesWithProductsDict.removeAll()
         if let currentProducts = currentList?.currentProducts {
-            for productName in currentProducts {
-                if let productObj = RealmDataBase.shared.getProduct(byName: productName) {
+            for uniqueID in currentProducts {
+                if let productObj = RealmDataBase.shared.getProduct(byId: uniqueID) {
                     if let productCat = productObj.category {
                         var categoryProductsArray = categoriesWithProductsDict[productCat] ?? []
                         categoryProductsArray.append(productObj)
@@ -141,7 +141,7 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
             let productsFromCategory = categoriesWithProductsDict[keySection]
             let product = categoriesWithProductsDict[keySection]![indexPath.row]
             tableView.performBatchUpdates({
-                RealmDataBase.shared.removeProduct(productName: product.name, fromList: currentList)
+                RealmDataBase.shared.removeProduct(productId: product.uuid, fromList: currentList)
                 convertData()
                 if indexPath.row == 0, productsFromCategory!.count < 2{
                     let indexSet = IndexSet(arrayLiteral: indexPath.section)
@@ -158,14 +158,23 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
         startAnimatingButton()
     }
     
+    //MARK: - Done button action
+    
     @IBAction func doneButtonAction(_ sender: UIBarButtonItem) {
         if isHistory {
             let duplicateList = RealmDataBase.shared.duplicate(list: currentList)
             RealmDataBase.shared.addNewList(list: duplicateList)
+            self.navigationController?.popViewController(animated: true)
         } else {
-            RealmDataBase.shared.editList(list: currentList)
+            let alert = UIAlertController(title: NSLocalizedString("Are u sure?", comment: ""), message: NSLocalizedString("Do you want to end editing current list?", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: { (action) in
+                RealmDataBase.shared.editList(list: self.currentList)
+                self.navigationController?.popViewController(animated: true)
+            }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
+            present(alert, animated: true)
         }
-        self.navigationController?.popViewController(animated: true)
+        
     }
     
     

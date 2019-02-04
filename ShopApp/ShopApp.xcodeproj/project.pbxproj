@@ -23,6 +23,7 @@
 		F90B172C21F7437B00965049 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90B172B21F7437B00965049 /* ProductTableViewCell.swift */; };
 		F9221F5C22082E56008FFAE7 /* Localizable+UIView+ Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9221F5B22082E56008FFAE7 /* Localizable+UIView+ Extenstions.swift */; };
 		F9221F6822083084008FFAE7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F9221F6622083084008FFAE7 /* Localizable.strings */; };
+		F9221F6D220850B0008FFAE7 /* EditProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9221F6C220850B0008FFAE7 /* EditProductViewController.swift */; };
 		F9273B2421FEF79900191839 /* MyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9273B2321FEF79900191839 /* MyList.swift */; };
 		F9273B2621FF250100191839 /* AddNewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9273B2521FF250100191839 /* AddNewListViewController.swift */; };
 		F9273B2821FF3A5600191839 /* EditCurrentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9273B2721FF3A5600191839 /* EditCurrentListViewController.swift */; };
@@ -86,6 +87,7 @@
 		F9221F5B22082E56008FFAE7 /* Localizable+UIView+ Extenstions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Localizable+UIView+ Extenstions.swift"; path = "../../../TestWeather/TestWeather/Localizable+UIView+ Extenstions.swift"; sourceTree = "<group>"; };
 		F9221F6722083084008FFAE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F9221F6B220830B0008FFAE7 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F9221F6C220850B0008FFAE7 /* EditProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditProductViewController.swift; path = ShopApp/Controllers/EditProductViewController.swift; sourceTree = SOURCE_ROOT; };
 		F9273B2321FEF79900191839 /* MyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyList.swift; sourceTree = "<group>"; };
 		F9273B2521FF250100191839 /* AddNewListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewListViewController.swift; sourceTree = "<group>"; };
 		F9273B2721FF3A5600191839 /* EditCurrentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCurrentListViewController.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				F9273B2721FF3A5600191839 /* EditCurrentListViewController.swift */,
 				F90B172921F742BC00965049 /* ProductTableViewController.swift */,
 				F90B172B21F7437B00965049 /* ProductTableViewCell.swift */,
+				F9221F6C220850B0008FFAE7 /* EditProductViewController.swift */,
 				F93A8DFC21F76B9A00ACC47D /* AddProductViewController.swift */,
 			);
 			path = Controllers;
@@ -537,6 +540,7 @@
 				F992D4D321F8AD1400BA632C /* Extensions.swift in Sources */,
 				F928CABC21F8617E00B66EE0 /* CategoryTableViewCell.swift in Sources */,
 				F9221F5C22082E56008FFAE7 /* Localizable+UIView+ Extenstions.swift in Sources */,
+				F9221F6D220850B0008FFAE7 /* EditProductViewController.swift in Sources */,
 				F992D4CF21F89FCB00BA632C /* NotificationNames.swift in Sources */,
 				F90B172A21F742BC00965049 /* ProductTableViewController.swift in Sources */,
 				8AF9DC1121FA046E0040AA86 /* ListTableViewCell.swift in Sources */,

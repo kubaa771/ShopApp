@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tabBarController.tabBar.items?[0].title = NSLocalizedString("Products", comment: "")
             tabBarController.tabBar.items?[1].title = NSLocalizedString("Categories", comment: "")
             tabBarController.tabBar.items?[2].title = NSLocalizedString("Lists", comment: "")
+            tabBarController.selectedIndex = 2
         }
 
         return true

@@ -83,7 +83,7 @@ class AddNewListViewController: UIViewController, UITableViewDelegate, UITableVi
             product = tableSection.products[indexPath.row]
         }
         cell.model = product
-        if currentList.containsProduct(productName: product.name) {
+        if currentList.containsProduct(productId: product.uuid) {
             cell.checkedImageView.isHidden = false
         } else {
             cell.checkedImageView.isHidden = true
@@ -101,8 +101,8 @@ class AddNewListViewController: UIViewController, UITableViewDelegate, UITableVi
         } else {
             product = tableSection.products[indexPath.row]
         }
-        if currentList.containsProduct(productName: product.name) {
-            RealmDataBase.shared.removeProduct(productName: product.name , fromList: currentList)
+        if currentList.containsProduct(productId: product.uuid) {
+            RealmDataBase.shared.removeProduct(productId: product.uuid , fromList: currentList)
         } else {
             RealmDataBase.shared.addProduct(product: product, toList: currentList)
         }

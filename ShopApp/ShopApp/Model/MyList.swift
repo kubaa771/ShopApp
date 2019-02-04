@@ -21,8 +21,8 @@ class MyList: Object {
         self.isActive = isActive
     }
     
-    func containsProduct(productName: String) -> Bool{
-        let contains = currentProducts.contains(productName)
+    func containsProduct(productId: String) -> Bool{
+        let contains = currentProducts.contains(productId)
         return contains
     }
 }

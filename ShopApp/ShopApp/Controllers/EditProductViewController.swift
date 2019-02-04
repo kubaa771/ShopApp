@@ -1,5 +1,5 @@
 //
-//  AddProductViewController.swift
+//  EditProductViewController.swift
 //  ShopApp
 //
 //  Created by user on 22/01/2019.
@@ -9,10 +9,10 @@
 import UIKit
 import CropViewController
 
-class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate {
+class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate {
     
     //MARK: - Model
-
+    
     @IBOutlet weak var addImage: UIImageView!
     @IBOutlet weak var addName: UITextField!
     @IBOutlet weak var addPrice: UITextField!
@@ -20,20 +20,24 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     var pickerView = UIPickerView()
     var categories = RealmDataBase.shared.getCategories()
-    var products = RealmDataBase.shared.getProducts()
     
     var imagePicker: UIImagePickerController!
     
     var defaultImage = UIImage(named: "shop")
-    var newImage: UIImage?
-    var newName: String?
-    var newPrice: Double?
-    var newCategory: CategorySection?
+    var currentProduct: Product!
+    var currentImage: UIImage?
+    var currentImageData: NSData?
+    var currentName: String!
+    var currentPrice: Double!
+    var oldCategory: CategorySection!
+    var currentCategory: CategorySection?
+    var productIndex: Int!
     
     var delegate: NewProductProtocolDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupFieldsWithCurrentInfo()
         addName.setBottomBorder()
         addPrice.setBottomBorder()
         addCategory.setBottomBorder()
@@ -42,6 +46,15 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
         addCategory.inputView = pickerView
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
+    }
+    
+    func setupFieldsWithCurrentInfo() {
+        addName.text = currentName
+        addPrice.text = String(currentPrice)
+        addCategory.text = currentCategory?.name
+        if currentImage != nil{
+            addImage.image = currentImage
+        }
     }
     
     //MARK: - Setting PickerView
@@ -60,24 +73,24 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         addCategory.text = categories[row].name
-        newCategory = categories[row]
+        currentCategory = categories[row]
     }
     
     
     //MARK: - Setting TextFields
     
     @IBAction func addNewNameAction(_ sender: UITextField) {
-        newName = sender.text!
+        currentName = sender.text!
         if sender.isEditing {
-            newName = sender.text!
+            currentName = sender.text!
         }
     }
     
     
     @IBAction func addNewPriceAction(_ sender: UITextField) {
-        newPrice = Double(sender.text!)
+        currentPrice = Double(sender.text!)
         if sender.isEditing {
-            newPrice = Double(sender.text!)
+            currentPrice = Double(sender.text!)
         }
     }
     
@@ -85,7 +98,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     @IBAction func tappedAction(_ sender: UITextField) {
         addCategory.text = categories[0].name
-        newCategory = categories[0]
+        currentCategory = categories[0]
     }
     
     //MARK: - ImagePicker configuration
@@ -116,20 +129,13 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     //MARK: - Done, Protocol Segue
     
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
-        if newName != nil , newPrice != nil, newCategory != nil, !categories.contains(where: {$0.products.contains(where: {$0.name == newName})}), !products.contains(where: {$0.name == newName}) {
-            let newProduct = Product(name: newName ?? "", category: newCategory!, price: newPrice ?? 0.0, urlS: nil, image: newImage ?? defaultImage, id: UUID().uuidString)
-            delegate?.addNewProduct(product: newProduct, category: newCategory!)
-            self.navigationController?.popViewController(animated: true)
-        } else {
-            let alert = UIAlertController.init(title: NSLocalizedString("Alert", comment: ""), message: NSLocalizedString("Please check all the fields!", comment: ""), preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            present(alert, animated: true)
-        }
+        RealmDataBase.shared.edit(product: currentProduct, name: currentName, price: currentPrice, categoryToAdd: currentCategory!, categoryToDelete: oldCategory, productIndex: productIndex, imageData: currentImageData)
+        navigationController?.popViewController(animated: true)
     }
     
 }
 
-extension AddProductViewController: UIImagePickerControllerDelegate, CropViewControllerDelegate {
+extension EditProductViewController: UIImagePickerControllerDelegate, CropViewControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         imagePicker.dismiss(animated: true, completion: nil)
@@ -147,14 +153,10 @@ extension AddProductViewController: UIImagePickerControllerDelegate, CropViewCon
     }
     
     func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
-        newImage = image
+        currentImage = image
         addImage.image = image
         dismiss(animated: true, completion: nil)
     }
     
 }
 
-enum ImageSource {
-    case photoLibrary
-    case camera
-}
