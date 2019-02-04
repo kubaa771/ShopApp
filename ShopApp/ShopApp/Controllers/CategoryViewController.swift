@@ -118,10 +118,12 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func handlePopover() {
-        let rightBarButton = self.navigationItem.rightBarButtonItem
-        let buttonView = rightBarButton!.value(forKey: "view") as! UIView
-        
-        PopoverManager.shared.handlePopover(viewController: self, view: buttonView, labelText: NSLocalizedString("Here you can add some new categories!", comment: ""))
+        let firstLaunch = FirstLaunch()
+        if firstLaunch.isFirstLaunch {
+            let rightBarButton = self.navigationItem.rightBarButtonItem
+            let buttonView = rightBarButton!.value(forKey: "view") as! UIView
+            PopoverManager.shared.handlePopover(viewController: self, view: buttonView, labelText: NSLocalizedString("Here you can add some new categories!", comment: ""))
+        }
         
         /*let frame: CGRect!
         let rightBarButton = self.navigationItem.rightBarButtonItem
