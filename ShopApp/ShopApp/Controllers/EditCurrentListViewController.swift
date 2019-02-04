@@ -28,12 +28,15 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
         NotificationCenter.default.addObserver(self, selector: #selector(listChangedNotification), name: NotificationNames.listChanged.notification, object: nil)
         convertData()
         replaceButtonName()
-        startAnimatingButton()
-        buttonView.layer.cornerRadius = 30
+        buttonView.layer.cornerRadius = buttonView.frame.width/2
         buttonView.tappedClosure = addButtonActionClosure
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        startAnimatingButton()
     }
     
     //MARK: - NotificationCenter action
@@ -88,13 +91,14 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
                         categoryProductsArray.append(productObj)
                         categoriesWithProductsDict[productCat] = categoryProductsArray
                     }
-                    }
+                }
             }
             sortedKeys = categoriesWithProductsDict.keys.sorted { (left, right) -> Bool in
                 return left.sortingID < right.sortingID
             }
         }
         tableView.reloadData()
+        
     }
     
     

@@ -143,6 +143,8 @@ extension AddProductViewController: UIImagePickerControllerDelegate, CropViewCon
     func cropImage (image: UIImage) {
         let cropViewController = CropViewController(image: image)
         cropViewController.delegate = self
+        cropViewController.aspectRatioPreset = .presetSquare
+        cropViewController.aspectRatioLockEnabled = true
         present(cropViewController, animated: true)
     }
     
