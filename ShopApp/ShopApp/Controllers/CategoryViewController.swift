@@ -93,23 +93,23 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func displayAlertWithTextField() {
-        let alert = UIAlertController(title: "Add new category", message: "Type new category name below", preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("Add new category", comment: ""), message: NSLocalizedString("Type new category name below", comment: ""), preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControl.Event.editingChanged)
-            textField.placeholder = "Category"
+            textField.placeholder = NSLocalizedString("Category", comment: "")
         }
-        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Done", comment: ""), style: .default, handler: { (action) in
             if self.newCategory != "Category", self.newCategory != "", !self.categories.contains(where: {$0.name == self.newCategory}) {
                 RealmDataBase.shared.addNewCategory(name: self.newCategory)
             } else {
-                let alertIfSomethingWentWrong = UIAlertController(title: "Something went wrong", message: "Probably that category already exist, or you left empty text field. Try Again!", preferredStyle: .alert)
-                alertIfSomethingWentWrong.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
+                let alertIfSomethingWentWrong = UIAlertController(title: NSLocalizedString("Something went wrong", comment: ""), message: NSLocalizedString("Probably that category already exist, or you left empty text field. Try Again!", comment: ""), preferredStyle: .alert)
+                alertIfSomethingWentWrong.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: .cancel, handler: nil))
                 self.present(alertIfSomethingWentWrong, animated: true)
             }
             self.categories = RealmDataBase.shared.getCategories()
             self.tableView.reloadData()
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
         present(alert, animated: true)
         }
     
@@ -121,7 +121,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         let rightBarButton = self.navigationItem.rightBarButtonItem
         let buttonView = rightBarButton!.value(forKey: "view") as! UIView
         
-        PopoverManager.shared.handlePopover(viewController: self, view: buttonView, labelText: "Here you can add some new categories!")
+        PopoverManager.shared.handlePopover(viewController: self, view: buttonView, labelText: NSLocalizedString("Here you can add some new categories!", comment: ""))
         
         /*let frame: CGRect!
         let rightBarButton = self.navigationItem.rightBarButtonItem

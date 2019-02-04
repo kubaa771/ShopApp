@@ -36,7 +36,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     @objc func handlePopover() {
         let rightBarButton = self.navigationItem.rightBarButtonItem
         let buttonView = rightBarButton!.value(forKey: "view") as! UIView
-        PopoverManager.shared.handlePopover(viewController: self, view: buttonView, labelText: "Here you can add some new products with the categories you created earlier!")
+        PopoverManager.shared.handlePopover(viewController: self, view: buttonView, labelText: NSLocalizedString("Here you can add some new products with the categories you created earlier!", comment: ""))
     }
     
     // MARK: - Table view data source
@@ -103,7 +103,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if categories.isEmpty {
-            let alert = UIAlertController(title: "Error", message: "You should add some categories first!", preferredStyle: .alert)
+            let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("You should add some categories first!", comment: ""), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             present(alert, animated: true)
         } else if segue.identifier == "createNewProduct" {

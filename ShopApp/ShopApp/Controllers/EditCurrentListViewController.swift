@@ -74,7 +74,7 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
         if isHistory {
             doneButton.title = "❐"
         } else {
-            doneButton.title = "Done"
+            doneButton.title = NSLocalizedString("Done", comment: "")
         }
     }
     

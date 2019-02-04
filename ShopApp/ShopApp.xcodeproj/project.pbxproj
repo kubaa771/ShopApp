@@ -21,6 +21,8 @@
 		F90B172821F7428200965049 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90B172721F7428200965049 /* ListTableViewController.swift */; };
 		F90B172A21F742BC00965049 /* ProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90B172921F742BC00965049 /* ProductTableViewController.swift */; };
 		F90B172C21F7437B00965049 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90B172B21F7437B00965049 /* ProductTableViewCell.swift */; };
+		F9221F5C22082E56008FFAE7 /* Localizable+UIView+ Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9221F5B22082E56008FFAE7 /* Localizable+UIView+ Extenstions.swift */; };
+		F9221F6822083084008FFAE7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F9221F6622083084008FFAE7 /* Localizable.strings */; };
 		F9273B2421FEF79900191839 /* MyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9273B2321FEF79900191839 /* MyList.swift */; };
 		F9273B2621FF250100191839 /* AddNewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9273B2521FF250100191839 /* AddNewListViewController.swift */; };
 		F9273B2821FF3A5600191839 /* EditCurrentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9273B2721FF3A5600191839 /* EditCurrentListViewController.swift */; };
@@ -81,6 +83,9 @@
 		F90B172721F7428200965049 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		F90B172921F742BC00965049 /* ProductTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewController.swift; sourceTree = "<group>"; };
 		F90B172B21F7437B00965049 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
+		F9221F5B22082E56008FFAE7 /* Localizable+UIView+ Extenstions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Localizable+UIView+ Extenstions.swift"; path = "../../../TestWeather/TestWeather/Localizable+UIView+ Extenstions.swift"; sourceTree = "<group>"; };
+		F9221F6722083084008FFAE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F9221F6B220830B0008FFAE7 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F9273B2321FEF79900191839 /* MyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyList.swift; sourceTree = "<group>"; };
 		F9273B2521FF250100191839 /* AddNewListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewListViewController.swift; sourceTree = "<group>"; };
 		F9273B2721FF3A5600191839 /* EditCurrentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCurrentListViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +238,7 @@
 		F9133C922201DDA60017E7DC /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				F9221F6622083084008FFAE7 /* Localizable.strings */,
 				F90B16FD21F73DB100965049 /* Main.storyboard */,
 				F90B170221F73DB300965049 /* LaunchScreen.storyboard */,
 			);
@@ -249,6 +255,7 @@
 				F992D4CC21F876F800BA632C /* CategorySection.swift */,
 				F928CABE21F8627E00B66EE0 /* Product.swift */,
 				F9273B2321FEF79900191839 /* MyList.swift */,
+				F9221F5B22082E56008FFAE7 /* Localizable+UIView+ Extenstions.swift */,
 				F9940EEF2203253C007FAD38 /* PopoverManager.swift */,
 			);
 			path = Model;
@@ -345,6 +352,7 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
 			);
 			mainGroup = F90B16ED21F73DB100965049;
 			productRefGroup = F90B16F721F73DB100965049 /* Products */;
@@ -364,6 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F90B170421F73DB300965049 /* LaunchScreen.storyboard in Resources */,
+				F9221F6822083084008FFAE7 /* Localizable.strings in Resources */,
 				8AF9DC0F21F9B0B30040AA86 /* GoogleService-Info.plist in Resources */,
 				F90B170121F73DB300965049 /* Assets.xcassets in Resources */,
 				F9A36E8022005AD5009903AA /* FloatingButtonView.xib in Resources */,
@@ -527,6 +536,7 @@
 				F90B172C21F7437B00965049 /* ProductTableViewCell.swift in Sources */,
 				F992D4D321F8AD1400BA632C /* Extensions.swift in Sources */,
 				F928CABC21F8617E00B66EE0 /* CategoryTableViewCell.swift in Sources */,
+				F9221F5C22082E56008FFAE7 /* Localizable+UIView+ Extenstions.swift in Sources */,
 				F992D4CF21F89FCB00BA632C /* NotificationNames.swift in Sources */,
 				F90B172A21F742BC00965049 /* ProductTableViewController.swift in Sources */,
 				8AF9DC1121FA046E0040AA86 /* ListTableViewCell.swift in Sources */,
@@ -584,6 +594,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		F9221F6622083084008FFAE7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F9221F6722083084008FFAE7 /* en */,
+				F9221F6B220830B0008FFAE7 /* pl */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -591,6 +610,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -652,6 +672,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

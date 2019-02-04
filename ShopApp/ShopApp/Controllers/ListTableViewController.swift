@@ -43,7 +43,7 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     @objc func handlePopover() {
         let rightBarButton = self.navigationItem.rightBarButtonItem
         let buttonView = rightBarButton!.value(forKey: "view") as! UIView
-        PopoverManager.shared.handlePopover(viewController: self, view: buttonView, labelText: "After you are done adding new products and categories, here you can create new shopping list and add these to the list!")
+        PopoverManager.shared.handlePopover(viewController: self, view: buttonView, labelText: NSLocalizedString("After you are done adding new products and categories, here you can create new shopping list and add these to the list!", comment: ""))
     }
     
     enum TableSection: Int {
@@ -72,9 +72,9 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
         if let tableSection = TableSection(rawValue: section){
             switch tableSection {
             case .Active:
-                text = "Active"
+                text = NSLocalizedString("Active", comment: "")
             case .History:
-                text = "History"
+                text = NSLocalizedString("History", comment: "")
             }
         }
         

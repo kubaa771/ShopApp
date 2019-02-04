@@ -36,7 +36,7 @@ class ProductTableViewCell: UITableViewCell {
     
     func customize(product: Product) {
         productName.text = product.name
-        productPrice.text = String(product.price) + "$"
+        productPrice.text = String(product.price) + NSLocalizedString("$", comment: "")
         productImage.image = UIImage(data: product.imageData! as Data)
         
     }

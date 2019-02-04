@@ -1,0 +1,72 @@
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "0zz-pi-IRs"; */
+"0zz-pi-IRs.title" = "Title";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "2Ff-7e-nDs"; */
+"2Ff-7e-nDs.title" = "Done";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "4Rr-lH-Ex5"; */
+"4Rr-lH-Ex5.text" = "Name";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "5E4-YP-iXo"; */
+"5E4-YP-iXo.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Enter product's price"; ObjectID = "Aqk-8s-p46"; */
+"Aqk-8s-p46.placeholder" = "Enter product's price";
+
+/* Class = "UILabel"; text = "Data"; ObjectID = "BF3-JA-urV"; */
+"BF3-JA-urV.text" = "Data";
+
+/* Class = "UITabBarItem"; title = "Product"; ObjectID = "BLU-xC-EUv"; */
+"BLU-xC-EUv.title" = "Product";
+
+/* Class = "UILabel"; text = "Price:"; ObjectID = "Cc0-Lf-xw2"; */
+"Cc0-Lf-xw2.text" = "Price:";
+
+/* Class = "UITextField"; placeholder = "Enter product's name"; ObjectID = "Dbg-lf-stA"; */
+"Dbg-lf-stA.placeholder" = "Enter product's name";
+
+/* Class = "UITabBarItem"; title = "List"; ObjectID = "HuE-zH-4cc"; */
+"HuE-zH-4cc.title" = "List";
+
+/* Class = "UILabel"; text = "Category"; ObjectID = "IrF-SD-iuH"; */
+"IrF-SD-iuH.text" = "Category";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "IwC-zV-5Gr"; */
+"IwC-zV-5Gr.normalTitle" = "Next";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "OF0-ar-DnG"; */
+"OF0-ar-DnG.text" = "Label";
+
+/* Class = "UILabel"; text = "Price $"; ObjectID = "Qiv-l4-4dn"; */
+"Qiv-l4-4dn.text" = "Price $";
+
+/* Class = "UITabBarItem"; title = "Category"; ObjectID = "Qqf-vn-wpd"; */
+"Qqf-vn-wpd.title" = "Category";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "R0o-Lt-Ljn"; */
+"R0o-Lt-Ljn.text" = "Name";
+
+/* Class = "UITextField"; placeholder = "Enter product's category"; ObjectID = "cSB-3J-bhq"; */
+"cSB-3J-bhq.placeholder" = "Enter product's category";
+
+/* Class = "UILabel"; text = "Price $"; ObjectID = "cWO-AT-zNO"; */
+"cWO-AT-zNO.text" = "Price $";
+
+/* Class = "UINavigationItem"; title = "Data"; ObjectID = "fHl-y6-TNu"; */
+"fHl-y6-TNu.title" = "Data";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "i5z-ns-Dhj"; */
+"i5z-ns-Dhj.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "isR-ZO-770"; */
+"isR-ZO-770.text" = "Name";
+
+/* Class = "UILabel"; text = "Price $"; ObjectID = "lSJ-Js-IqN"; */
+"lSJ-Js-IqN.text" = "Price $";
+
+/* Class = "UIButton"; normalTitle = "✓"; ObjectID = "p2G-GT-GpF"; */
+"p2G-GT-GpF.normalTitle" = "✓";
+
+/* Class = "UILabel"; text = "Category:"; ObjectID = "qAQ-8i-Niv"; */
+"qAQ-8i-Niv.text" = "Category:";

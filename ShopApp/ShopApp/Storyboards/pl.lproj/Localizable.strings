@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  ShopApp
+
+  Created by user on 04/02/2019.
+  Copyright © 2019 user. All rights reserved.
+*/
+
+"Name:" = "Nazwa:";
+"Enter product's name" = "Wprowadź nazwę produktu";
+"Category:" = "Kategoria:";
+"Enter product's category" = "Wprowadź kategorię produktu";
+"Price:" = "Cena:";
+"Enter product's price" = "Wprowadź cenę produktu";
+"Add new category" = "Dodaj nową kategorię";
+"Type new category name below" = "Podaj nazwę kategorii w polu poniżej";
+"Category" = "Kategoria";
+"Done" = "Gotowe";
+"Cancel" = "Anuluj";
+"Something went wrong" = "Coś poszło nie tak";
+"Probably that category already exist, or you left empty text field. Try Again!" = "Prawdopodobnie istnieje już taka kategoria, lub nie wprowadziłeś żadnych danych. Spróbuj ponownie!";
+"Close" = "Zamknij";
+"Here you can add some new categories!" = "Tutaj możesz dodać nowe kategorie!";
+"Here you can add some new products with the categories you created earlier!" = "Tutaj możesz dodać nowe produkty zawierające kategorie które stworzyłeś wcześniej";
+"After you are done adding new products and categories, here you can create new shopping list and add these to the list!" = "Jeśli już skonczyłeś dodawać nowe produkty i kategorie, tutaj możesz stworzyć nową listę zakupów i dodać do niej poprzednio utworzone dane!";
+"Active" = "Aktywne";
+"History" = "Historia";
+"Search Products" = "Szukaj Produktów";
+"Done" = "Gotowe";
+"Error" = "Błąd";
+"You should add some categories first!" = "Najpierw powinienieś dodać jakieś kategorie!";
+"$" = "zł";
+"Alert" = "Komunikat";
+"Please check all the fields!" = "Sprawdź wszystkie pola!";
