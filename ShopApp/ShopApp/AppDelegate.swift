@@ -27,9 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search product", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         
-        /*if let tabBarController = self.window!.rootViewController as? UITabBarController {
-            tabBarController.selectedIndex = 1
-        }*/
+        if let tabBarController = self.window!.rootViewController as? UITabBarController {
+            tabBarController.tabBar.items?[0].title = NSLocalizedString("Products", comment: "")
+            tabBarController.tabBar.items?[1].title = NSLocalizedString("Categories", comment: "")
+            tabBarController.tabBar.items?[2].title = NSLocalizedString("Lists", comment: "")
+        }
 
         return true
     }

@@ -32,3 +32,6 @@
 "$" = "zł";
 "Alert" = "Komunikat";
 "Please check all the fields!" = "Sprawdź wszystkie pola!";
+"Products" = "Produkty";
+"Categories" = "Kategorie";
+"Lists" = "Listy";

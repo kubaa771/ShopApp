@@ -308,9 +308,6 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Price:"/>
-                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter product's price" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Aqk-8s-p46">
                                                 <rect key="frame" x="0.0" y="19" width="315" height="30"/>
@@ -320,9 +317,6 @@
                                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES" smartQuotesType="no"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedPlaceholderText" value="Enter product's price"/>
-                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="addNewPriceAction:" destination="npS-qF-I9d" eventType="editingChanged" id="1GZ-CI-Htw"/>
                                                 </connections>
@@ -772,11 +766,11 @@
             </objects>
             <point key="canvasLocation" x="-55" y="181"/>
         </scene>
-        <!--List-->
+        <!--Lists-->
         <scene sceneID="BGj-1P-VWg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EPv-as-RYr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List" image="note" selectedImage="note" id="HuE-zH-4cc"/>
+                    <tabBarItem key="tabBarItem" title="Lists" image="note" selectedImage="note" id="HuE-zH-4cc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qyi-BJ-eno">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -791,11 +785,11 @@
             </objects>
             <point key="canvasLocation" x="869.60000000000002" y="949.47526236881572"/>
         </scene>
-        <!--Product-->
+        <!--Products-->
         <scene sceneID="x4A-X0-2EE">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pXm-5d-502" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Product" image="price_tag" selectedImage="price_tag" id="BLU-xC-EUv"/>
+                    <tabBarItem key="tabBarItem" title="Products" image="price_tag" selectedImage="price_tag" id="BLU-xC-EUv"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kXK-yC-FQr">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -810,11 +804,11 @@
             </objects>
             <point key="canvasLocation" x="869.60000000000002" y="-484.40779610194909"/>
         </scene>
-        <!--Category-->
+        <!--Categories-->
         <scene sceneID="Z7Z-x8-LEG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HZR-Zo-7XR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Category" image="product" selectedImage="product" id="Qqf-vn-wpd"/>
+                    <tabBarItem key="tabBarItem" title="Categories" image="product" selectedImage="product" id="Qqf-vn-wpd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ROp-s0-YhS">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
