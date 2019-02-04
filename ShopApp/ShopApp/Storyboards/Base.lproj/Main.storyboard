@@ -308,6 +308,9 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Price:"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter product's price" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Aqk-8s-p46">
                                                 <rect key="frame" x="0.0" y="19" width="315" height="30"/>
@@ -317,6 +320,9 @@
                                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES" smartQuotesType="no"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedPlaceholderText" value="Enter product's price"/>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="addNewPriceAction:" destination="npS-qF-I9d" eventType="editingChanged" id="1GZ-CI-Htw"/>
                                                 </connections>
@@ -634,7 +640,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="laI-2C-Odx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2820.8000000000002" y="14.392803598200901"/>
+            <point key="canvasLocation" x="2797" y="326"/>
         </scene>
         <!--Data-->
         <scene sceneID="r8S-Wb-ive">
@@ -923,6 +929,9 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Price:"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter product's price" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="AHe-7R-vzR">
                                                 <rect key="frame" x="0.0" y="19" width="315" height="30"/>
@@ -932,6 +941,9 @@
                                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES" smartQuotesType="no"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedPlaceholderText" value="Enter product's price"/>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="addNewPriceAction:" destination="OWK-kA-X2z" eventType="editingChanged" id="Y2f-z5-8XP"/>
                                                 </connections>
