@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Category View Controller-->
+        <!--Categories-->
         <scene sceneID="dOs-lx-1DF">
             <objects>
                 <viewController id="STs-UZ-TRu" customClass="CategoryViewController" customModule="ShopApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -95,7 +95,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZhV-33-wlt"/>
                     </view>
-                    <navigationItem key="navigationItem" id="0B0-rx-WzR">
+                    <navigationItem key="navigationItem" title="Categories" id="0B0-rx-WzR">
                         <barButtonItem key="rightBarButtonItem" tag="20" style="done" systemItem="add" id="N1M-PT-SqK">
                             <connections>
                                 <action selector="displayAlertAction:" destination="STs-UZ-TRu" id="Uxw-lL-rfr"/>
@@ -110,7 +110,7 @@
             </objects>
             <point key="canvasLocation" x="1802.4000000000001" y="177.66116941529236"/>
         </scene>
-        <!--Product Table View Controller-->
+        <!--Products-->
         <scene sceneID="9Lj-tF-heS">
             <objects>
                 <viewController id="UFq-d0-dMv" customClass="ProductTableViewController" customModule="ShopApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -193,7 +193,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WwL-hX-LwN"/>
                     </view>
-                    <navigationItem key="navigationItem" id="0M4-3J-9Zf">
+                    <navigationItem key="navigationItem" title="Products" id="0M4-3J-9Zf">
                         <barButtonItem key="rightBarButtonItem" image="addbadge" style="done" id="n7m-UZ-fCh">
                             <connections>
                                 <segue destination="npS-qF-I9d" kind="show" identifier="createNewProduct" id="bvX-Ov-zda"/>
@@ -417,7 +417,7 @@
             </objects>
             <point key="canvasLocation" x="2822" y="-128"/>
         </scene>
-        <!--List Table View Controller-->
+        <!--Lists-->
         <scene sceneID="7HF-sq-Iho">
             <objects>
                 <viewController storyboardIdentifier="ListTableViewController" id="9YJ-bE-2mE" customClass="ListTableViewController" customModule="ShopApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -483,7 +483,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EXl-Sp-BbZ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="bd6-gs-cAt">
+                    <navigationItem key="navigationItem" title="Lists" id="bd6-gs-cAt">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="action" id="wHi-96-hzp">
+                            <connections>
+                                <action selector="backupButtonAction:" destination="9YJ-bE-2mE" id="8ta-3k-ASK"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="create_new" style="done" id="Qvy-XG-9eD">
                             <connections>
                                 <action selector="createNewList:" destination="9YJ-bE-2mE" id="Lui-NH-9xy"/>

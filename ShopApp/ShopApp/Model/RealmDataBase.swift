@@ -19,7 +19,6 @@ class RealmDataBase {
         Realm.Configuration.defaultConfiguration = config
         Realm.Configuration.defaultConfiguration.deleteRealmIfMigrationNeeded = true
         self.realm = try! Realm()
-        
         /*try! realm.write {
             realm.deleteAll()
         }
@@ -154,6 +153,47 @@ class RealmDataBase {
             copy = realm.create(MyList.self, value: list, update: false)
         }
         return copy
+    }
+    
+    func getLastBackupFilePath() -> Bool{
+        let filemanager = FileManager.default
+        do {
+            let documentDirectory = try filemanager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let fileURL = documentDirectory.appendingPathComponent("LocalSave")
+            if filemanager.fileExists(atPath: fileURL.path) {
+                try filemanager.removeItem(at: fileURL)
+            }
+            //var key = NSMutableData(length: 64)!
+            //SecRandomCopyBytes(kSecRandomDefault, key.length, key)
+            try! realm.writeCopy(toFile: fileURL)
+            return true
+        } catch {
+            print(error)
+            return false
+        }
+        //realm.cancelWrite()
+    }
+    
+    func backupGetStoredData() {
+        let filemanager = FileManager.default
+        do {
+            try! realm.write {
+                realm.deleteAll()
+            }
+            self.realm = nil
+            let documentDirectory = try filemanager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let fileURL = documentDirectory.appendingPathComponent("LocalSave")
+            var config = Realm.Configuration()
+            config.fileURL = fileURL
+            Realm.Configuration.defaultConfiguration = config
+            Realm.Configuration.defaultConfiguration.deleteRealmIfMigrationNeeded = true
+            self.realm = try! Realm()
+            
+            
+        } catch {
+            print(error)
+        }
+        //realm.cancelWrite()
     }
     
 }

@@ -24,6 +24,7 @@
 		F9221F5C22082E56008FFAE7 /* Localizable+UIView+ Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9221F5B22082E56008FFAE7 /* Localizable+UIView+ Extenstions.swift */; };
 		F9221F6822083084008FFAE7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F9221F6622083084008FFAE7 /* Localizable.strings */; };
 		F9221F6D220850B0008FFAE7 /* EditProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9221F6C220850B0008FFAE7 /* EditProductViewController.swift */; };
+		F925AF7F2209A04100EB525E /* Backups.swift in Sources */ = {isa = PBXBuildFile; fileRef = F925AF7E2209A04100EB525E /* Backups.swift */; };
 		F9273B2421FEF79900191839 /* MyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9273B2321FEF79900191839 /* MyList.swift */; };
 		F9273B2621FF250100191839 /* AddNewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9273B2521FF250100191839 /* AddNewListViewController.swift */; };
 		F9273B2821FF3A5600191839 /* EditCurrentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9273B2721FF3A5600191839 /* EditCurrentListViewController.swift */; };
@@ -88,6 +89,8 @@
 		F9221F6722083084008FFAE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F9221F6B220830B0008FFAE7 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F9221F6C220850B0008FFAE7 /* EditProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditProductViewController.swift; path = ShopApp/Controllers/EditProductViewController.swift; sourceTree = SOURCE_ROOT; };
+		F925AF7D2209900900EB525E /* ShopApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShopApp.entitlements; sourceTree = "<group>"; };
+		F925AF7E2209A04100EB525E /* Backups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backups.swift; sourceTree = "<group>"; };
 		F9273B2321FEF79900191839 /* MyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyList.swift; sourceTree = "<group>"; };
 		F9273B2521FF250100191839 /* AddNewListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewListViewController.swift; sourceTree = "<group>"; };
 		F9273B2721FF3A5600191839 /* EditCurrentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCurrentListViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +185,7 @@
 		F90B16F821F73DB100965049 /* ShopApp */ = {
 			isa = PBXGroup;
 			children = (
+				F925AF7D2209900900EB525E /* ShopApp.entitlements */,
 				F9133C922201DDA60017E7DC /* Storyboards */,
 				F928CABD21F8626500B66EE0 /* Model */,
 				F9133C902201DD060017E7DC /* Controllers */,
@@ -253,6 +257,7 @@
 			children = (
 				F9C5353421FB19B8001B23AB /* RealmDataBase.swift */,
 				F992D4D221F8AD1400BA632C /* Extensions.swift */,
+				F925AF7E2209A04100EB525E /* Backups.swift */,
 				F992D4D021F8A3DB00BA632C /* Protocols.swift */,
 				F992D4CE21F89FCB00BA632C /* NotificationNames.swift */,
 				F992D4CC21F876F800BA632C /* CategorySection.swift */,
@@ -337,6 +342,11 @@
 				TargetAttributes = {
 					F90B16F521F73DB100965049 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 					F90B170921F73DB400965049 = {
 						CreatedOnToolsVersion = 10.1;
@@ -533,6 +543,7 @@
 				F992D4D121F8A3DB00BA632C /* Protocols.swift in Sources */,
 				F9940EF02203253C007FAD38 /* PopoverManager.swift in Sources */,
 				F90B172821F7428200965049 /* ListTableViewController.swift in Sources */,
+				F925AF7F2209A04100EB525E /* Backups.swift in Sources */,
 				F93A8DFD21F76B9A00ACC47D /* AddProductViewController.swift in Sources */,
 				F9273B2621FF250100191839 /* AddNewListViewController.swift in Sources */,
 				F9273B2821FF3A5600191839 /* EditCurrentListViewController.swift in Sources */,

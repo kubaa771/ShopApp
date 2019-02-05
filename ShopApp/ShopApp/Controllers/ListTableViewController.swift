@@ -32,6 +32,7 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(handlePopover), name: NotificationNames.handlePopoverSecond.notification, object: nil)
         sortListsToSections()
+        lists = RealmDataBase.shared.getLists()
         currentList = RealmDataBase.shared.getCurrentList()
         tableView.reloadData()
     }
@@ -133,6 +134,22 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
             vc.currentList = cell.model
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    
+    @IBAction func backupButtonAction(_ sender: UIBarButtonItem) {
+        
+        let alert = UIAlertController(title: "Create or download backup", message: "Choose if u want to create new backup or if you want to download one.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Create", style: .default, handler: { (action) in
+            let bool = RealmDataBase.shared.getLastBackupFilePath()
+        }))
+        alert.addAction(UIAlertAction(title: "Download", style: .default, handler: { (action) in
+            RealmDataBase.shared.backupGetStoredData()
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(alert, animated: true)
     }
     
     

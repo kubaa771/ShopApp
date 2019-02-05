@@ -25,7 +25,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         tableView.tableFooterView = UIView()
         navigationItem.leftBarButtonItem = editButtonItem
         //RealmDataBase.init()
-
+        //let isStored = RealmDataBase.shared.backupStoredData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -33,6 +33,8 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         if PopoverManager.shared.iterator == 1 {
             PopoverManager.shared.handlerBlock(true)
         }
+        currentList = RealmDataBase.shared.getCurrentList()
+        categories = RealmDataBase.shared.getCategories()
         tableView.reloadData()
         
     }
