@@ -19,6 +19,8 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     var listsSortedSection = [TableSection: [MyList]]()
     
     func sortListsToSections() {
+        lists = RealmDataBase.shared.getLists()
+        currentList = RealmDataBase.shared.getCurrentList()
         listsSortedSection[.Active] = lists.filter {$0.isActive == true}
         listsSortedSection[.History] = lists.filter {$0.isActive == false}
     }
@@ -31,8 +33,6 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(handlePopover), name: NotificationNames.handlePopoverSecond.notification, object: nil)
-        lists = RealmDataBase.shared.getLists()
-        currentList = RealmDataBase.shared.getCurrentList()
         sortListsToSections()
         tableView.reloadData()
     }
@@ -141,10 +141,13 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
         
         let alert = UIAlertController(title: "Create or download backup", message: "Choose if u want to create new backup or if you want to download one.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Create", style: .default, handler: { (action) in
-            let bool = RealmDataBase.shared.getLastBackupFilePath()
+            RealmDataBase.shared.getLastBackupFilePath()
         }))
         alert.addAction(UIAlertAction(title: "Download", style: .default, handler: { (action) in
             RealmDataBase.shared.backupGetStoredData()
+            self.sortListsToSections()
+            self.tableView.reloadData()
+            
             
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))

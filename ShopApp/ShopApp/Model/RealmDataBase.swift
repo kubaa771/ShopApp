@@ -155,7 +155,7 @@ class RealmDataBase {
         return copy
     }
     
-    func getLastBackupFilePath() -> Bool{
+    func getLastBackupFilePath(){
         let filemanager = FileManager.default
         do {
             let documentDirectory = try filemanager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
@@ -166,10 +166,8 @@ class RealmDataBase {
             //var key = NSMutableData(length: 64)!
             //SecRandomCopyBytes(kSecRandomDefault, key.length, key)
             try! realm.writeCopy(toFile: fileURL)
-            return true
         } catch {
             print(error)
-            return false
         }
         //realm.cancelWrite()
     }
