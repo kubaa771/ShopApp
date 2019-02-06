@@ -37,6 +37,8 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         
     }
     
+    //MARK: - Handling Popover
+    
     @objc func handlePopover() {
         let rightBarButton = self.navigationItem.rightBarButtonItem
         let buttonView = rightBarButton!.value(forKey: "view") as! UIView

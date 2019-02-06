@@ -81,6 +81,8 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     
+    //MARK: - Converting data
+    
     func convertData() {
         categoriesWithProductsDict.removeAll()
         if let currentProducts = currentList?.currentProducts {
@@ -102,7 +104,7 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     
-    // MARK: - Table view data source
+    // MARK: - Tableview data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return categoriesWithProductsDict.count

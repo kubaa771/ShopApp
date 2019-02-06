@@ -19,13 +19,6 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     var currentList = RealmDataBase.shared.getCurrentList()
     var listsSortedSection = [TableSection: [MyList]]()
     
-    func sortListsToSections() {
-        lists = RealmDataBase.shared.getLists()
-        currentList = RealmDataBase.shared.getCurrentList()
-        listsSortedSection[.Active] = lists.filter {$0.isActive == true}
-        listsSortedSection[.History] = lists.filter {$0.isActive == false}
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let button = backgroundView.viewWithTag(15) as! UIButton
@@ -41,11 +34,22 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.reloadData()
     }
     
+    //MARK: - Handling popover
+    
     
     @objc func handlePopover() {
         let rightBarButton = self.navigationItem.rightBarButtonItem
         let buttonView = rightBarButton!.value(forKey: "view") as! UIView
         PopoverManager.shared.handlePopover(viewController: self, view: buttonView, labelText: NSLocalizedString("After you are done adding new products and categories, here you can create new shopping list and add these to the list!", comment: ""))
+    }
+    
+    //MARK: - Sorting data
+    
+    func sortListsToSections() {
+        lists = RealmDataBase.shared.getLists()
+        currentList = RealmDataBase.shared.getCurrentList()
+        listsSortedSection[.Active] = lists.filter {$0.isActive == true}
+        listsSortedSection[.History] = lists.filter {$0.isActive == false}
     }
     
     enum TableSection: Int {
@@ -129,7 +133,7 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    //MARK - Creating new list
+    //MARK: - Creating new list
     
     @IBAction func createNewList(_ sender: UIBarButtonItem) {
         let currentDate = Date()
@@ -145,7 +149,7 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    //MARK - Handling tapping at done button
+    //MARK: - Handling tapping at done button
     
     func btnDoneTapped(cell: ListTableViewCell) {
         if cell.model.isActive == true {
@@ -162,6 +166,7 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
+    //MARK: - Handling tapping at backup button
     
     @IBAction func backupButtonAction(_ sender: UIBarButtonItem) {
         

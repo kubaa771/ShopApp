@@ -123,6 +123,8 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         newCategory = textF.text!
     }
     
+    //MARK: - Handling popover
+    
     func handlePopover() {
         let firstLaunch = FirstLaunch()
         if firstLaunch.isFirstLaunch {
