@@ -57,7 +57,10 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let tableSection = TableSection(rawValue: section), let data = listsSortedSection[tableSection], data.count > 0 {
+            tableView.restore()
             return data.count
+        } else {
+            tableView.setEmptyView(title: NSLocalizedString("You don't have any lists", comment: ""), message: NSLocalizedString("Tap button at the upper right corner to add some!", comment: ""))
         }
         return 0
     }

@@ -42,3 +42,9 @@
 "Choose if u want to create new backup or if you want to download one. Be careful, downloading a backup will delete your current objects." = "Wybierz czy chcesz stworzyć nową kopię zapasową, czy chcesz już pobrać utworzoną wcześniej. Bądź ostrożny, pobranie kopii zapasowej usunie twoje dotychczasowe obiekty.";
 "Create" = "Stwórz";
 "Download" = "Pobierz";
+"You don't have any products" = "Nie masz żadnych produktów";
+"You should add some! Tap at the right top button to do that!" = "Dodaj kilka! W tym celu kliknij przycisk po prawej stronie w górnej części ekranu!";
+"You don't have any categories" = "Nie masz żadnych kategorii";
+"You should add some by tapping at the right top button!" = "Dodaj je przy użyciu przycisku w prawym górnym rogu ekranu!";
+"You don't have any lists" = "Nie masz żadnych list";
+"Tap button at the upper right corner to add some!" = "Naciśnij przycisk w prawym górnym roku, aby dodać nową listę!";

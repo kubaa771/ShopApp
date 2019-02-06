@@ -38,6 +38,11 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     //MARK: - Configuring TableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if categories.count == 0 {
+            tableView.setEmptyView(title: NSLocalizedString("You don't have any categories", comment: ""), message: NSLocalizedString("You should add some by tapping at the right top button!", comment: ""))
+        } else {
+            tableView.restore()
+        }
         return categories.count
     }
     
