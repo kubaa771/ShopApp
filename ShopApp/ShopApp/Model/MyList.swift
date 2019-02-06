@@ -14,11 +14,13 @@ class MyList: Object {
     @objc dynamic var isActive: Bool = true
     var currentProducts = List<String>()
     var originalProducts = List<String>()
+    @objc dynamic var summary: Double = 0.0
     
-    convenience init(date: Date, isActive: Bool){
+    convenience init(date: Date, isActive: Bool, summary: Double){
         self.init()
         self.date = date
         self.isActive = isActive
+        self.summary = summary
     }
     
     func containsProduct(productId: String) -> Bool{

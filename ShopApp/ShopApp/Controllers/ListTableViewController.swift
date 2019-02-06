@@ -108,7 +108,7 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBAction func createNewList(_ sender: UIBarButtonItem) {
         let currentDate = Date()
-        let newList = MyList(date: currentDate, isActive: true)
+        let newList = MyList(date: currentDate, isActive: true, summary: 0.0)
         RealmDataBase.shared.addNewList(list: newList)
         self.lists = RealmDataBase.shared.getLists()
         self.currentList = RealmDataBase.shared.getCurrentList()

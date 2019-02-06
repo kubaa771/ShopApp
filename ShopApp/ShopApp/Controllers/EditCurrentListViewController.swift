@@ -146,6 +146,7 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
             let product = categoriesWithProductsDict[keySection]![indexPath.row]
             tableView.performBatchUpdates({
                 RealmDataBase.shared.removeProduct(productId: product.uuid, fromList: currentList)
+                RealmDataBase.shared.priceSumUp(productPrice: product.price, to: currentList, add: false)
                 convertData()
                 if indexPath.row == 0, productsFromCategory!.count < 2{
                     let indexSet = IndexSet(arrayLiteral: indexPath.section)

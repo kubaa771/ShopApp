@@ -103,8 +103,10 @@ class AddNewListViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         if currentList.containsProduct(productId: product.uuid) {
             RealmDataBase.shared.removeProduct(productId: product.uuid , fromList: currentList)
+            RealmDataBase.shared.priceSumUp(productPrice: product.price, to: currentList, add: false)
         } else {
             RealmDataBase.shared.addProduct(product: product, toList: currentList)
+            RealmDataBase.shared.priceSumUp(productPrice: product.price, to: currentList, add: true)
         }
         tableView.reloadData()
         

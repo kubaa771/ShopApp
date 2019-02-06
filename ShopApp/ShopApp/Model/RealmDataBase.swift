@@ -140,6 +140,16 @@ class RealmDataBase {
         return currentProduct
     }
     
+    func priceSumUp(productPrice: Double, to list: MyList, add: Bool){
+        try! realm.write {
+            if add {
+                list.summary += productPrice
+            } else {
+                list.summary -= productPrice
+            }
+        }
+    }
+    
     func delete(list: MyList) {
         try! realm.write {
             realm.delete(list)

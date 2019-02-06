@@ -44,7 +44,7 @@ class ListTableViewCell: UITableViewCell {
         let myDate = formatter.date(from: dateString)
         formatter.dateFormat = "dd-MMM-yyyy HH:mm"
         let myDateStringFinal = formatter.string(from: myDate!)
-        dataLabel.text = myDateStringFinal
+        dataLabel.text = myDateStringFinal + " | " + String(format: "%.2f", list.summary) + NSLocalizedString("$", comment: "")
         if list.isActive {
             doneButton.setTitle("✓", for: .normal)
         } else {
