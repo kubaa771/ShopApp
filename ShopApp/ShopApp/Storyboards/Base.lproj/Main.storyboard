@@ -474,14 +474,14 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mNx-cL-2HE">
-                                <rect key="frame" x="67.5" y="289" width="240" height="89.5"/>
+                                <rect key="frame" x="67.5" y="297" width="240" height="73"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkw-DY-g31">
                                         <rect key="frame" x="70" y="8" width="100" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="g1N-W4-PrS"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
@@ -489,13 +489,14 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoY-FA-cnE">
-                                        <rect key="frame" x="105" y="51.5" width="30" height="30"/>
+                                        <rect key="frame" x="105" y="33" width="30" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="Add"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="eoY-FA-cnE" firstAttribute="top" secondItem="tkw-DY-g31" secondAttribute="bottom" constant="43.5" id="1hR-Dc-aYj"/>
+                                    <constraint firstItem="eoY-FA-cnE" firstAttribute="top" secondItem="tkw-DY-g31" secondAttribute="bottom" constant="25" id="1hR-Dc-aYj"/>
                                     <constraint firstItem="eoY-FA-cnE" firstAttribute="centerX" secondItem="mNx-cL-2HE" secondAttribute="centerX" id="7GM-Hi-qG3"/>
                                     <constraint firstAttribute="bottom" secondItem="eoY-FA-cnE" secondAttribute="bottom" constant="8" id="ADJ-WE-guH"/>
                                     <constraint firstItem="tkw-DY-g31" firstAttribute="top" secondItem="mNx-cL-2HE" secondAttribute="top" constant="8" id="DAe-Tc-mfu"/>
