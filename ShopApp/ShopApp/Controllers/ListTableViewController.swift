@@ -104,6 +104,24 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! ListTableViewCell
+        if let tableSection = TableSection(rawValue: indexPath.section), let data = listsSortedSection[tableSection]?[indexPath.row] {
+            if data.isActive == true {
+                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditCurrentListViewController") as! EditCurrentListViewController
+                vc.title = cell.dataLabel.text
+                vc.currentList = cell.model
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditCurrentListViewController") as! EditCurrentListViewController
+                vc.title = cell.dataLabel.text
+                vc.isHistory = true
+                vc.currentList = cell.model
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+    }
+    
     //MARK - Creating new list
     
     @IBAction func createNewList(_ sender: UIBarButtonItem) {
