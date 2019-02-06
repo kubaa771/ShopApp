@@ -139,18 +139,18 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBAction func backupButtonAction(_ sender: UIBarButtonItem) {
         
-        let alert = UIAlertController(title: "Create or download backup", message: "Choose if u want to create new backup or if you want to download one.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Create", style: .default, handler: { (action) in
-            RealmDataBase.shared.getLastBackupFilePath()
+        let alert = UIAlertController(title: NSLocalizedString("Create or download backup", comment: ""), message: NSLocalizedString("Choose if u want to create new backup or if you want to download one.", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Create", comment: ""), style: .default, handler: { (action) in
+            RealmDataBase.shared.createBackupFilePath()
         }))
-        alert.addAction(UIAlertAction(title: "Download", style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Download", comment: ""), style: .default, handler: { (action) in
             RealmDataBase.shared.backupGetStoredData()
             self.sortListsToSections()
             self.tableView.reloadData()
             
             
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
         
         present(alert, animated: true)
     }

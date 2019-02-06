@@ -38,3 +38,7 @@
 "Are u sure?" = "Jesteś pewien?";
 "Yes" = "Tak";
 "Do you want to end editing current list?" = "Chcesz zakończyć edycje obecnej listy?";
+"Create or download backup" = "Stwórz lub pobierz kopię zapasową";
+"Choose if u want to create new backup or if you want to download one." = "Wybierz czy chcesz stworzyć nową kopię zapasową, czy chcesz już pobrać utworzoną wcześniej.";
+"Create" = "Stwórz";
+"Download" = "Pobierz";

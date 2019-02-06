@@ -25,7 +25,6 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         tableView.tableFooterView = UIView()
         navigationItem.leftBarButtonItem = editButtonItem
         //RealmDataBase.init()
-        //let isStored = RealmDataBase.shared.backupStoredData()
     }
     
     override func viewDidAppear(_ animated: Bool) {

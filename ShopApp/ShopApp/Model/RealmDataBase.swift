@@ -155,21 +155,26 @@ class RealmDataBase {
         return copy
     }
     
-    func getLastBackupFilePath(){
+    func createBackupFilePath(){
         let filemanager = FileManager.default
+        
         do {
-            let documentDirectory = try filemanager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let containerURL = filemanager.url(forUbiquityContainerIdentifier: nil)
+            let realmArchiveURL = containerURL?.appendingPathComponent("RealmDatabase.realm")
+            /*let documentDirectory = try filemanager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let fileURL = documentDirectory.appendingPathComponent("LocalSave")
             if filemanager.fileExists(atPath: fileURL.path) {
                 try filemanager.removeItem(at: fileURL)
             }
-            //var key = NSMutableData(length: 64)!
-            //SecRandomCopyBytes(kSecRandomDefault, key.length, key)
-            try! realm.writeCopy(toFile: fileURL)
+            try! realm.writeCopy(toFile: fileURL)*/
+            if filemanager.fileExists(atPath: (realmArchiveURL?.path)!) {
+                try filemanager.removeItem(at: realmArchiveURL!)
+            }
+            
+            try! realm.writeCopy(toFile: realmArchiveURL!)
         } catch {
             print(error)
         }
-        //realm.cancelWrite()
     }
     
     func backupGetStoredData() {
@@ -179,10 +184,13 @@ class RealmDataBase {
                 realm.deleteAll()
             }
             self.realm = nil
-            let documentDirectory = try filemanager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            let fileURL = documentDirectory.appendingPathComponent("LocalSave")
+            let containerURL = filemanager.url(forUbiquityContainerIdentifier: nil)
+            let realmArchiveURL = containerURL?.appendingPathComponent("RealmDatabase.realm")
+            /*let documentDirectory = try filemanager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let fileURL = documentDirectory.appendingPathComponent("LocalSave")*/
             var config = Realm.Configuration()
-            config.fileURL = fileURL
+            //config.fileURL = fileURL
+            config.fileURL = realmArchiveURL!
             Realm.Configuration.defaultConfiguration = config
             Realm.Configuration.defaultConfiguration.deleteRealmIfMigrationNeeded = true
             self.realm = try! Realm()
