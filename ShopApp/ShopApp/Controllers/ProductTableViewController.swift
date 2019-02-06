@@ -46,6 +46,11 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
+        if categories.isEmpty {
+            tableView.setEmptyView(title: NSLocalizedString("You don't have any products", comment: ""), message: NSLocalizedString("You should add some! Tap at the right top button to do that!", comment: ""))
+        } else {
+            tableView.restore()
+        }
         return categories.count
     }
 

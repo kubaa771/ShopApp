@@ -13,6 +13,7 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     //MARK: - Model
    
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backgroundView: UIView!
     
     var lists = RealmDataBase.shared.getLists()
     var currentList = RealmDataBase.shared.getCurrentList()
@@ -27,6 +28,8 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let button = backgroundView.viewWithTag(15) as! UIButton
+        button.addTarget(nil, action: #selector(createNewList(_:)), for: .touchUpInside)
         title = NSLocalizedString("Lists", comment: "")
         tableView.delegate = self
         tableView.dataSource = self
@@ -57,10 +60,11 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let tableSection = TableSection(rawValue: section), let data = listsSortedSection[tableSection], data.count > 0 {
-            tableView.restore()
+            backgroundView.isHidden = true
             return data.count
         } else {
-            tableView.setEmptyView(title: NSLocalizedString("You don't have any lists", comment: ""), message: NSLocalizedString("Tap button at the upper right corner to add some!", comment: ""))
+            backgroundView.isHidden = false
+            //tableView.setEmptyView(title: NSLocalizedString("You don't have any lists", comment: ""), message: NSLocalizedString("Tap button at the upper right corner to add some!", comment: ""))
         }
         return 0
     }
