@@ -22,6 +22,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = NSLocalizedString("Categories", comment: "")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()

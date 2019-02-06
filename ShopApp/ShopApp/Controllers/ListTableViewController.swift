@@ -27,6 +27,7 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = NSLocalizedString("Lists", comment: "")
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -139,7 +140,7 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBAction func backupButtonAction(_ sender: UIBarButtonItem) {
         
-        let alert = UIAlertController(title: NSLocalizedString("Create or download backup", comment: ""), message: NSLocalizedString("Choose if u want to create new backup or if you want to download one.", comment: ""), preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("Create or download backup", comment: ""), message: NSLocalizedString("Choose if u want to create new backup or if you want to download one. Be careful, downloading a backup will delete your current objects.", comment: ""), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Create", comment: ""), style: .default, handler: { (action) in
             RealmDataBase.shared.createBackupFilePath()
         }))

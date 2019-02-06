@@ -25,7 +25,7 @@
 "After you are done adding new products and categories, here you can create new shopping list and add these to the list!" = "Jeśli już skonczyłeś dodawać nowe produkty i kategorie, tutaj możesz stworzyć nową listę zakupów i dodać do niej poprzednio utworzone dane!";
 "Active" = "Aktywne";
 "History" = "Historia";
-"Search Products" = "Szukaj Produktów";
+"Search products" = "Szukaj produktów";
 "Done" = "Gotowe";
 "Error" = "Błąd";
 "You should add some categories first!" = "Najpierw powinienieś dodać jakieś kategorie!";
@@ -39,6 +39,6 @@
 "Yes" = "Tak";
 "Do you want to end editing current list?" = "Chcesz zakończyć edycje obecnej listy?";
 "Create or download backup" = "Stwórz lub pobierz kopię zapasową";
-"Choose if u want to create new backup or if you want to download one." = "Wybierz czy chcesz stworzyć nową kopię zapasową, czy chcesz już pobrać utworzoną wcześniej.";
+"Choose if u want to create new backup or if you want to download one. Be careful, downloading a backup will delete your current objects." = "Wybierz czy chcesz stworzyć nową kopię zapasową, czy chcesz już pobrać utworzoną wcześniej. Bądź ostrożny, pobranie kopii zapasowej usunie twoje dotychczasowe obiekty.";
 "Create" = "Stwórz";
 "Download" = "Pobierz";

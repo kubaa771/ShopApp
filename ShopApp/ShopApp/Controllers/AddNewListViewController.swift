@@ -120,7 +120,6 @@ class AddNewListViewController: UIViewController, UITableViewDelegate, UITableVi
     func setupSearchController() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = NSLocalizedString("Search Products", comment: "")
         navigationItem.searchController = searchController
        
         searchController.searchBar.tintColor = .white

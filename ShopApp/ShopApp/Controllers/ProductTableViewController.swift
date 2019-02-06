@@ -20,6 +20,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = NSLocalizedString("Products", comment: "")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()

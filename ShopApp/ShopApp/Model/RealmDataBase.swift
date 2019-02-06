@@ -188,13 +188,15 @@ class RealmDataBase {
             let realmArchiveURL = containerURL?.appendingPathComponent("RealmDatabase.realm")
             /*let documentDirectory = try filemanager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let fileURL = documentDirectory.appendingPathComponent("LocalSave")*/
-            var config = Realm.Configuration()
+            if filemanager.fileExists(atPath: (realmArchiveURL?.path)!) {
+                var config = Realm.Configuration()
+                config.fileURL = realmArchiveURL!
+                Realm.Configuration.defaultConfiguration = config
+                Realm.Configuration.defaultConfiguration.deleteRealmIfMigrationNeeded = true
+                self.realm = try! Realm()
+            }
             //config.fileURL = fileURL
-            config.fileURL = realmArchiveURL!
-            Realm.Configuration.defaultConfiguration = config
-            Realm.Configuration.defaultConfiguration.deleteRealmIfMigrationNeeded = true
-            self.realm = try! Realm()
-            
+           
             
         } catch {
             print(error)
