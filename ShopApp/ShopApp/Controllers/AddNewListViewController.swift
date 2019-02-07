@@ -135,11 +135,13 @@ class AddNewListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        if categories.count != 0 && allProducts.count > 0{
         filteredProducts = allProducts.filter({( product : Product) -> Bool in
             return product.name.lowercased().contains(searchText.lowercased())
         })
         
         tableView.reloadData()
+        }
     }
     
     func isFiltering() -> Bool {
