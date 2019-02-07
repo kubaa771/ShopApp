@@ -43,6 +43,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
         addCategory.inputView = pickerView
+        setAccessoryView(textField: addCategory)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
     }

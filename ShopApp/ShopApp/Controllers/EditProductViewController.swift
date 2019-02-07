@@ -47,6 +47,7 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
         addCategory.inputView = pickerView
+        setAccessoryView(textField: addCategory)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
     }

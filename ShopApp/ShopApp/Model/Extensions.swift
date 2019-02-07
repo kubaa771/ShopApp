@@ -112,3 +112,29 @@ extension UITableView {
         self.separatorStyle = .singleLine
     }
 }
+
+extension UIViewController {
+    func setAccessoryView(textField: UITextField) {
+        let accessoryView = UIView(frame: CGRect(x: 0, y: 0, width: textField.frame.width, height: 40))
+        accessoryView.backgroundColor = #colorLiteral(red: 0.8203848004, green: 0.8268544078, blue: 0.84868747, alpha: 1)
+        let nextBtn = UIButton()
+        nextBtn.setTitle("Next", for: .normal)
+        nextBtn.setTitleColor(#colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1), for: .normal)
+        nextBtn.addTarget(nil, action: #selector(nextTextField), for: .touchUpInside)
+        nextBtn.showsTouchWhenHighlighted = true
+        nextBtn.translatesAutoresizingMaskIntoConstraints = false
+        accessoryView.translatesAutoresizingMaskIntoConstraints = false
+        accessoryView.addSubview(nextBtn)
+        let cs1 = nextBtn.trailingAnchor.constraint(equalTo: accessoryView.trailingAnchor, constant: -20)
+        NSLayoutConstraint.activate([cs1])
+        
+        textField.inputAccessoryView = accessoryView
+    }
+    
+    @objc func nextTextField() {
+        let nextTag = 3 //next textfield's tag must be 3!
+        if let nextResponder = view.viewWithTag(nextTag) {
+            nextResponder.becomeFirstResponder()
+        }
+    }
+}
