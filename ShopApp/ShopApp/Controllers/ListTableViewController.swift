@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DoneListButtonDelegate {
+class ListTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: - Model
    
@@ -98,7 +98,6 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
             cell.model = data
         }
         //cell.model = lists[indexPath.row]
-        cell.delegate = self
         return cell
     }
     
@@ -150,22 +149,6 @@ class ListTableViewController: UIViewController, UITableViewDataSource, UITableV
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    //MARK: - Handling tapping at done button
-    
-    func btnDoneTapped(cell: ListTableViewCell) {
-        if cell.model.isActive == true {
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditCurrentListViewController") as! EditCurrentListViewController
-            vc.title = cell.dataLabel.text
-            vc.currentList = cell.model
-            self.navigationController?.pushViewController(vc, animated: true)
-        } else {
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditCurrentListViewController") as! EditCurrentListViewController
-            vc.title = cell.dataLabel.text
-            vc.isHistory = true
-            vc.currentList = cell.model
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
     
     //MARK: - Handling tapping at backup button
     

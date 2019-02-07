@@ -15,8 +15,6 @@ class ListTableViewCell: UITableViewCell {
     @IBOutlet weak var dataLabel: UILabel!
     @IBOutlet weak var checkedImageView: UIImageView!
     
-    var delegate: DoneListButtonDelegate?
-    
     var model: MyList! {
         didSet {
             customize(list: model)
