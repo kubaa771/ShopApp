@@ -120,19 +120,20 @@ extension UIViewController {
         let nextBtn = UIButton()
         nextBtn.setTitle("Next", for: .normal)
         nextBtn.setTitleColor(#colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1), for: .normal)
-        nextBtn.addTarget(nil, action: #selector(nextTextField), for: .touchUpInside)
+        nextBtn.tag = textField.tag
+        nextBtn.addTarget(nil, action: #selector(nextTextField(_:)), for: .touchUpInside)
         nextBtn.showsTouchWhenHighlighted = true
         nextBtn.translatesAutoresizingMaskIntoConstraints = false
         accessoryView.translatesAutoresizingMaskIntoConstraints = false
         accessoryView.addSubview(nextBtn)
         let cs1 = nextBtn.trailingAnchor.constraint(equalTo: accessoryView.trailingAnchor, constant: -20)
         NSLayoutConstraint.activate([cs1])
-        
+        print(textField.tag)
         textField.inputAccessoryView = accessoryView
     }
     
-    @objc func nextTextField() {
-        let nextTag = 3 //next textfield's tag must be 3!
+    @objc func nextTextField(_ sender: UIButton) {
+        let nextTag = sender.tag + 1
         if let nextResponder = view.viewWithTag(nextTag) {
             nextResponder.becomeFirstResponder()
         }
