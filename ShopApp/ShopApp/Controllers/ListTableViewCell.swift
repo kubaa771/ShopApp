@@ -13,7 +13,7 @@ class ListTableViewCell: UITableViewCell {
     //MARK: Model
     
     @IBOutlet weak var dataLabel: UILabel!
-    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var checkedImageView: UIImageView!
     
     var delegate: DoneListButtonDelegate?
     
@@ -33,9 +33,6 @@ class ListTableViewCell: UITableViewCell {
     
     //MARK: Button actions, customization
     
-    @IBAction func doneButtonAction(_ sender: UIButton) {
-        delegate?.btnDoneTapped(cell: self)
-    }
     
     func customize(list: MyList) {
         let formatter = DateFormatter()
@@ -46,9 +43,9 @@ class ListTableViewCell: UITableViewCell {
         let myDateStringFinal = formatter.string(from: myDate!)
         dataLabel.text = myDateStringFinal + " | " + String(format: "%.2f", list.summary) + NSLocalizedString("$", comment: "")
         if list.isActive {
-            doneButton.setTitle("✓", for: .normal)
+            checkedImageView.isHidden = true
         } else {
-            doneButton.setTitle("✕", for: .normal)
+            checkedImageView.isHidden = false
         }
     }
 
