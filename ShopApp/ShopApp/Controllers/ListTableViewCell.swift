@@ -14,6 +14,7 @@ class ListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var dataLabel: UILabel!
     @IBOutlet weak var checkedImageView: UIImageView!
+    @IBOutlet weak var priceLabel: UILabel!
     
     var model: MyList! {
         didSet {
@@ -39,11 +40,8 @@ class ListTableViewCell: UITableViewCell {
         let myDate = formatter.date(from: dateString)
         formatter.dateFormat = "dd-MMM-yyyy HH:mm"
         let myDateStringFinal = formatter.string(from: myDate!)
-        //if list.currentProducts.count == 0 {
-            //dataLabel.text = myDateStringFinal + " | " + String(format: "%.2f", 0.0) + NSLocalizedString("$", comment: "")
-       // } else {
-            dataLabel.text = myDateStringFinal + " | " + String(format: "%.2f", list.summary) + NSLocalizedString("$", comment: "")
-        //}
+        dataLabel.text = myDateStringFinal
+        priceLabel.text = String(format: "%.2f", list.summary) + NSLocalizedString("$", comment: "")
         
         if list.isActive {
             checkedImageView.isHidden = true

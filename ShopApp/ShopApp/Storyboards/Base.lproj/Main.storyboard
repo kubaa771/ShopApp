@@ -439,9 +439,15 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="54" translatesAutoresizingMaskIntoConstraints="NO" id="iab-Gh-unj">
                                                     <rect key="frame" x="15" y="12.5" width="319" height="30"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data" textAlignment="natural" lineBreakMode="headTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BF3-JA-urV">
-                                                            <rect key="frame" x="0.0" y="0.0" width="235" height="30"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Data" textAlignment="natural" lineBreakMode="headTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BF3-JA-urV">
+                                                            <rect key="frame" x="0.0" y="0.0" width="140.5" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H58-CD-m1T">
+                                                            <rect key="frame" x="194.5" y="0.0" width="40.5" height="30"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -468,6 +474,7 @@
                                         <connections>
                                             <outlet property="checkedImageView" destination="JpF-dh-l3Z" id="su1-RJ-ZP3"/>
                                             <outlet property="dataLabel" destination="BF3-JA-urV" id="WVI-HE-gDD"/>
+                                            <outlet property="priceLabel" destination="H58-CD-m1T" id="nlW-g1-bX0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
