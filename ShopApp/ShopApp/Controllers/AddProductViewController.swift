@@ -9,7 +9,7 @@
 import UIKit
 import CropViewController
 
-class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate {
+class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UITextFieldDelegate {
     
     //MARK: - Model
 
@@ -34,6 +34,9 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addName.delegate = self
+        addCategory.delegate = self
+        addPrice.delegate = self
         addName.setBottomBorder()
         addPrice.setBottomBorder()
         addCategory.setBottomBorder()
@@ -79,6 +82,16 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
         if sender.isEditing {
             newPrice = Double(sender.text!)
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let nextTag = textField.tag + 1
+        if let nextResponder = view.viewWithTag(nextTag) {
+            nextResponder.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return true
     }
     
     
