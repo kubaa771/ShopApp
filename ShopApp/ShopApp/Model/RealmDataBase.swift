@@ -94,14 +94,21 @@ class RealmDataBase {
         }
     }
     
-    func edit(product: Product, name: String, price: Double, categoryToAdd: CategorySection, categoryToDelete: CategorySection, productIndex: Int , imageData: NSData?) {
+    func edit(product: Product, name: String, newPrice: Double, oldPrice: Double, categoryToAdd: CategorySection, categoryToDelete: CategorySection, productIndex: Int , imageData: NSData?) {
+        let lists = getLists()
         try! realm.write {
             categoryToDelete.products.remove(at: productIndex)
             product.name = name
-            product.price = price
+            product.price = newPrice
             product.category = categoryToAdd
             product.imageData = imageData
             categoryToAdd.products.append(product)
+            for list in lists {
+                if list.containsProduct(productId: product.uuid) {
+                    list.summary -= oldPrice
+                    list.summary += newPrice
+                }
+            }
         }
     }
     

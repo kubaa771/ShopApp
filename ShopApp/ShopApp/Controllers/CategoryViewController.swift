@@ -76,7 +76,12 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
             neighbourUpCategory = categories[indexPath!.row - 1]
             RealmDataBase.shared.setSortingIDs(first: chosenCategory, second: neighbourUpCategory!)
             categories = RealmDataBase.shared.getCategories()
-            tableView.reloadData()
+            cell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            UIView.animate(withDuration: 0.4, animations: {
+                cell.transform = CGAffineTransform.identity
+            }) { (completion) in
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -88,7 +93,12 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
             neighbourDownCategory = categories[indexPath!.row + 1]
             RealmDataBase.shared.setSortingIDs(first: chosenCategory, second: neighbourDownCategory!)
             categories = RealmDataBase.shared.getCategories()
-            tableView.reloadData()
+            cell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            UIView.animate(withDuration: 0.4, animations: {
+                cell.transform = CGAffineTransform.identity
+            }) { (completion) in
+                self.tableView.reloadData()
+            }
         }
     }
     

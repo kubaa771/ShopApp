@@ -30,6 +30,7 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
     var currentName: String!
     var currentPrice: Double!
     var oldCategory: CategorySection!
+    var oldPrice: Double!
     var currentCategory: CategorySection?
     var productIndex: Int!
     
@@ -143,7 +144,7 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
     //MARK: - Done, Protocol Segue
     
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
-        RealmDataBase.shared.edit(product: currentProduct, name: currentName, price: currentPrice, categoryToAdd: currentCategory!, categoryToDelete: oldCategory, productIndex: productIndex, imageData: currentImageData)
+        RealmDataBase.shared.edit(product: currentProduct, name: currentName, newPrice: currentPrice, oldPrice: oldPrice, categoryToAdd: currentCategory!, categoryToDelete: oldCategory, productIndex: productIndex, imageData: currentImageData)
         navigationController?.popViewController(animated: true)
     }
     

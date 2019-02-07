@@ -14,6 +14,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     //MARK - Model
     
     var categories = RealmDataBase.shared.getCategories()
+    var products = RealmDataBase.shared.getProducts()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -48,11 +49,6 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        if categories.isEmpty {
-            tableView.setEmptyView(title: NSLocalizedString("You don't have any products", comment: ""), message: NSLocalizedString("You should add some! Tap at the right top button to do that!", comment: ""))
-        } else {
-            tableView.restore()
-        }
         return categories.count
     }
 
@@ -60,7 +56,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         let tableSection = categories[section]
         let tableProductData = tableSection.products
         
-        if tableProductData.isEmpty {
+        if tableProductData.isEmpty && products.count == 0{
             tableView.setEmptyView(title: NSLocalizedString("You don't have any products", comment: ""), message: NSLocalizedString("You should add some! Tap at the right top button to do that!", comment: ""))
         } else {
             tableView.restore()
@@ -129,6 +125,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         vc.currentName = product.name
         vc.currentPrice = product.price
         vc.currentCategory = product.category
+        vc.oldPrice = product.price
         vc.oldCategory = product.category
         vc.productIndex = indexPath.row
         self.navigationController?.pushViewController(vc, animated: true)
