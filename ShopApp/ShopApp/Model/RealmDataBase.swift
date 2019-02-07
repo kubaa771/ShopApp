@@ -56,6 +56,12 @@ class RealmDataBase {
     }
     
     func deleteCategory(category: CategorySection) {
+        let products = getProducts()
+        for product in products {
+            if product.category == category {
+                deleteProduct(product: product)
+            }
+        }
         try! realm.write {
             realm.delete(category)
         }
@@ -74,7 +80,16 @@ class RealmDataBase {
     }
     
     func deleteProduct(product: Product) {
+        let lists = getLists()
         try! realm.write {
+            for list in lists {
+                if list.containsProduct(productId: product.uuid) {
+                    if let index = list.currentProducts.index(of: product.uuid) {
+                        list.summary -= product.price
+                        list.currentProducts.remove(at: index)
+                    }
+                }
+            }
             realm.delete(product)
         }
     }

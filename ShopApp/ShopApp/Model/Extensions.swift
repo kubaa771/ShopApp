@@ -118,7 +118,7 @@ extension UIViewController {
         let accessoryView = UIView(frame: CGRect(x: 0, y: 0, width: textField.frame.width, height: 40))
         accessoryView.backgroundColor = #colorLiteral(red: 0.8203848004, green: 0.8268544078, blue: 0.84868747, alpha: 1)
         let nextBtn = UIButton()
-        nextBtn.setTitle("Next", for: .normal)
+        nextBtn.setTitle(NSLocalizedString("Next", comment: ""), for: .normal)
         nextBtn.setTitleColor(#colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1), for: .normal)
         nextBtn.tag = textField.tag
         nextBtn.addTarget(nil, action: #selector(nextTextField(_:)), for: .touchUpInside)
