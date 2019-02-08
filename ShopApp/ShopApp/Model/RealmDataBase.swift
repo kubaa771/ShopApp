@@ -176,6 +176,9 @@ class RealmDataBase {
         do {
             let containerURL = filemanager.url(forUbiquityContainerIdentifier: nil)
             let realmArchiveURL = containerURL?.appendingPathComponent("RealmDatabase.realm")
+            
+            //uncomment if u want local backup
+            
             /*let documentDirectory = try filemanager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let fileURL = documentDirectory.appendingPathComponent("LocalSave")
             if filemanager.fileExists(atPath: fileURL.path) {
@@ -211,12 +214,7 @@ class RealmDataBase {
                 self.realm = try! Realm()
             }
             //config.fileURL = fileURL
-           
-            
-        } catch {
-            print(error)
         }
-        //realm.cancelWrite()
     }
     
 }
