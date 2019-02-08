@@ -128,7 +128,6 @@ extension UIViewController {
         accessoryView.addSubview(nextBtn)
         let cs1 = nextBtn.trailingAnchor.constraint(equalTo: accessoryView.trailingAnchor, constant: -20)
         NSLayoutConstraint.activate([cs1])
-        print(textField.tag)
         textField.inputAccessoryView = accessoryView
     }
     

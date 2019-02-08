@@ -14,17 +14,26 @@ class MyList: Object {
     @objc dynamic var isActive: Bool = true
     var currentProducts = List<String>()
     var originalProducts = List<String>()
-    @objc dynamic var summary: Double = 0.0
     
     convenience init(date: Date, isActive: Bool, summary: Double){
         self.init()
         self.date = date
         self.isActive = isActive
-        self.summary = summary
     }
     
     func containsProduct(productId: String) -> Bool{
         let contains = currentProducts.contains(productId)
         return contains
     }
+    
+    func sumUp() -> Double{
+        var sum = 0.0
+        for productUUID in currentProducts {
+            if let product = RealmDataBase.shared.getProduct(byId: productUUID) {
+                sum += product.price
+            }
+        }
+        return sum
+    }
+    
 }

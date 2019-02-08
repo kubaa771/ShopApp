@@ -41,7 +41,7 @@ class ListTableViewCell: UITableViewCell {
         formatter.dateFormat = "dd-MMM-yyyy HH:mm"
         let myDateStringFinal = formatter.string(from: myDate!)
         dataLabel.text = myDateStringFinal
-        priceLabel.text = String(format: "%.2f", list.summary) + NSLocalizedString("$", comment: "")
+        priceLabel.text = String(format: "%.2f", list.sumUp() ) + NSLocalizedString("$", comment: "")
         
         if list.isActive {
             checkedImageView.isHidden = true

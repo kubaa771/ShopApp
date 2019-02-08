@@ -85,7 +85,6 @@ class RealmDataBase {
             for list in lists {
                 if list.containsProduct(productId: product.uuid) {
                     if let index = list.currentProducts.index(of: product.uuid) {
-                        list.summary -= product.price
                         list.currentProducts.remove(at: index)
                     }
                 }
@@ -94,21 +93,15 @@ class RealmDataBase {
         }
     }
     
-    func edit(product: Product, name: String, newPrice: Double, oldPrice: Double, categoryToAdd: CategorySection, categoryToDelete: CategorySection, productIndex: Int , imageData: NSData?) {
-        let lists = getLists()
+    func edit(product: Product, name: String, newPrice: Double, oldPrice: Double, categoryToAdd: CategorySection, categoryToDelete: CategorySection, imageData: NSData?) {
         try! realm.write {
-            categoryToDelete.products.remove(at: productIndex)
+            let index = categoryToDelete.products.index(of: product)
+            categoryToDelete.products.remove(at: index!)
             product.name = name
             product.price = newPrice
             product.category = categoryToAdd
             product.imageData = imageData
             categoryToAdd.products.append(product)
-            for list in lists {
-                if list.containsProduct(productId: product.uuid) {
-                    list.summary -= oldPrice
-                    list.summary += newPrice
-                }
-            }
         }
     }
     
@@ -160,16 +153,6 @@ class RealmDataBase {
     func getProduct(byId id: String) -> Product? {
         let currentProduct = realm.object(ofType: Product.self, forPrimaryKey: id)
         return currentProduct
-    }
-    
-    func priceSumUp(productPrice: Double, to list: MyList, add: Bool){
-        try! realm.write {
-            if add {
-                list.summary += productPrice
-            } else {
-                list.summary -= productPrice
-            }
-        }
     }
     
     func delete(list: MyList) {
