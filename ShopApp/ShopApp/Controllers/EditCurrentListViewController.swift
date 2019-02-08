@@ -174,11 +174,11 @@ class EditCurrentListViewController: UIViewController, UITableViewDelegate, UITa
             self.navigationController?.popViewController(animated: true)
         } else {
             let alert = UIAlertController(title: NSLocalizedString("Are u sure?", comment: ""), message: NSLocalizedString("Do you want to end editing current list?", comment: ""), preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: { (action) in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .destructive, handler: { (action) in
                 RealmDataBase.shared.editList(list: self.currentList)
                 self.navigationController?.popViewController(animated: true)
             }))
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default, handler: nil))
             present(alert, animated: true)
         }
         
