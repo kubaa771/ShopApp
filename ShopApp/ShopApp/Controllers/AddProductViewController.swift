@@ -111,6 +111,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBAction func openCameraAction(_ sender: UIButton) {
         selectImageFrom(.camera)
     }
+    
     func selectImageFrom(_ source: ImageSource) {
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
